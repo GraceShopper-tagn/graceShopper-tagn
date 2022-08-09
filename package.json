@@ -17,6 +17,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@prisma/client": "^4.2.0",
     "axios": "^0.19.2",
     "concurrently": "^7.0.0",
     "cors": "^2.8.5",
@@ -24,6 +25,7 @@
     "jest": "^24.9.0",
     "morgan": "^1.10.0",
     "pg": "^8.2.1",
+    "prisma": "^4.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
@@ -45,5 +47,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "prisma": {
+    "seed": "node db/seed.js"
   }
 }
