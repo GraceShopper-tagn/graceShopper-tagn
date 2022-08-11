@@ -1,19 +1,18 @@
 const prisma = require("../db/prisma");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const { createUser } = require("../db/models/user");
 const { authRequired, userRequired } = require("./utils");
 const authRouter = require("express").Router();
 
-const { JWT_SECRET, COOKIE_SECRET } = process.env;
-const SALT_ROUNDS = 10;
+const { JWT_SECRET, COOKIE_SECRET, SALT_ROUNDS } = process.env;
+// const SALT_ROUNDS = 10;
 
 // first name, lastname, email, username, password
 authRouter.post("/register", async (req, res, next) => {
   try {
     const { username, password, firstname, lastname, email } = req.body;
     // console.log("COOKIE_SECRET", process.env);
-    const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS);
+    const hashedPassword = await bcrypt.hash(password, +SALT_ROUNDS);
     const user = await prisma.users.create({
       data: {
         firstname: firstname,
@@ -23,14 +22,6 @@ authRouter.post("/register", async (req, res, next) => {
         password: hashedPassword,
       },
     });
-    // const userObj = {
-    //   firstname: firstname,
-    //   lastname: lastname,
-    //   username: username,
-    //   email: email,
-    //   password: hashedPassword,
-    // };
-    // const user = await createUser(userObj);
     console.log("user", user);
     delete user.password;
 
@@ -126,20 +117,20 @@ authRouter.post("/logout", async (req, res, next) => {
 
 // Example of how to use authorization middleware
 
-// authRouter.get(`/:id`, userRequired, authRequired, async (req, res, next) => {
-//   const { id } = req.params;
-//   // const id = 1;
-//   try {
-//     const user = await prisma.users.findUnique({
-//       where: {
-//         id: +id,
-//       },
-//     });
-//     console.log(user);
-//     res.send(user);
-//   } catch (error) {
-//     next(error);
-//   }
-// });
+authRouter.get(`/:id`, userRequired, authRequired, async (req, res, next) => {
+  const { id } = req.params;
+  // const id = 1;
+  try {
+    const user = await prisma.users.findUnique({
+      where: {
+        id: +id,
+      },
+    });
+    console.log(user);
+    res.send(user);
+  } catch (error) {
+    next(error);
+  }
+});
 
 module.exports = authRouter;
