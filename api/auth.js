@@ -2,6 +2,7 @@ const prisma = require("../db/prisma");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { createUser } = require("../db/models/user");
+const { authRequired, userRequired } = require("./utils");
 const authRouter = require("express").Router();
 
 const { JWT_SECRET, COOKIE_SECRET } = process.env;
@@ -122,5 +123,23 @@ authRouter.post("/logout", async (req, res, next) => {
     next(error);
   }
 });
+
+// Example of how to use authorization middleware
+
+// authRouter.get(`/:id`, userRequired, authRequired, async (req, res, next) => {
+//   const { id } = req.params;
+//   // const id = 1;
+//   try {
+//     const user = await prisma.users.findUnique({
+//       where: {
+//         id: +id,
+//       },
+//     });
+//     console.log(user);
+//     res.send(user);
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 
 module.exports = authRouter;
