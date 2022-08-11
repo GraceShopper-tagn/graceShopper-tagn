@@ -11,6 +11,7 @@ model users {
   id              Int         @id @default(autoincrement())
   firstname       String      @db.VarChar(255)
   lastname        String      @db.VarChar(255)
+  password        String      @db.VarChar(255)
   username        String      @unique @db.VarChar(255)
   email           String      @unique @db.VarChar(255)
   shippingaddress String?     @db.VarChar(255)

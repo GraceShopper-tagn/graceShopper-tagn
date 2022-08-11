@@ -35,7 +35,8 @@ const createTables = async () => {
       billingaddress varchar(255) ,
       paymentinfo varchar(255) ,
       isadmin BOOLEAN DEFAULT false,
-      createddate DATE NOT NULL DEFAULT CURRENT_DATE
+      createddate DATE NOT NULL DEFAULT CURRENT_DATE,
+      password varchar(255) NOT NULL
       );`;
   console.log("creating discounts");
 
