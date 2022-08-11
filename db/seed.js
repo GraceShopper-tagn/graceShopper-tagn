@@ -1,7 +1,16 @@
 const prisma = require("./prisma");
 
 const { createUser } = require("./models/user");
-const { users, products, photos, productphotos } = require("./seedData");
+const {
+  users,
+  products,
+  photos,
+  productphotos,
+  discounts,
+  categories,
+  tags,
+  sizes,
+} = require("./seedData");
 
 const dropTables = async () => {
   console.log(`Dropping tables...`);
@@ -154,36 +163,64 @@ const createTables = async () => {
 };
 
 const seedDb = async () => {
-  console.log("Creating Users...");
-  for (let user of users) {
-    const createdUser = await prisma.users.create({
-      data: user,
+  console.log("Creating discounts...");
+  for (let discount of discounts) {
+    const createdDiscount = await prisma.discounts.create({
+      data: discount,
     });
-    console.log(createdUser);
+    console.log(createdDiscount);
   }
-
-  console.log("Creating Products...");
-  for (let product of products) {
-    const createdProduct = await prisma.products.create({
-      data: product,
+  console.log("Creating categories...");
+  for (let category of categories) {
+    const createdCategory = await prisma.categories.create({
+      data: category,
     });
-    console.log(createdProduct);
+    console.log(createdCategory);
   }
-
-  console.log("Creating Photos...");
-  for (let photo of photos) {
-    const createdPhoto = await prisma.photos.create({
-      data: photo,
+  console.log("Creating tags...");
+  for (let tag of tags) {
+    const createdTag = await prisma.tags.create({
+      data: tag,
     });
-    console.log(createdPhoto);
+    console.log(createdTag);
   }
-
-  console.log("Creating Product Photos...");
-  for (let photoOfProduct of productphotos) {
-    const createdProductPhoto = await prisma.productphotos.create({
-      data: photoOfProduct,
+  console.log("Creating sizes...");
+  for (let size of sizes) {
+    const createdSize = await prisma.sizes.create({
+      data: size,
     });
-    console.log(createdProductPhoto);
+    console.log(createdSize);
+    console.log("Creating Users...");
+    for (let user of users) {
+      const createdUser = await prisma.users.create({
+        data: user,
+      });
+      console.log(createdUser);
+    }
+
+    console.log("Creating Products...");
+    for (let product of products) {
+      const createdProduct = await prisma.products.create({
+        data: product,
+      });
+      console.log(createdProduct);
+    }
+
+    console.log("Creating Photos...");
+    for (let photo of photos) {
+      const createdPhoto = await prisma.photos.create({
+        data: photo,
+      });
+      console.log(createdPhoto);
+    }
+
+    console.log("Creating Product Photos...");
+    for (let photoOfProduct of productphotos) {
+      const createdProductPhoto = await prisma.productphotos.create({
+        data: photoOfProduct,
+      });
+      console.log(createdProductPhoto);
+    }
   }
 };
 
