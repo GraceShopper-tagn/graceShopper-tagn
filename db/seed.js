@@ -155,10 +155,10 @@ const createTables = async () => {
 
 const seedDb = async () => {
   console.log("Creating initial users...");
-  const user = { email: "123@xyz.com", name: "test" };
-  console.log(user);
-  const createdUser = await prisma.users.create({ data: user });
-  console.log(createdUser);
+  // //const user = { email: "123@xyz.com", name: "test" };
+  // console.log(user);
+  // //const createdUser = await prisma.users.create({ data: user });
+  // console.log(createdUser);
 };
 
 const initDb = async () => {

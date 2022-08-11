@@ -1,4 +1,6 @@
 const apiRouter = require("express").Router();
+const cookieParser = require("cookie-parser");
+require("dotenv").config();
 
 apiRouter.get("/", (req, res, next) => {
   res.send({
@@ -13,5 +15,6 @@ apiRouter.get("/health", (req, res, next) => {
 });
 
 // place your routers here
-apiRouter.use("/auth", require("./AuthRouter"));
+apiRouter.use(cookieParser(process.env.COOKIE_SECRET));
+apiRouter.use("/auth", require("./auth"));
 module.exports = apiRouter;
