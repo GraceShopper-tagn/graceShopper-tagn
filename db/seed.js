@@ -1,6 +1,7 @@
 const prisma = require("./prisma");
 
 const { createUser } = require("./models/user");
+const { users, products, photos, productphotos } = require("./seedData");
 
 const dropTables = async () => {
   console.log(`Dropping tables...`);
@@ -153,11 +154,37 @@ const createTables = async () => {
 };
 
 const seedDb = async () => {
-  console.log("Creating initial users...");
-  const user = { email: "123@xyz.com", name: "test" };
-  console.log(user);
-  const createdUser = await prisma.users.create({ data: user });
-  console.log(createdUser);
+  console.log("Creating Users...");
+  for (let user of users) {
+    const createdUser = await prisma.users.create({
+      data: user,
+    });
+    console.log(createdUser);
+  }
+
+  console.log("Creating Products...");
+  for (let product of products) {
+    const createdProduct = await prisma.products.create({
+      data: product,
+    });
+    console.log(createdProduct);
+  }
+
+  console.log("Creating Photos...");
+  for (let photo of photos) {
+    const createdPhoto = await prisma.photos.create({
+      data: photo,
+    });
+    console.log(createdPhoto);
+  }
+
+  console.log("Creating Product Photos...");
+  for (let photoOfProduct of productphotos) {
+    const createdProductPhoto = await prisma.productphotos.create({
+      data: photoOfProduct,
+    });
+    console.log(createdProductPhoto);
+  }
 };
 
 const initDb = async () => {
