@@ -288,6 +288,7 @@ const users = [
   {
     firstname: "John",
     lastname: "Smith",
+    password: "12345678",
     username: "jsmith",
     email: "johnsmith@something.com",
     shippingaddress: "254 Spruce St, Loveland, CO, 80023",
@@ -297,6 +298,7 @@ const users = [
   {
     firstname: "Betty",
     lastname: "White",
+    password: "12345678",
     username: "bwhite",
     email: "bettywhite@something.com",
     shippingaddress: "5789 Pine Ave, Fort Collins, CO, 80054",
@@ -306,6 +308,7 @@ const users = [
   {
     firstname: "Sally",
     lastname: "Jones",
+    password: "87654321",
     username: "sjones",
     email: "sallyjones@something.com",
     shippingaddress: "9999 Poplar Ct, Denver, CO, 87412",
@@ -315,6 +318,7 @@ const users = [
   {
     firstname: "Steve",
     lastname: "Spencer",
+    password: "87654321",
     username: "sspencer",
     email: "stevespencer@something.com",
     shippingaddress: "8787 Aspen St, Castle Rock, CO, 85632",
@@ -324,6 +328,7 @@ const users = [
   {
     firstname: "Martha",
     lastname: "Cooke",
+    password: "87654321",
     username: "mcooke",
     email: "marthacooke@something.com",
     shippingaddress: "4120 Walnut Ave, Pueblo, CO, 85214",
@@ -333,6 +338,7 @@ const users = [
   {
     firstname: "Rachel",
     lastname: "Dennis",
+    password: "87654321",
     username: "rdennis",
     email: "racheldennis@nothing.com",
     shippingaddress: "2472 Liberty Way, San Francisco, CA, 98745",
@@ -342,6 +348,7 @@ const users = [
   {
     firstname: "Cindy",
     lastname: "Crawford",
+    password: "87654321",
     username: "ccrawford",
     email: "cindyc@neverland.com",
     shippingaddress: "564 Sunset Blvd, Los Angeles, CA, 98546",
@@ -351,6 +358,7 @@ const users = [
   {
     firstname: "John",
     lastname: "Elway",
+    password: "87654321",
     username: "jelway",
     email: "johnelway@quarter.com",
     shippingaddress: "554 Sunset Ave, Cherry Creek, CO, 87452",
@@ -563,6 +571,233 @@ const productphotos = [
   },
 ];
 
+const favorites = [
+  {
+    userid: 1,
+    productid: 1,
+  },
+  {
+    userid: 2,
+    productid: 2,
+  },
+  {
+    userid: 3,
+    productid: 3,
+  },
+  {
+    userid: 4,
+    productid: 4,
+  },
+  {
+    userid: 5,
+    productid: 5,
+  },
+  {
+    userid: 6,
+    productid: 6,
+  },
+  {
+    userid: 7,
+    productid: 7,
+  },
+  {
+    userid: 8,
+    productid: 8,
+  },
+  {
+    userid: 1,
+    productid: 9,
+  },
+];
+
+const reviews = [
+  {
+    userid: 8,
+    productid: 1,
+    rating: 5,
+    content: "test review content",
+  },
+  {
+    userid: 7,
+    productid: 5,
+    rating: 4,
+    content: "test review content",
+  },
+  {
+    userid: 2,
+    productid: 9,
+    rating: 3,
+    content: "test review content",
+  },
+  {
+    userid: 4,
+    productid: 14,
+    rating: 1,
+    content: "test review content",
+  },
+  {
+    userid: 5,
+    productid: 12,
+    rating: 2,
+    content: "test review content",
+  },
+  {
+    userid: 5,
+    productid: 7,
+    rating: 4,
+    content: "test review content",
+  },
+  {
+    userid: 6,
+    productid: 11,
+    rating: 5,
+    content: "test review content",
+  },
+  {
+    userid: 1,
+    productid: 9,
+    rating: 3,
+    content: "test review content",
+  },
+  {
+    userid: 3,
+    productid: 7,
+    rating: 5,
+    content: "test review content",
+  },
+  {
+    userid: 7,
+    productid: 13,
+    rating: 3,
+    content: "test review content",
+  },
+];
+
+const producttags = [
+  {
+    productid: 1,
+    tags: [1, 18, 30, 39],
+  },
+  {
+    productid: 2,
+    tags: [2, 19, 30, 39],
+  },
+  {
+    productid: 3,
+    tags: [1, 20, 31, 39],
+  },
+  {
+    productid: 4,
+    tags: [3, 21, 32, 39],
+  },
+  {
+    productid: 5,
+    tags: [4, 22, 33, 39],
+  },
+  {
+    productid: 6,
+    tags: [3, 18, 33, 39],
+  },
+  {
+    productid: 7,
+    tags: [3, 23, 32, 39],
+  },
+  {
+    productid: 8,
+    tags: [3, 26, 32, 39],
+  },
+  {
+    productid: 9,
+    tags: [6, 20, 30, 39],
+  },
+  {
+    productid: 10,
+    tags: [6, 18, 30, 39],
+  },
+  {
+    productid: 11,
+    tags: [17, 18, 34, 40],
+  },
+  {
+    productid: 12,
+    tags: [3, 19, 30, 40],
+  },
+  {
+    productid: 13,
+    tags: [10, 20, 30, 40],
+  },
+  {
+    productid: 14,
+    tags: [1, 20, 34, 41],
+  },
+  {
+    productid: 15,
+    tags: [13, 20, 34, 41],
+  },
+];
+
+const orders = [
+  {
+    userid: 1,
+    discountid: 1,
+    shippingaddress: "254 Spruce St, Loveland, CO, 80023",
+    billingaddress: "254 Spruce St, Loveland, CO, 80023",
+    paymentinfo: "Visa",
+    fulfilled: true,
+  },
+  {
+    userid: 2,
+    discountid: 2,
+    shippingaddress: "5789 Pine Ave, Fort Collins, CO, 80054",
+    billingaddress: "5789 Pine Ave, Fort Collins, CO, 80054",
+    paymentinfo: "Master Card",
+  },
+  {
+    userid: 3,
+    discountid: 3,
+    shippingaddress: "9999 Poplar Ct, Denver, CO, 87412",
+    billingaddress: "9999 Poplar Ct, Denver, CO, 87412",
+    paymentinfo: "Visa",
+  },
+  {
+    userid: 4,
+    discountid: 4,
+    shippingaddress: "8787 Aspen St, Castle Rock, CO, 85632",
+    billingaddress: "8787 Aspen St, Castle Rock, CO, 85632",
+    paymentinfo: "American Express",
+  },
+  {
+    userid: 5,
+    discountid: 5,
+    shippingaddress: "4120 Walnut Ave, Pueblo, CO, 85214",
+    billingaddress: "22 East St, Denver, CO, 96321",
+    paymentinfo: "Visa",
+    fulfilled: true,
+  },
+  {
+    userid: 6,
+    discountid: 6,
+    shippingaddress: "2472 Liberty Way, San Francisco, CA, 98745",
+    billingaddress: "2472 Liberty Way, San Francisco, CA, 98745",
+    paymentinfo: "American Express",
+  },
+  {
+    userid: 7,
+    discountid: 3,
+    shippingaddress: "564 Sunset Blvd, Los Angeles, CA, 98546",
+    billingaddress: "668 Shady Lane, Aspen, CO, 85823",
+    paymentinfo: "Visa",
+  },
+  {
+    userid: 8,
+    discountid: 2,
+    shippingaddress: "554 Sunset Ave, Cherry Creek, CO, 87452",
+    billingaddress: "554 Sunset Ave, Cherry Creek, CO, 87452",
+    paymentinfo: "Master Card",
+    fulfilled: true,
+  },
+];
+
 module.exports = {
   users,
   products,
@@ -572,4 +807,8 @@ module.exports = {
   categories,
   tags,
   sizes,
+  favorites,
+  reviews,
+  producttags,
+  orders,
 };

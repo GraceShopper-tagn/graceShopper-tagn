@@ -1,3 +1,4 @@
+const { productsizes, cartitems } = require("./prisma");
 const prisma = require("./prisma");
 
 // const { createUser } = require("./models/user");
@@ -10,6 +11,10 @@ const {
   categories,
   tags,
   sizes,
+  favorites,
+  reviews,
+  producttags,
+  orders,
 } = require("./seedData");
 
 const dropTables = async () => {
@@ -223,6 +228,69 @@ const seedDb = async () => {
       data: photoOfProduct,
     });
     console.log(createdProductPhoto);
+  }
+  console.log("Creating favorites...");
+  for (let favorite of favorites) {
+    const createdFavorite = await prisma.favorites.create({
+      data: favorite,
+    });
+    console.log(createdFavorite);
+  }
+  console.log("Creating reviews...");
+  for (let review of reviews) {
+    const createdReview = await prisma.reviews.create({
+      data: review,
+    });
+    console.log(createdReview);
+  }
+  console.log("Creating product tags...");
+  for (let productTag of producttags) {
+    const productId = productTag.productid;
+    for (let tagId of productTag.tags) {
+      const productTag = await prisma.producttags.create({
+        data: { productid: productId, tagid: tagId },
+      });
+      console.log(productTag);
+    }
+  }
+
+  console.log("Creating Product Sizes...");
+  let j = 1;
+  for (let product of products) {
+    const productId = j;
+    j++;
+    let i = 1;
+    for (let size of sizes) {
+      const productSize = await prisma.productsizes.create({
+        data: {
+          productid: productId,
+          sizeid: i,
+          inventory: i,
+        },
+      });
+      i++;
+      console.log(productSize);
+    }
+  }
+
+  console.log("Creating Orders...");
+  for (let order of orders) {
+    const createdOrder = await prisma.orders.create({
+      data: order,
+    });
+    console.log(createdOrder);
+  }
+
+  console.log("Creating Cart Items...");
+  for (let k = 1; k < 9; k++) {
+    const cartItem = await prisma.cartitems.create({
+      data: {
+        orderid: k,
+        productid: k,
+        quantity: k,
+      },
+    });
+    console.log(cartItem);
   }
 };
 
