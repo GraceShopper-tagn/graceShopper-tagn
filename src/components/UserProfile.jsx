@@ -1,9 +1,15 @@
 import React from "react";
 import useAuth from "../hooks/useAuth";
+import EditUser from "./EditUser";
 
 export default function UserProfile() {
   const { user } = useAuth();
   console.log(user);
-  console.log(process.env.SAVED_USER);
-  return <div>UserProfile {process.env.SAVED_USER}</div>;
+
+  return (
+    <div>
+      UserProfile
+      <EditUser user={user} />
+    </div>
+  );
 }

@@ -9,11 +9,11 @@ import "./style/index.css";
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <AuthProvider> */}
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-    {/* </AuthProvider> */}
+    <AuthProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </AuthProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
