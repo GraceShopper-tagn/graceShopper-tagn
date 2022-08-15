@@ -8,6 +8,7 @@ import "../style/App.css";
 import Login from "./Login";
 import NavBar from "./NavBar";
 import Register from "./Register";
+import UserProfile from "./UserProfile";
 
 const App = () => {
   const [APIHealth, setAPIHealth] = useState("");
@@ -28,10 +29,14 @@ const App = () => {
 
   return (
     <div className="app-container">
+      <h1>Hello, World!</h1>
+      <p>API Status: {APIHealth}</p>
       <NavBar />
       <Routes>
         <Route path="/Register" element={<Register />} />
         <Route path="/Login" element={<Login />} />
+        <Route path="/user" element={<UserProfile />} />
+        <Route path="/health" element={<p>API Status: {APIHealth}</p>} />{" "}
       </Routes>
     </div>
   );
