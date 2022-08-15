@@ -11,7 +11,6 @@ model users {
   id              Int         @id @default(autoincrement())
   firstname       String      @db.VarChar(255)
   lastname        String      @db.VarChar(255)
-  password        String      @db.VarChar(255)
   username        String      @unique @db.VarChar(255)
   email           String      @unique @db.VarChar(255)
   shippingaddress String?     @db.VarChar(255)
@@ -19,6 +18,7 @@ model users {
   paymentinfo     String?     @db.VarChar(255)
   isadmin         Boolean?    @default(false)
   createddate     DateTime    @default(dbgenerated("CURRENT_DATE")) @db.Date
+  password        String      @db.VarChar(255)
   favorites       favorites[]
   orders          orders[]
   reviews         reviews[]

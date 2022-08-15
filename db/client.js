@@ -1,5 +1,6 @@
 // Connect to DB
 const { Client } = require("pg");
+require("dotenv").config();
 
 // change the DB_NAME string to whatever your group decides on
 const DB_NAME = "univ-boilerplate";
@@ -22,5 +23,6 @@ if (process.env.CI) {
   // local / heroku client config
   client = new Client(DB_URL);
 }
-
+console.log(process.env.DATABASE_URL);
+console.log(DB_URL);
 module.exports = client;
