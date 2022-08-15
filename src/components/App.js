@@ -9,6 +9,7 @@ import Login from "./Login";
 import NavBar from "./NavBar";
 import Register from "./Register";
 import UserProfile from "./UserProfile";
+import LogOut from "./Logout";
 
 const App = () => {
   const [APIHealth, setAPIHealth] = useState("");
@@ -36,6 +37,7 @@ const App = () => {
         <Route path="/Register" element={<Register />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/user" element={<UserProfile />} />
+        <Route path="/Logout" element={<LogOut />} />
         <Route path="/health" element={<p>API Status: {APIHealth}</p>} />{" "}
       </Routes>
     </div>
