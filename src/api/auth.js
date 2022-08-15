@@ -39,3 +39,32 @@ export const loginUser = async (username, password) => {
   const result = await response.json();
   return result;
 };
+
+// Alternative Login
+export const altLoginUser = async (email, password) => {
+  const response = await fetch(`/api/auth/login/alt`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email,
+      password,
+    }),
+  });
+  const result = await response.json();
+  return result;
+};
+
+// logout
+export const logoutUser = async () => {
+  const response = await fetch(`/api/auth/logout`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({}),
+  });
+  const result = await response.json();
+  return result;
+};

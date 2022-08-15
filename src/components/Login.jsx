@@ -1,11 +1,13 @@
 import React from "react";
 import { loginUser } from "../api/auth";
+import { altLoginUser } from "../api/auth";
 import { useState } from "react";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
+  const [email, setEmail] = useState("");
+  const [emailPassword, setEmailPassword] = useState("");
   return (
     <div>
       <h4 id="loginTitle">Login Here:</h4>
@@ -51,9 +53,24 @@ export default function Login() {
           localStorage.clear();
         }}
       >
-        {" "}
-        Logout{" "}
-      </button>
+        <input
+          className="userinput"
+          placeholder="Email"
+          value={email}
+          required={true}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          className="userinput"
+          placeholder="Email Password"
+          value={emailPassword}
+          required={true}
+          onChange={(e) => setEmailPassword(e.target.value)}
+        />
+        <button id="loginButton" type="submit">
+          LOGIN
+        </button>
+      </form>
     </div>
   );
 }
