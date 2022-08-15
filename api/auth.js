@@ -49,7 +49,6 @@ authRouter.post("/login", async (req, res, next) => {
     const user = await prisma.users.findUnique({
       where: { username: username },
     });
-    console.log(user);
     const validPassword = await bcrypt.compare(password, user.password);
 
     if (validPassword) {
@@ -61,10 +60,15 @@ authRouter.post("/login", async (req, res, next) => {
         signed: true,
         secret: COOKIE_SECRET,
       });
-
+      console.log("token", token);
       delete user.password;
-      process.env.SAVED_USER = user;
+      console.log("USER", user);
+
+      // console.log("process.env.SAVED_USER", process.env.SAVED_USER);
+      // console.log("equals", process.env.SAVED_USER === user);
+      // console.log(JSON.stringify(process.env.SAVED_USER));
       res.send({ user });
+      // res.send(process.env.SAVED_USER);
     }
   } catch (error) {
     next(error);

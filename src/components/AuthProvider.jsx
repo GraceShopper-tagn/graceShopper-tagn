@@ -3,7 +3,8 @@ import React, { useState, useEffect } from "react";
 import AuthContext from "../contexts/AuthContext";
 
 export default function AuthProvider({ children }) {
-  const [user, setUser] = useState(process.env.SAVED_USER);
+  const [user, setUser] = useState({});
+  const [token, setToken] = useState(localStorage.getItem("token"));
 
   useEffect(() => {
     async function getUser() {
@@ -12,7 +13,7 @@ export default function AuthProvider({ children }) {
       setUser(userToSet);
     }
     getUser();
-  }, [process.env.SAVED_USER]);
+  }, [localStorage.token]);
 
   return (
     <AuthContext.Provider
