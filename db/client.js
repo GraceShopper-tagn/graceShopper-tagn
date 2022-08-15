@@ -23,6 +23,4 @@ if (process.env.CI) {
   // local / heroku client config
   client = new Client(DB_URL);
 }
-console.log(process.env.DATABASE_URL);
-console.log(DB_URL);
 module.exports = client;
