@@ -10,6 +10,7 @@ import NavBar from "./NavBar";
 import Register from "./Register";
 import UserProfile from "./UserProfile";
 import LogOut from "./Logout";
+import AltLogin from "./AltLogin";
 
 const App = () => {
   const [APIHealth, setAPIHealth] = useState("");
@@ -30,12 +31,11 @@ const App = () => {
 
   return (
     <div className="app-container">
-      <h1>Hello, World!</h1>
-      <p>API Status: {APIHealth}</p>
       <NavBar />
       <Routes>
         <Route path="/Register" element={<Register />} />
         <Route path="/Login" element={<Login />} />
+        <Route path="/AltLogin" element={<AltLogin />} />
         <Route path="/user" element={<UserProfile />} />
         <Route path="/Logout" element={<LogOut />} />
         <Route path="/health" element={<p>API Status: {APIHealth}</p>} />{" "}

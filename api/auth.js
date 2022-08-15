@@ -78,7 +78,7 @@ authRouter.post("/login/alt", async (req, res, next) => {
     const user = await prisma.users.findUnique({
       where: { email: email },
     });
-    console.log(user);
+    console.log("alternate login", user);
     const validPassword = await bcrypt.compare(email, user.password);
 
     if (validPassword) {

@@ -53,6 +53,7 @@ export const altLoginUser = async (email, password) => {
     }),
   });
   const result = await response.json();
+  console.log("this is the result", result);
   return result;
 };
 
