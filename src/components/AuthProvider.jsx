@@ -1,31 +1,24 @@
-import { fetchMe } from "api/users";
+import { fetchMe } from "../axios-services/index";
 import React, { useState, useEffect } from "react";
-import AuthContext from "../AuthContext";
+import AuthContext from "../contexts/AuthContext";
 
 export default function AuthProvider({ children }) {
-  const [user, setUser] = useState({});
-  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [user, setUser] = useState(process.env.SAVED_USER);
 
   useEffect(() => {
     async function getUser() {
-      if (localStorage.token) {
-        // hit the /me route and pass it your token
-        const userToSet = await fetchMe(token);
-        setUser(userToSet);
-      } else {
-        setUser({});
-      }
+      // hit the /me route and pass it your token
+      const userToSet = await fetchMe();
+      setUser(userToSet);
     }
     getUser();
-  }, [localStorage.token]);
+  }, [process.env.SAVED_USER]);
 
   return (
     <AuthContext.Provider
       value={{
         user,
         setUser,
-        token,
-        setToken,
       }}
     >
       {children}

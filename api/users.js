@@ -9,7 +9,7 @@ usersRouter.get("/me", userRequired, (req, res, next) => {
     //const { username, password, firstname, lastname, email } = req.body;
     const token = req.signedCookies.token;
     const user = jwt.verify(token, process.env.JWT_SECRET);
-    res.send(req.user);
+    res.send(user);
   } catch (error) {
     next(error);
   }
