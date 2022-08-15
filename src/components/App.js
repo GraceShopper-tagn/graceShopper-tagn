@@ -5,7 +5,9 @@ import { Routes, Route } from "react-router-dom";
 // where each adapter fetches specific info from our express server's /api route
 import { getAPIHealth } from "../axios-services";
 import "../style/App.css";
-import UserProfile from "./UserProfile";
+import Login from "./Login";
+import NavBar from "./NavBar";
+import Register from "./Register";
 
 const App = () => {
   const [APIHealth, setAPIHealth] = useState("");
@@ -26,13 +28,10 @@ const App = () => {
 
   return (
     <div className="app-container">
-      {/* <h1>Hello, World!</h1>
-      <p>API Status: {APIHealth}</p> */}
-      {/* <h1>Hello, World!</h1> */}
+      <NavBar />
       <Routes>
-        <Route path="/" element={<h1>Hello, World!</h1>} />
-        <Route path="/health" element={<p>API Status: {APIHealth}</p>} />
-        <Route path="/user" element={<UserProfile />} />
+        <Route path="/Register" element={<Register />} />
+        <Route path="/Login" element={<Login />} />
       </Routes>
     </div>
   );
