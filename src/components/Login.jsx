@@ -17,6 +17,7 @@ export default function Login() {
           console.log("Result from login: ", result);
           if (result) {
             alert("You are now logged in!");
+            localStorage.setItem("token", result.token);
             console.log("token", localStorage.token);
             setPassword("");
             setUsername("");
@@ -47,7 +48,6 @@ export default function Login() {
       <button
         id="logoutButton"
         onClick={() => {
-          setToken(null);
           localStorage.clear();
         }}
       >

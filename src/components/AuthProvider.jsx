@@ -9,8 +9,13 @@ export default function AuthProvider({ children }) {
   useEffect(() => {
     async function getUser() {
       // hit the /me route and pass it your token
-      const userToSet = await fetchMe();
-      setUser(userToSet);
+      if (localStorage.token) {
+        // hit the /me route and pass it your token
+        const userToSet = await fetchMe();
+        setUser(userToSet);
+      } else {
+        setUser({});
+      }
     }
     getUser();
   }, [localStorage.token]);
@@ -20,6 +25,8 @@ export default function AuthProvider({ children }) {
       value={{
         user,
         setUser,
+        token,
+        setToken,
       }}
     >
       {children}

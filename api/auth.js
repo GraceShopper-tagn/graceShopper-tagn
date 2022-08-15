@@ -67,7 +67,7 @@ authRouter.post("/login", async (req, res, next) => {
       // console.log("process.env.SAVED_USER", process.env.SAVED_USER);
       // console.log("equals", process.env.SAVED_USER === user);
       // console.log(JSON.stringify(process.env.SAVED_USER));
-      res.send({ user });
+      res.send({ user, token });
       // res.send(process.env.SAVED_USER);
     }
   } catch (error) {
@@ -95,8 +95,7 @@ authRouter.post("/login/alt", async (req, res, next) => {
       });
 
       delete user.password;
-      process.env.SAVED_USER = user;
-      res.send({ user });
+      res.send({ user, token });
     }
   } catch (error) {
     next(error);
