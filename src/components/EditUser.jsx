@@ -106,11 +106,11 @@ export default function EditUser() {
           placeholder={user.paymentinfo}
           onChange={(e) => setPaymentInfo(e.target.value)}
         />
-        <input
+        {/* <input
           value={password}
           placeholder={user.password}
           onChange={(e) => setPassword(e.target.value)}
-        />
+        /> */}
         <button type="Submit">Submit!</button>
       </form>
     </>
