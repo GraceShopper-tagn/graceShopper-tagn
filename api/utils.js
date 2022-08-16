@@ -32,4 +32,22 @@ const authRequired = (req, res, next) => {
   next();
 };
 
-module.exports = { authRequired, userRequired };
+//checks that a specific user is an admin
+
+const adminRequired = (req, res, next) => {
+  const token = req.signedCookies.token;
+  try {
+    const { id } = req.params;
+    const user = jwt.verify(token, JWT_SECRET);
+    if (user.isadmin === false) throw error;
+  } catch (error) {
+    res.status(401).send({
+      loggedIn: false,
+      message: "You are not authorized to perform this action",
+    });
+    return;
+  }
+  next();
+};
+
+module.exports = { authRequired, userRequired, adminRequired };

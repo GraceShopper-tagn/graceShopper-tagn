@@ -1,14 +1,11 @@
 import React from "react";
-import { loginUser } from "../api/auth";
+import { altLoginUser } from "../api/auth";
 import { useState } from "react";
-import useAuth from "../hooks/useAuth";
 
-export default function Login() {
-  const { user, setUser, setToken } = useAuth();
-  const [username, setUsername] = useState("");
+export default function AltLogin() {
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [emailPassword, setEmailPassword] = useState("");
+
   return (
     <div>
       <h4 id="loginTitle">Login Here:</h4>
@@ -16,16 +13,12 @@ export default function Login() {
         id="loginInfo"
         onSubmit={async (e) => {
           e.preventDefault();
-          const result = await loginUser(username, password);
+          const result = await altLoginUser(email, password);
           console.log("Result from email login: ", result);
           if (result.user) {
             alert("You are now logged in!");
-            localStorage.setItem("token", result.token);
-            setToken(result.token);
-            // console.log("token", localStorage.token);
             setPassword("");
-            setUsername("");
-            // setEmail("");
+            setEmail("");
           } else if (result.message) {
             alert(result.message);
           }
@@ -33,18 +26,11 @@ export default function Login() {
       >
         <input
           className="userinput"
-          placeholder="Username"
-          value={username}
-          required={true}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        {/* <input
-          className="userinput"
           placeholder="Email"
           value={email}
-          required={false}
+          required={true}
           onChange={(e) => setEmail(e.target.value)}
-        /> */}
+        />
         <input
           className="userinput"
           placeholder="Password"

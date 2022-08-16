@@ -294,6 +294,7 @@ const users = [
     shippingaddress: "254 Spruce St, Loveland, CO, 80023",
     billingaddress: "254 Spruce St, Loveland, CO, 80023",
     paymentinfo: "Visa",
+    isadmin: true,
   },
   {
     firstname: "Betty",

@@ -53,6 +53,7 @@ export const altLoginUser = async (email, password) => {
     }),
   });
   const result = await response.json();
+  console.log("this is the result", result);
   return result;
 };
 
@@ -64,6 +65,20 @@ export const logoutUser = async () => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({}),
+  });
+  const result = await response.json();
+  return result;
+};
+
+export const deleteUser = async (email) => {
+  const response = await fetch(`/api/auth/delete`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email,
+    }),
   });
   const result = await response.json();
   return result;

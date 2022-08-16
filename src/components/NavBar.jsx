@@ -11,11 +11,17 @@ export default function NavBar() {
         <Link className="links" to="/login">
           Log In
         </Link>
+        <Link className="links" to="/altLogin">
+          Email Login
+        </Link>
         <Link className="links" to="/logout">
           Log Out
         </Link>
         <Link className="links" to="/register">
           Register
+        </Link>
+        <Link className="links" to="/admin">
+          Administrator
         </Link>
       </nav>
     </div>
