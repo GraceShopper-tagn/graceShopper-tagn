@@ -9,7 +9,7 @@ usersRouter.get("/me", userRequired, (req, res, next) => {
     //const { username, password, firstname, lastname, email } = req.body;
     const token = req.signedCookies.token;
     const user = jwt.verify(token, process.env.JWT_SECRET);
-    res.send(user);
+    res.send({ user });
   } catch (error) {
     next(error);
   }
@@ -50,7 +50,7 @@ usersRouter.patch("/me", userRequired, async (req, res, next) => {
       },
     });
     console.log("updatedUser", updatedUser);
-    res.send(updatedUser);
+    res.send({ updatedUser, token });
   } catch (error) {
     next(error);
   }

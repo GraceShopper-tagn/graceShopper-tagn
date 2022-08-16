@@ -1,29 +1,42 @@
 export const editUser = async (
-  username,
-  password,
   firstname,
   lastname,
+  password,
+  username,
   email,
-  billingInfo,
-  shippingInfo
+  shippingaddress,
+  billingaddress,
+  paymentinfo
 ) => {
   const response = await fetch(`/api/users/me`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
-      username,
-      password,
       firstname,
       lastname,
+      password,
+      username,
       email,
-      billingInfo,
-      shippingInfo,
+      shippingaddress,
+      billingaddress,
+      paymentinfo,
     }),
   });
   const result = await response.json();
   console.log("edited user", result);
+  return result;
+};
+
+export const fetchMe = async () => {
+  const response = await fetch(`/api/users/me`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const result = await response.json();
+  console.log("me user", result);
   return result;
 };

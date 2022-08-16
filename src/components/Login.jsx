@@ -1,8 +1,10 @@
 import React from "react";
 import { loginUser } from "../api/auth";
 import { useState } from "react";
+import useAuth from "../hooks/useAuth";
 
 export default function Login() {
+  const { user, setUser, setToken } = useAuth();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -18,10 +20,13 @@ export default function Login() {
           if (result) {
             alert("You are now logged in!");
             localStorage.setItem("token", result.token);
-            console.log("token", localStorage.token);
+            setToken(result.token);
+            // console.log("token", localStorage.token);
             setPassword("");
             setUsername("");
+            // setUser(result.user);
           } else {
+            console.log("broke");
             const errorMessage = result.message;
             setErrorMessage(errorMessage);
           }
@@ -50,8 +55,9 @@ export default function Login() {
         onClick={() => {
           // localStorage.setItem("token", result.token);
           console.log(localStorage.token);
-
+          // setUser({});
           localStorage.clear();
+          // setToken(null);
           console.log(localStorage.token);
         }}
       >

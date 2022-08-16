@@ -83,7 +83,7 @@ authRouter.post("/login/alt", async (req, res, next) => {
       where: { email: email },
     });
     console.log(user);
-    const validPassword = await bcrypt.compare(email, user.password);
+    const validPassword = await bcrypt.compare(password, user.password);
 
     if (validPassword) {
       const token = jwt.sign(user, JWT_SECRET);
