@@ -20,6 +20,9 @@ export default function NavBar() {
         <Link className="links" to="/register">
           Register
         </Link>
+        <Link className="links" to="/admin">
+          Administrator
+        </Link>
       </nav>
     </div>
   );

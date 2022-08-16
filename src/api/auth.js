@@ -69,3 +69,17 @@ export const logoutUser = async () => {
   const result = await response.json();
   return result;
 };
+
+export const deleteUser = async (email) => {
+  const response = await fetch(`/api/auth/delete`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email,
+    }),
+  });
+  const result = await response.json();
+  return result;
+};

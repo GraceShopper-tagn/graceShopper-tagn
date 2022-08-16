@@ -11,9 +11,12 @@ import Register from "./Register";
 import UserProfile from "./UserProfile";
 import LogOut from "./Logout";
 import AltLogin from "./AltLogin";
+import DeleteUser from "./Admin";
+import useAuth from "../hooks/useAuth";
 
 const App = () => {
   const [APIHealth, setAPIHealth] = useState("");
+  const { user } = useAuth();
 
   useEffect(() => {
     // follow this pattern inside your useEffect calls:
@@ -38,7 +41,8 @@ const App = () => {
         <Route path="/AltLogin" element={<AltLogin />} />
         <Route path="/user" element={<UserProfile />} />
         <Route path="/Logout" element={<LogOut />} />
-        <Route path="/health" element={<p>API Status: {APIHealth}</p>} />{" "}
+        <Route path="/Admin" element={<DeleteUser />} />
+        <Route path="/health" element={<p>API Status: {APIHealth}</p>} />
       </Routes>
     </div>
   );

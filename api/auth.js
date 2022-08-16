@@ -1,7 +1,7 @@
 const prisma = require("../db/prisma");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const { authRequired, userRequired } = require("./utils");
+const { authRequired, userRequired, adminRequired } = require("./utils");
 const authRouter = require("express").Router();
 
 const { JWT_SECRET, COOKIE_SECRET, SALT_ROUNDS } = process.env;
@@ -50,7 +50,22 @@ authRouter.post("/login", async (req, res, next) => {
       where: { username: username },
     });
     console.log(user);
+
+    if (user === null) {
+      res.send({
+        loggedIn: false,
+        message: "Invalid user name, please try again.",
+      });
+    }
+
     const validPassword = await bcrypt.compare(password, user.password);
+
+    if (!validPassword) {
+      res.send({
+        loggedIn: false,
+        message: "Invalid password, please try again.",
+      });
+    }
 
     if (validPassword) {
       const token = jwt.sign(user, JWT_SECRET);
@@ -79,7 +94,22 @@ authRouter.post("/login/alt", async (req, res, next) => {
       where: { email: email },
     });
     console.log("alternate login", user);
-    const validPassword = await bcrypt.compare(email, user.password);
+
+    if (user === null) {
+      res.send({
+        loggedIn: false,
+        message: "Invalid email, please try again.",
+      });
+    }
+
+    const validPassword = await bcrypt.compare(password, user.password);
+    console.log("VALID PASSWORD: ", validPassword);
+    if (!validPassword) {
+      res.send({
+        loggedIn: false,
+        message: "Invalid password, please try again.",
+      });
+    }
 
     if (validPassword) {
       const token = jwt.sign(user, JWT_SECRET);
@@ -128,6 +158,22 @@ authRouter.get(`/:id`, userRequired, authRequired, async (req, res, next) => {
     });
     console.log(user);
     res.send(user);
+  } catch (error) {
+    next(error);
+  }
+});
+
+authRouter.post("/delete", adminRequired, async (req, res, next) => {
+  const { email } = req.params;
+
+  try {
+    const deletedUser = await prisma.users.delete({
+      where: {
+        email: email,
+      },
+    });
+    console.log(deletedUser);
+    res.send(deletedUser);
   } catch (error) {
     next(error);
   }

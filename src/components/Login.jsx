@@ -16,14 +16,13 @@ export default function Login() {
           e.preventDefault();
           const result = await loginUser(username, password);
           console.log("Result from email login: ", result);
-          if (result) {
+          if (result.user) {
             alert("You are now logged in!");
             setPassword("");
             setUsername("");
             // setEmail("");
-          } else {
-            const errorMessage = result.message;
-            setErrorMessage(errorMessage);
+          } else if (result.message) {
+            alert(result.message);
           }
         }}
       >

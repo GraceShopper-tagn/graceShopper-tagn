@@ -15,13 +15,12 @@ export default function AltLogin() {
           e.preventDefault();
           const result = await altLoginUser(email, password);
           console.log("Result from email login: ", result);
-          if (result) {
+          if (result.user) {
             alert("You are now logged in!");
             setPassword("");
             setEmail("");
-          } else {
-            const errorMessage = result.message;
-            setErrorMessage(errorMessage);
+          } else if (result.message) {
+            alert(result.message);
           }
         }}
       >
