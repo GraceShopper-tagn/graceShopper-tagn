@@ -35,6 +35,12 @@ productRouter.get("/:id", async (req, res, next) => {
             tags: { select: { name: true, categoryid: true } },
           },
         },
+        productsizes: {
+          select: {
+            sizes: true,
+            inventory: true,
+          },
+        },
 
         productphotos: { select: { photos: true } },
       },
