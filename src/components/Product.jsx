@@ -12,21 +12,22 @@ export default function Product() {
   useEffect(() => {
     const getOneProduct = async () => {
       const product = await getProduct(id);
+      console.log("One Product: ", product);
       setProduct(product);
     };
-    getOneProduct(id);
+    getOneProduct();
   }, []);
 
   return (
     <div>
       <h2>{product.name}</h2>
-      {/* <h2>{window.location.pathname}</h2> */}
-      <h3>{product.producttags[0].tags.name}</h3>
+      <h3>{product.price}</h3>
+      {/* <h3>{product.producttags[0].tags.name}</h3>
       <h3>{product.producttags[1].tags.name}</h3>
       <h3>{product.producttags[2].tags.name}</h3>
-      <h3>{product.producttags[3].tags.name}</h3>
+      <h3>{product.producttags[3].tags.name}</h3> */}
       <h3>{product.description}</h3>
-      <img src={product.productphotos[0].photos.url} width="250" height="250" />
+      {/* <img src={product.productphotos[0].photos.url} width="250" height="250" /> */}
     </div>
   );
 }
