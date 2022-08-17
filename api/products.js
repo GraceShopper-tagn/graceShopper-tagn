@@ -21,4 +21,28 @@ productRouter.get("/", async (req, res, next) => {
   }
 });
 
+productRouter.get("/:id", async (req, res, next) => {
+  const { id } = req.params;
+
+  try {
+    const product = await prisma.products.findUnique({
+      where: {
+        id: +id,
+      },
+      include: {
+        producttags: {
+          select: {
+            tags: { select: { name: true, categoryid: true } },
+          },
+        },
+
+        productphotos: { select: { photos: true } },
+      },
+    });
+    res.send(product);
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = productRouter;

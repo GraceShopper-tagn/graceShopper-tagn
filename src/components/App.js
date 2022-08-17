@@ -14,6 +14,7 @@ import AltLogin from "./AltLogin";
 import DeleteUser from "./Admin";
 import useAuth from "../hooks/useAuth";
 import Products from "./Products";
+import Product from "./Product";
 
 const App = () => {
   const [APIHealth, setAPIHealth] = useState("");
@@ -45,6 +46,7 @@ const App = () => {
         <Route path="/Admin" element={<DeleteUser />} />
         <Route path="/health" element={<p>API Status: {APIHealth}</p>} />
         <Route path="/products" element={<Products />} />
+        <Route path="/products/:id" element={<Product />} />
       </Routes>
     </div>
   );
