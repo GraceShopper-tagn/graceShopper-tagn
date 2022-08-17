@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { getProduct } from "../api/products";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 export default function Product() {
   const [product, setProduct] = useState([]);
   const [sizesToDisplay, setSizesToDisplay] = useState([]);
   const path = window.location.pathname;
-  const id = path.slice(10);
+  // const id = path.slice(10);
+
+  const { id } = useParams();
 
   useEffect(() => {
     const getOneProduct = async () => {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { editUser } from "../api/users";
-import { fetchMe } from "../axios-services";
+
 import useAuth from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 

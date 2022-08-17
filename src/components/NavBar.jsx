@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 export default function NavBar() {
+  const { user } = useAuth();
   return (
     <div>
       <header className="header-format">
@@ -20,9 +22,11 @@ export default function NavBar() {
         <Link className="links" to="/register">
           Register
         </Link>
-        <Link className="links" to="/admin">
-          Administrator
-        </Link>
+        {user?.isAdmin && (
+          <Link className="links" to="/admin">
+            Administrator
+          </Link>
+        )}
       </nav>
     </div>
   );

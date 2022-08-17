@@ -31,7 +31,7 @@ authRouter.post("/register", async (req, res, next) => {
       sameSite: "strict",
       httpOnly: true,
       signed: true,
-      secret: COOKIE_SECRET,
+      // secret: COOKIE_SECRET,
     });
 
     delete user.password;
@@ -42,6 +42,7 @@ authRouter.post("/register", async (req, res, next) => {
   }
 });
 
+// Consolidate login and login/alt
 authRouter.post("/login", async (req, res, next) => {
   try {
     const { username, password } = req.body;
@@ -74,7 +75,7 @@ authRouter.post("/login", async (req, res, next) => {
         sameSite: "strict",
         httpOnly: true,
         signed: true,
-        secret: COOKIE_SECRET,
+        // secret: COOKIE_SECRET,
       });
       console.log("token", token);
       delete user.password;
@@ -83,6 +84,8 @@ authRouter.post("/login", async (req, res, next) => {
       // console.log("process.env.SAVED_USER", process.env.SAVED_USER);
       // console.log("equals", process.env.SAVED_USER === user);
       // console.log(JSON.stringify(process.env.SAVED_USER));
+
+      // NO NEED FOR TOKEN ON FRONT-END
       res.send({ user, token });
       // res.send(process.env.SAVED_USER);
     }

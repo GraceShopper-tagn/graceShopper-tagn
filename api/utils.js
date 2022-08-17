@@ -17,11 +17,13 @@ const userRequired = (req, res, next) => {
 // Checks that a specific user is logged in
 
 const authRequired = (req, res, next) => {
+  // attach the user to req.user
   const token = req.signedCookies.token;
   try {
     const { id } = req.params;
     const user = jwt.verify(token, JWT_SECRET);
     if (+user.id !== +id) throw error;
+    // req.user = user
   } catch (error) {
     res.status(401).send({
       loggedIn: false,
@@ -48,6 +50,18 @@ const adminRequired = (req, res, next) => {
     return;
   }
   next();
+};
+
+const adminReq = (req, res, next) => {
+  try {
+    if (req.user.isadmin) {
+      next();
+    }
+  } catch (error) {
+    next({
+      message: "You are not auth",
+    });
+  }
 };
 
 module.exports = { authRequired, userRequired, adminRequired };
