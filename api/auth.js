@@ -4,15 +4,14 @@ const jwt = require("jsonwebtoken");
 const { authRequired, userRequired, adminRequired } = require("./utils");
 const authRouter = require("express").Router();
 
-const { JWT_SECRET, COOKIE_SECRET, SALT_ROUNDS } = process.env;
-// const SALT_ROUNDS = 10;
+const { JWT_SECRET, COOKIE_SECRET } = process.env;
+const SALT_ROUNDS = 10;
 
 // first name, lastname, email, username, password
 authRouter.post("/register", async (req, res, next) => {
   try {
     const { username, password, firstname, lastname, email } = req.body;
-    // console.log("COOKIE_SECRET", process.env);
-    const hashedPassword = await bcrypt.hash(password, +SALT_ROUNDS);
+    const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS);
     const user = await prisma.users.create({
       data: {
         firstname: firstname,
@@ -31,10 +30,11 @@ authRouter.post("/register", async (req, res, next) => {
       sameSite: "strict",
       httpOnly: true,
       signed: true,
-      // secret: COOKIE_SECRET,
     });
 
     delete user.password;
+    req.user = user;
+    console.log("req.user", req.user);
 
     res.send({ user });
   } catch (error) {
@@ -77,16 +77,16 @@ authRouter.post("/login", async (req, res, next) => {
         signed: true,
         // secret: COOKIE_SECRET,
       });
-      console.log("token", token);
       delete user.password;
-      console.log("USER", user);
+      //req.user = user;
+      // console.log("req.user", req.user);
 
       // console.log("process.env.SAVED_USER", process.env.SAVED_USER);
       // console.log("equals", process.env.SAVED_USER === user);
       // console.log(JSON.stringify(process.env.SAVED_USER));
 
       // NO NEED FOR TOKEN ON FRONT-END
-      res.send({ user, token });
+      res.send({ user });
       // res.send(process.env.SAVED_USER);
     }
   } catch (error) {
@@ -129,6 +129,8 @@ authRouter.post("/login/alt", async (req, res, next) => {
       });
 
       delete user.password;
+      req.user = user;
+
       res.send({ user, token });
     }
   } catch (error) {
@@ -143,6 +145,8 @@ authRouter.post("/logout", async (req, res, next) => {
       httpOnly: true,
       signed: true,
     });
+    req.user = null;
+
     res.send({
       loggedIn: false,
       message: "You have logged out",

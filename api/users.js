@@ -1,14 +1,13 @@
 const prisma = require("../db/prisma");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const { userRequired } = require("./utils");
+const { userRequired, authRequired } = require("./utils");
 const usersRouter = require("express").Router();
 
 usersRouter.get("/me", userRequired, (req, res, next) => {
   try {
     //const { username, password, firstname, lastname, email } = req.body;
-    const token = req.signedCookies.token;
-    const user = jwt.verify(token, process.env.JWT_SECRET);
+    const user = req.user;
     res.send({ user });
   } catch (error) {
     next(error);
@@ -17,8 +16,7 @@ usersRouter.get("/me", userRequired, (req, res, next) => {
 
 usersRouter.patch("/me", userRequired, async (req, res, next) => {
   try {
-    const token = req.signedCookies.token;
-    const user = jwt.verify(token, process.env.JWT_SECRET);
+    const user = req.user;
     const id = user.id;
     const {
       firstname,
@@ -49,8 +47,7 @@ usersRouter.patch("/me", userRequired, async (req, res, next) => {
         isadmin: isadmin ? isadmin : user.isadmin,
       },
     });
-    console.log("updatedUser", updatedUser);
-    res.send({ updatedUser, token });
+    res.send({ updatedUser });
   } catch (error) {
     next(error);
   }

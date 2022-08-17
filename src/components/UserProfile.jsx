@@ -19,7 +19,7 @@ export default function UserProfile() {
       <h5>
         Billing Address: {user.billingaddress ? user.billingaddress : "n/a"}
       </h5>
-      <h5>Payment Info: {user.paymentInfo ? user.paymentInfo : "n/a"}</h5>
+      <h5>Payment Info: {user.paymentinfo ? user.paymentinfo : "n/a"}</h5>
       <EditUser user={user} />
       {/* <Orders />
       <Favorites /> */}

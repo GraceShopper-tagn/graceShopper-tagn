@@ -16,21 +16,6 @@ export default function EditUser() {
   const [password, setPassword] = useState(user.password);
   let navigate = useNavigate();
 
-  async function handleSubmit(e) {
-    e.preventDefault();
-
-    const updatedUser = await editUser(
-      firstName,
-      lastName,
-      username,
-      email,
-      shippingAddress,
-      billingAddress
-    );
-
-    updatedUser();
-  }
-
   return (
     <>
       <h3>Edit User Information</h3>
