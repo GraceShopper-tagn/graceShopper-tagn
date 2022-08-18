@@ -1,11 +1,30 @@
 import React, { useState, useEffect } from "react";
 import { getProduct } from "../api/products";
 import { useLocation } from "react-router-dom";
+
 export default function Product() {
   const [product, setProduct] = useState([]);
   const [sizesToDisplay, setSizesToDisplay] = useState([]);
+  const [selectedSize, setSelectedSize] = useState();
+
   const path = window.location.pathname;
   const id = path.slice(10);
+
+  document.getElementById("shoe-size").addEventListener("change", function () {
+    console.log("You selected: ", this.value);
+    setSelectedSize(this.value);
+  });
+
+  console.log("This is the selected size: ", selectedSize);
+
+  //   let e = document.getElementById("shoe-size");
+  //   let inventorySize = e.options[e.selectedIndex].value;
+  //   console.log("INVENTORY SIZE: ", inventorySize);
+
+  //   function val() {
+  //     d = document.getElementById("shoe-size").value;
+  //     alert(d);
+  //   }
 
   useEffect(() => {
     const getOneProduct = async () => {
@@ -43,7 +62,7 @@ export default function Product() {
         height="250"
       />
       <form>
-        <select>{sizesToDisplay}</select>
+        <select id="shoe-size">{sizesToDisplay}</select>
       </form>
     </div>
   );
