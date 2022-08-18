@@ -1,5 +1,7 @@
 const { productsizes, cartitems } = require("./prisma");
 const prisma = require("./prisma");
+const bcrypt = require("bcrypt");
+const SALT_ROUNDS = 10;
 
 // const { createUser } = require("./models/user");
 const {
@@ -200,6 +202,8 @@ const seedDb = async () => {
 
   console.log("Creating Users...");
   for (let user of users) {
+    const hashedPassword = await bcrypt.hash(user.password, SALT_ROUNDS);
+    user.password = hashedPassword;
     const createdUser = await prisma.users.create({
       data: user,
     });

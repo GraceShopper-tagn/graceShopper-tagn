@@ -41,7 +41,6 @@ productRouter.get("/:id", async (req, res, next) => {
             inventory: true,
           },
         },
-
         productphotos: { select: { photos: true } },
       },
     });

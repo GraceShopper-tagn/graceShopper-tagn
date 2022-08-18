@@ -747,6 +747,14 @@ const orders = [
     fulfilled: true,
   },
   {
+    userid: 1,
+    discountid: 1,
+    shippingaddress: "254 Spruce St, Loveland, CO, 80023",
+    billingaddress: "254 Spruce St, Loveland, CO, 80023",
+    paymentinfo: "Visa",
+    fulfilled: false,
+  },
+  {
     userid: 2,
     discountid: 2,
     shippingaddress: "5789 Pine Ave, Fort Collins, CO, 80054",

@@ -13,6 +13,27 @@ usersRouter.get("/me", userRequired, (req, res, next) => {
   }
 });
 
+// usersRouter.get("/me/orders", userRequired, (req, res, next) => {
+
+//   try {
+//       const { id } = req.user.id;
+
+//     const order = await prisma.orders.findMany({
+//       where: {
+//         userid: +id,
+//       },
+//       include: {
+//         discounts: true,
+//         users: true,
+//         cartitems: true,
+//       },
+//     });
+//     res.send(order);
+//   } catch (error) {
+//     next(error);
+//   }
+// });
+
 usersRouter.patch("/me", userRequired, async (req, res, next) => {
   try {
     const user = req.user;
