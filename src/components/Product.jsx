@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getProduct } from "../api/products";
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 import { getInventoryBySize } from "../api/products";
 
 export default function Product() {
@@ -63,13 +63,7 @@ export default function Product() {
       <form>
         <select
           onChange={async (e) => {
-            // console.log(e.target.value);
-            // console.log("value[0]", e.target.value[0]);
-            // console.log("value[1]", e.target.value[1]);
             setSelectedSizeId(e.target.value);
-            // setSingleSizeInventory(e.target.value);
-            // console.log("Selected Size: ", selectedSize);
-            // console.log("Single Size Inventory: ", singleSizeInventory);
           }}
           id="shoe-size"
         >
@@ -78,5 +72,6 @@ export default function Product() {
         <h4>There are {singleSizeInventory} of this model left.</h4>
       </form>
     </div>
+    //need to add button for add cart item
   );
 }
