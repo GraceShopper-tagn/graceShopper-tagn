@@ -10,22 +10,6 @@ export default function Product() {
   const path = window.location.pathname;
   const id = path.slice(10);
 
-  document.getElementById("shoe-size").addEventListener("change", function () {
-    console.log("You selected: ", this.value);
-    setSelectedSize(this.value);
-  });
-
-  console.log("This is the selected size: ", selectedSize);
-
-  //   let e = document.getElementById("shoe-size");
-  //   let inventorySize = e.options[e.selectedIndex].value;
-  //   console.log("INVENTORY SIZE: ", inventorySize);
-
-  //   function val() {
-  //     d = document.getElementById("shoe-size").value;
-  //     alert(d);
-  //   }
-
   useEffect(() => {
     const getOneProduct = async () => {
       const product = await getProduct(id);
@@ -62,7 +46,15 @@ export default function Product() {
         height="250"
       />
       <form>
-        <select id="shoe-size">{sizesToDisplay}</select>
+        <select
+          onChange={async (e) => {
+            await setSelectedSize(e.target.value);
+            console.log("SELECTED SIZE: ", selectedSize);
+          }}
+          id="shoe-size"
+        >
+          {sizesToDisplay}
+        </select>
       </form>
     </div>
   );
