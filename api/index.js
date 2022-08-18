@@ -19,5 +19,6 @@ apiRouter.use(cookieParser(process.env.COOKIE_SECRET));
 apiRouter.use("/auth", require("./auth"));
 apiRouter.use("/users", require("./users"));
 apiRouter.use("/products", require("./products"));
+apiRouter.use("/cartitems", require("./cartItems"));
 apiRouter.use("/orders", require("./orders"));
 module.exports = apiRouter;

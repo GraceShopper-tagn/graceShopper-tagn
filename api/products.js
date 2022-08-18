@@ -50,4 +50,35 @@ productRouter.get("/:id", async (req, res, next) => {
   }
 });
 
+productRouter.get("/:id/:sizeId", async (req, res, next) => {
+  const { id, sizeId } = req.params;
+  let sizeInventory = 0;
+  try {
+    const getInventory = await prisma.productsizes.findMany({
+      where: {
+        productid: +id,
+      },
+      select: {
+        inventory: true,
+        sizeid: true,
+      },
+    });
+    for (productSize of getInventory) {
+      if (productSize.sizeid === +sizeId) {
+        res.send(productSize);
+      }
+    }
+    res.send({});
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = productRouter;
+
+// where: {
+//   sizes: +size,
+// },
+// select: {
+//   inventory: true,
+// },

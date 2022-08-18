@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { getProduct } from "../api/products";
 import { useLocation, useParams } from "react-router-dom";
+import { getInventoryBySize } from "../api/products";
+
 export default function Product() {
   const { id } = useParams();
   const [product, setProduct] = useState([]);
   const [sizesToDisplay, setSizesToDisplay] = useState([]);
+  const [selectedSizeId, setSelectedSizeId] = useState(1);
+  const [singleSizeInventory, setSingleSizeInventory] = useState();
+  const [sizeId, setSizeid] = useState();
 
   useEffect(() => {
     const getOneProduct = async () => {
@@ -18,14 +23,26 @@ export default function Product() {
   useEffect(() => {
     const getSizes = async () => {
       const sizesToDisplay = product.productsizes.map((size) => {
-        console.log("SIZE: ", size);
-        return <option value={size.sizes.size}>{size.sizes.size}</option>;
+        return <option value={size.sizes.id}>{size.sizes.size}</option>;
       });
       setSizesToDisplay(sizesToDisplay);
+      selectedSizeId(1);
     };
 
     getSizes();
   }, [product]);
+
+  useEffect(() => {
+    const getSizeInventory = async () => {
+      const sizeInventory = await getInventoryBySize(id, selectedSizeId);
+      console.log("Size Inventory: ", sizeInventory);
+      console.log("sizeInventory.inventory: ", sizeInventory.inventory);
+      let setInventory = +sizeInventory.inventory;
+      setSingleSizeInventory(setInventory);
+      console.log("SINGLE SIZE INVENTORY!!!: ", singleSizeInventory);
+    };
+    getSizeInventory();
+  }, [selectedSizeId]);
 
   return (
     <div>
@@ -42,8 +59,17 @@ export default function Product() {
         height="250"
       />
       <form>
-        <select>{sizesToDisplay}</select>
+        <select
+          onChange={async (e) => {
+            setSelectedSizeId(e.target.value);
+          }}
+          id="shoe-size"
+        >
+          {sizesToDisplay}
+        </select>
+        <h4>There are {singleSizeInventory} of this model left.</h4>
       </form>
     </div>
+    //need to add button for add cart item
   );
 }
