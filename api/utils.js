@@ -41,29 +41,13 @@ const authRequired = (req, res, next) => {
 //checks that a specific user is an admin
 
 const adminRequired = (req, res, next) => {
-  const token = req.signedCookies.token;
-  try {
-    const { id } = req.params;
-    const user = jwt.verify(token, process.env.JWT_SECRET);
-    if (user.isadmin === false) throw error;
-  } catch (error) {
-    res.status(401).send({
-      loggedIn: false,
-      message: "You are not authorized to perform this action",
-    });
-    return;
-  }
-  next();
-};
-
-const adminReq = (req, res, next) => {
   try {
     if (req.user.isadmin) {
       next();
     }
   } catch (error) {
     next({
-      message: "You are not auth",
+      message: "You are not authorized",
     });
   }
 };

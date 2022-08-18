@@ -45,21 +45,35 @@ authRouter.post("/register", async (req, res, next) => {
 // Consolidate login and login/alt
 authRouter.post("/login", async (req, res, next) => {
   try {
-    const { username, password } = req.body;
-    console.log({ username, password });
-    const user = await prisma.users.findUnique({
-      where: { username: username },
-    });
-    console.log(user);
+    const { username, email, password } = req.body;
+    let user;
+    if (username) {
+      user = await prisma.users.findUnique({
+        where: {
+          username,
+        },
+      });
+    } else if (email) {
+      user = await prisma.users.findUnique({
+        where: {
+          email: email,
+        },
+      });
+    }
 
     if (user === null) {
       res.send({
         loggedIn: false,
-        message: "Invalid user name, please try again.",
+        message: `Invalid username or email, please try again.`,
       });
     }
 
-    const validPassword = await bcrypt.compare(password, user.password);
+    let validPassword;
+    try {
+      validPassword = await bcrypt.compare(password, user.password);
+    } catch (error) {
+      next(error);
+    }
 
     if (!validPassword) {
       res.send({
@@ -75,63 +89,9 @@ authRouter.post("/login", async (req, res, next) => {
         sameSite: "strict",
         httpOnly: true,
         signed: true,
-        // secret: COOKIE_SECRET,
       });
       delete user.password;
-      //req.user = user;
-      // console.log("req.user", req.user);
-
-      // console.log("process.env.SAVED_USER", process.env.SAVED_USER);
-      // console.log("equals", process.env.SAVED_USER === user);
-      // console.log(JSON.stringify(process.env.SAVED_USER));
-
-      // NO NEED FOR TOKEN ON FRONT-END
       res.send({ user });
-      // res.send(process.env.SAVED_USER);
-    }
-  } catch (error) {
-    next(error);
-  }
-});
-
-authRouter.post("/login/alt", async (req, res, next) => {
-  try {
-    const { email, password } = req.body;
-    console.log({ email, password });
-    const user = await prisma.users.findUnique({
-      where: { email: email },
-    });
-    console.log("alternate login", user);
-
-    if (user === null) {
-      res.send({
-        loggedIn: false,
-        message: "Invalid email, please try again.",
-      });
-    }
-
-    const validPassword = await bcrypt.compare(password, user.password);
-    console.log("VALID PASSWORD: ", validPassword);
-    if (!validPassword) {
-      res.send({
-        loggedIn: false,
-        message: "Invalid password, please try again.",
-      });
-    }
-
-    if (validPassword) {
-      const token = jwt.sign(user, JWT_SECRET);
-
-      res.cookie("token", token, {
-        sameSite: "strict",
-        httpOnly: true,
-        signed: true,
-      });
-
-      delete user.password;
-      req.user = user;
-
-      res.send({ user, token });
     }
   } catch (error) {
     next(error);

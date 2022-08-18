@@ -5,7 +5,7 @@ import useAuth from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 
 export default function EditUser() {
-  const { user, setUser, setToken } = useAuth();
+  const { user, setUser } = useAuth();
   const [firstName, setFirstName] = useState(user.firstname);
   const [lastName, setLastName] = useState(user.lastname);
   const [username, setUsername] = useState(user.username);
@@ -13,7 +13,6 @@ export default function EditUser() {
   const [shippingAddress, setShippingAddress] = useState(user.shippingaddress);
   const [billingAddress, setBillingAddress] = useState(user.billingaddress);
   const [paymentInfo, setPaymentInfo] = useState(user.paymentinfo);
-  const [password, setPassword] = useState(user.password);
   let navigate = useNavigate();
 
   return (
@@ -22,8 +21,6 @@ export default function EditUser() {
       <h4>{user.username}</h4>
       <form
         onSubmit={async (e) => {
-          console.log("user before", user);
-          // handleSubmit(e);
           e.preventDefault();
 
           const result = await editUser(
@@ -37,23 +34,12 @@ export default function EditUser() {
             paymentInfo
           );
 
-          if (result) {
+          if (result.updatedUser) {
             const updatedUser = result.updatedUser;
-            console.log(updatedUser);
             await setUser(updatedUser);
-            // await setToken(result.token);
-            // await localStorage.setItem("token", result.token);
-
-            // localStorage.clear();
-            localStorage.clear();
-            setToken(null);
             alert("Account edited. Please log back in.");
             navigate("/login");
-            // setToken(result.token);
-
-            console.log("user after", user);
-          }
-          console.log("user after", user);
+          } else alert("You must be logged in to edit your profile.");
         }}
       >
         <input
@@ -91,11 +77,6 @@ export default function EditUser() {
           placeholder={user.paymentinfo}
           onChange={(e) => setPaymentInfo(e.target.value)}
         />
-        {/* <input
-          value={password}
-          placeholder={user.password}
-          onChange={(e) => setPassword(e.target.value)}
-        /> */}
         <button type="Submit">Submit!</button>
       </form>
     </>

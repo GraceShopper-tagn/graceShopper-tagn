@@ -13,7 +13,6 @@ export default function DeleteUser() {
         onSubmit={async (e) => {
           e.preventDefault();
           const result = await deleteUser(email);
-          console.log("Deleted User: ", result);
           if (result.user) {
             alert(
               `${result.firstname} ${result.lastname} has been deleted from the database.`

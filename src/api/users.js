@@ -25,7 +25,6 @@ export const editUser = async (
     }),
   });
   const result = await response.json();
-  console.log("edited user", result);
   return result;
 };
 
@@ -37,6 +36,5 @@ export const fetchMe = async () => {
     },
   });
   const result = await response.json();
-  console.log("me user", result);
   return result;
 };

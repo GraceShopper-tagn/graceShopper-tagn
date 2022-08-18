@@ -10,18 +10,30 @@ export default function NavBar() {
         <h1>Shoes</h1> <h3>(Shop at Your Own Risk)</h3>
       </header>
       <nav className="navbar">
-        <Link className="links" to="/login">
-          Log In
+        <Link className="links" to="/products">
+          Store
         </Link>
-        <Link className="links" to="/altLogin">
-          Email Login
-        </Link>
-        <Link className="links" to="/logout">
-          Log Out
-        </Link>
-        <Link className="links" to="/register">
-          Register
-        </Link>
+        {!user?.username && (
+          <Link className="links" to="/login">
+            Log In
+          </Link>
+        )}
+        {!user?.username && (
+          <Link className="links" to="/register">
+            Register
+          </Link>
+        )}
+        {user?.username && (
+          <Link className="links" to="/logout">
+            Log Out
+          </Link>
+        )}
+
+        {user?.username && (
+          <Link className="links" to="/user">
+            User Profile
+          </Link>
+        )}
         {user?.isAdmin && (
           <Link className="links" to="/admin">
             Administrator

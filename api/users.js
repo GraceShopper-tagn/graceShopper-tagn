@@ -6,7 +6,6 @@ const usersRouter = require("express").Router();
 
 usersRouter.get("/me", userRequired, (req, res, next) => {
   try {
-    //const { username, password, firstname, lastname, email } = req.body;
     const user = req.user;
     res.send({ user });
   } catch (error) {
