@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { getProduct } from "../api/products";
-// import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { getInventoryBySize } from "../api/products";
 
 export default function Product() {
+  const { id } = useParams();
   const [product, setProduct] = useState([]);
   const [sizesToDisplay, setSizesToDisplay] = useState([]);
   const [selectedSizeId, setSelectedSizeId] = useState(1);
   const [singleSizeInventory, setSingleSizeInventory] = useState();
   const [sizeId, setSizeid] = useState();
-
-  const path = window.location.pathname;
-  const id = path.slice(10);
 
   useEffect(() => {
     const getOneProduct = async () => {

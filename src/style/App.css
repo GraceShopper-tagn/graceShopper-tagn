@@ -11,3 +11,25 @@
   color: var(--green);
   padding: 1rem;
 }
+
+nav {
+  display: flex;
+  flex-direction: row;
+  align-content: space-between;
+  align-items: flex-end;
+}
+
+nav > * {
+  flex-basis: 25%
+}
+
+/* header {
+  margin: 0;
+  width: 100%;
+  flex-basis: 100%;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+} */

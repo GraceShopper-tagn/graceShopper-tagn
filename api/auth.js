@@ -4,15 +4,14 @@ const jwt = require("jsonwebtoken");
 const { authRequired, userRequired, adminRequired } = require("./utils");
 const authRouter = require("express").Router();
 
-const { JWT_SECRET, COOKIE_SECRET, SALT_ROUNDS } = process.env;
-// const SALT_ROUNDS = 10;
+const { JWT_SECRET, COOKIE_SECRET } = process.env;
+const SALT_ROUNDS = 10;
 
 // first name, lastname, email, username, password
 authRouter.post("/register", async (req, res, next) => {
   try {
     const { username, password, firstname, lastname, email } = req.body;
-    // console.log("COOKIE_SECRET", process.env);
-    const hashedPassword = await bcrypt.hash(password, +SALT_ROUNDS);
+    const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS);
     const user = await prisma.users.create({
       data: {
         firstname: firstname,
@@ -31,10 +30,11 @@ authRouter.post("/register", async (req, res, next) => {
       sameSite: "strict",
       httpOnly: true,
       signed: true,
-      secret: COOKIE_SECRET,
     });
 
     delete user.password;
+    req.user = user;
+    console.log("req.user", req.user);
 
     res.send({ user });
   } catch (error) {
@@ -42,23 +42,38 @@ authRouter.post("/register", async (req, res, next) => {
   }
 });
 
+// Consolidate login and login/alt
 authRouter.post("/login", async (req, res, next) => {
   try {
-    const { username, password } = req.body;
-    console.log({ username, password });
-    const user = await prisma.users.findUnique({
-      where: { username: username },
-    });
-    console.log(user);
+    const { username, email, password } = req.body;
+    let user;
+    if (username) {
+      user = await prisma.users.findUnique({
+        where: {
+          username,
+        },
+      });
+    } else if (email) {
+      user = await prisma.users.findUnique({
+        where: {
+          email: email,
+        },
+      });
+    }
 
     if (user === null) {
       res.send({
         loggedIn: false,
-        message: "Invalid user name, please try again.",
+        message: `Invalid username or email, please try again.`,
       });
     }
 
-    const validPassword = await bcrypt.compare(password, user.password);
+    let validPassword;
+    try {
+      validPassword = await bcrypt.compare(password, user.password);
+    } catch (error) {
+      next(error);
+    }
 
     if (!validPassword) {
       res.send({
@@ -74,59 +89,9 @@ authRouter.post("/login", async (req, res, next) => {
         sameSite: "strict",
         httpOnly: true,
         signed: true,
-        secret: COOKIE_SECRET,
       });
-      console.log("token", token);
       delete user.password;
-      console.log("USER", user);
-
-      // console.log("process.env.SAVED_USER", process.env.SAVED_USER);
-      // console.log("equals", process.env.SAVED_USER === user);
-      // console.log(JSON.stringify(process.env.SAVED_USER));
-      res.send({ user, token });
-      // res.send(process.env.SAVED_USER);
-    }
-  } catch (error) {
-    next(error);
-  }
-});
-
-authRouter.post("/login/alt", async (req, res, next) => {
-  try {
-    const { email, password } = req.body;
-    console.log({ email, password });
-    const user = await prisma.users.findUnique({
-      where: { email: email },
-    });
-    console.log("alternate login", user);
-
-    if (user === null) {
-      res.send({
-        loggedIn: false,
-        message: "Invalid email, please try again.",
-      });
-    }
-
-    const validPassword = await bcrypt.compare(password, user.password);
-    console.log("VALID PASSWORD: ", validPassword);
-    if (!validPassword) {
-      res.send({
-        loggedIn: false,
-        message: "Invalid password, please try again.",
-      });
-    }
-
-    if (validPassword) {
-      const token = jwt.sign(user, JWT_SECRET);
-
-      res.cookie("token", token, {
-        sameSite: "strict",
-        httpOnly: true,
-        signed: true,
-      });
-
-      delete user.password;
-      res.send({ user, token });
+      res.send({ user });
     }
   } catch (error) {
     next(error);
@@ -140,6 +105,8 @@ authRouter.post("/logout", async (req, res, next) => {
       httpOnly: true,
       signed: true,
     });
+    req.user = null;
+
     res.send({
       loggedIn: false,
       message: "You have logged out",

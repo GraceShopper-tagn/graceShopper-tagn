@@ -25,7 +25,7 @@ export default function Register() {
               email
             );
 
-            if (result) {
+            if (result.user) {
               alert("Account created");
               navigate("/login");
             } else {

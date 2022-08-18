@@ -1,5 +1,4 @@
 const jwt = require("jsonwebtoken");
-const { JWT_SECRET } = process.env;
 
 // Checks that any user is logged in
 
@@ -11,17 +10,24 @@ const userRequired = (req, res, next) => {
     });
     return;
   }
+  const token = req.signedCookies.token;
+  const user = jwt.verify(token, process.env.JWT_SECRET);
+  req.user = user;
   next();
 };
 
 // Checks that a specific user is logged in
 
+// Merge this and admin required?
 const authRequired = (req, res, next) => {
-  const token = req.signedCookies.token;
+  // attach the user to req.user
+  const user = req.user;
+
   try {
     const { id } = req.params;
-    const user = jwt.verify(token, JWT_SECRET);
+    const user = jwt.verify(token, process.env.JWT_SECRET);
     if (+user.id !== +id) throw error;
+    req.user = user;
   } catch (error) {
     res.status(401).send({
       loggedIn: false,
@@ -35,19 +41,15 @@ const authRequired = (req, res, next) => {
 //checks that a specific user is an admin
 
 const adminRequired = (req, res, next) => {
-  const token = req.signedCookies.token;
   try {
-    const { id } = req.params;
-    const user = jwt.verify(token, JWT_SECRET);
-    if (user.isadmin === false) throw error;
+    if (req.user.isadmin) {
+      next();
+    }
   } catch (error) {
-    res.status(401).send({
-      loggedIn: false,
-      message: "You are not authorized to perform this action",
+    next({
+      message: "You are not authorized",
     });
-    return;
   }
-  next();
 };
 
 module.exports = { authRequired, userRequired, adminRequired };
