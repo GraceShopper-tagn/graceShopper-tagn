@@ -51,4 +51,36 @@ productRouter.get("/:id", async (req, res, next) => {
   }
 });
 
+productRouter.get("/:id/:size", async (req, res, next) => {
+  const { id, size } = req.params;
+
+  try {
+    const getInventory = await prisma.products.findUnique({
+      where: {
+        id: +id,
+      },
+      include: {
+        productsizes: {
+          select: {
+            inventory: true,
+          },
+          where: {
+            sizes: +size,
+          },
+        },
+      },
+    });
+    res.send(getInventory);
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = productRouter;
+
+// where: {
+//   sizes: +size,
+// },
+// select: {
+//   inventory: true,
+// },

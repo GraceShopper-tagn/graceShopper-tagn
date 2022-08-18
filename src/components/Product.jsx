@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { getProduct } from "../api/products";
 import { useLocation } from "react-router-dom";
+import { getInventoryBySize } from "../api/products";
 
 export default function Product() {
   const [product, setProduct] = useState([]);
   const [sizesToDisplay, setSizesToDisplay] = useState([]);
   const [selectedSize, setSelectedSize] = useState();
+  const [singleSizeInventory, setSingleSizeInventory] = useState();
+  const [sizeId, setSizeid] = useState();
 
   const path = window.location.pathname;
   const id = path.slice(10);
@@ -23,13 +26,26 @@ export default function Product() {
     const getSizes = async () => {
       const sizesToDisplay = product.productsizes.map((size) => {
         console.log("SIZE: ", size);
-        return <option value={size.sizes.size}>{size.sizes.size}</option>;
+        console.log(size.sizes.size);
+        console.log(size.inventory);
+        const valueArray = [size.sizes.size, size.inventory];
+
+        return <option value={valueArray}>{size.sizes.size}</option>;
       });
       setSizesToDisplay(sizesToDisplay);
     };
 
     getSizes();
   }, [product]);
+
+  useEffect(() => {
+    const getSizeInventory = async () => {
+      const sizeInventory = await getInventoryBySize(id, selectedSize);
+      console.log("Size Inventory: ", sizeInventory);
+      setSingleSizeInventory(sizeInventory);
+    };
+    getSizeInventory();
+  }, [selectedSize]);
 
   return (
     <div>
@@ -48,8 +64,11 @@ export default function Product() {
       <form>
         <select
           onChange={async (e) => {
-            await setSelectedSize(e.target.value);
+            console.log(e.target.value);
+            await setSelectedSize(e.target.value[0]);
+            setSingleSizeInventory(e.target.value[1]);
             console.log("SELECTED SIZE: ", selectedSize);
+            console.log("Single Inventory: ", singleSizeInventory);
           }}
           id="shoe-size"
         >

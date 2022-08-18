@@ -32,6 +32,6 @@ export const getInventoryBySize = async (id, size) => {
     },
   });
   const result = await response.json();
-  console.log("get product result", result);
+  console.log("GET INVENTORY BY SIZE RESULT: ", result);
   return result;
 };
