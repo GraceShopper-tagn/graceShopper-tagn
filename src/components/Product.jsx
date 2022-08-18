@@ -6,7 +6,7 @@ import { getInventoryBySize } from "../api/products";
 export default function Product() {
   const [product, setProduct] = useState([]);
   const [sizesToDisplay, setSizesToDisplay] = useState([]);
-  const [selectedSize, setSelectedSize] = useState();
+  const [selectedSizeId, setSelectedSizeId] = useState(1);
   const [singleSizeInventory, setSingleSizeInventory] = useState();
   const [sizeId, setSizeid] = useState();
 
@@ -25,14 +25,10 @@ export default function Product() {
   useEffect(() => {
     const getSizes = async () => {
       const sizesToDisplay = product.productsizes.map((size) => {
-        console.log("SIZE: ", size);
-        console.log(size.sizes.size);
-        console.log(size.inventory);
-        const valueArray = [size.sizes.size, size.inventory];
-
-        return <option value={valueArray}>{size.sizes.size}</option>;
+        return <option value={size.sizes.id}>{size.sizes.size}</option>;
       });
       setSizesToDisplay(sizesToDisplay);
+      selectedSizeId(1);
     };
 
     getSizes();
@@ -40,12 +36,15 @@ export default function Product() {
 
   useEffect(() => {
     const getSizeInventory = async () => {
-      const sizeInventory = await getInventoryBySize(id, selectedSize);
+      const sizeInventory = await getInventoryBySize(id, selectedSizeId);
       console.log("Size Inventory: ", sizeInventory);
-      setSingleSizeInventory(sizeInventory);
+      console.log("sizeInventory.inventory: ", sizeInventory.inventory);
+      let setInventory = +sizeInventory.inventory;
+      setSingleSizeInventory(setInventory);
+      console.log("SINGLE SIZE INVENTORY!!!: ", singleSizeInventory);
     };
     getSizeInventory();
-  }, [selectedSize]);
+  }, [selectedSizeId]);
 
   return (
     <div>
@@ -64,16 +63,19 @@ export default function Product() {
       <form>
         <select
           onChange={async (e) => {
-            console.log(e.target.value);
-            await setSelectedSize(e.target.value[0]);
-            setSingleSizeInventory(e.target.value[1]);
-            console.log("SELECTED SIZE: ", selectedSize);
-            console.log("Single Inventory: ", singleSizeInventory);
+            // console.log(e.target.value);
+            // console.log("value[0]", e.target.value[0]);
+            // console.log("value[1]", e.target.value[1]);
+            setSelectedSizeId(e.target.value);
+            // setSingleSizeInventory(e.target.value);
+            // console.log("Selected Size: ", selectedSize);
+            // console.log("Single Size Inventory: ", singleSizeInventory);
           }}
           id="shoe-size"
         >
           {sizesToDisplay}
         </select>
+        <h4>There are {singleSizeInventory} of this model left.</h4>
       </form>
     </div>
   );
