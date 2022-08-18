@@ -9,8 +9,12 @@
 import { useContext } from "react";
 import CartContext from "../contexts/CartContext";
 
-const useAuth = () => {
+const useCart = () => {
   const { cart, setCart } = useContext(CartContext);
+
+  // const addItemToCart = async () => {
+
+  // };
 
   return {
     cart,

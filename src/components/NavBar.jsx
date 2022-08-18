@@ -34,6 +34,11 @@ export default function NavBar() {
             User Profile
           </Link>
         )}
+        {user?.username && (
+          <Link className="links" to="/cart">
+            Cart
+          </Link>
+        )}
         {user?.isAdmin && (
           <Link className="links" to="/admin">
             Administrator

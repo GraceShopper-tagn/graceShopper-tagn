@@ -9,7 +9,22 @@ orderRouter.get("/", userRequired, async (req, res, next) => {
       include: {
         discounts: true,
         users: true,
-        cartitems: true,
+        cartitems: {
+          include: {
+            products: {
+              include: {
+                producttags: {
+                  include: { tags: true },
+                },
+                productphotos: {
+                  include: {
+                    photos: true,
+                  },
+                },
+              },
+            },
+          },
+        },
       },
     });
     if (req.user.isadmin) {
@@ -34,7 +49,22 @@ orderRouter.get("/cart", userRequired, async (req, res, next) => {
       include: {
         discounts: true,
         users: true,
-        cartitems: true,
+        cartitems: {
+          include: {
+            products: {
+              include: {
+                producttags: {
+                  include: { tags: true },
+                },
+                productphotos: {
+                  include: {
+                    photos: true,
+                  },
+                },
+              },
+            },
+          },
+        },
       },
     });
     const ordersToSend = orders.filter((order) => !order.fulfilled);
@@ -53,7 +83,22 @@ orderRouter.get("/fulfilled", userRequired, async (req, res, next) => {
       include: {
         discounts: true,
         users: true,
-        cartitems: true,
+        cartitems: {
+          include: {
+            products: {
+              include: {
+                producttags: {
+                  include: { tags: true },
+                },
+                productphotos: {
+                  include: {
+                    photos: true,
+                  },
+                },
+              },
+            },
+          },
+        },
       },
     });
     const ordersToSend = orders.filter((order) => order.fulfilled);
