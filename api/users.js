@@ -41,13 +41,13 @@ usersRouter.patch("/me", userRequired, async (req, res, next) => {
     const {
       firstname,
       lastname,
-      password,
       username,
       email,
       shippingaddress,
       billingaddress,
       paymentinfo,
       isadmin,
+      password,
     } = req.body;
     const updatedUser = await prisma.users.update({
       where: {

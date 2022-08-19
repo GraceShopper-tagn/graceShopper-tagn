@@ -142,4 +142,45 @@ orderRouter.get("/:id", async (req, res, next) => {
   }
 });
 
+orderRouter.patch("/:id", userRequired, async (req, res, next) => {
+  const { id } = req.params;
+  const {
+    billingaddress,
+    shippingaddress,
+    paymentinfo,
+    fulfilled,
+    subtotal,
+    tax,
+    total,
+    discountid,
+    orderdate,
+    userid,
+  } = req.body;
+  try {
+    if ((req.user.id === userid) | req.user.isadmin) {
+      const updatedOrder = await prisma.orders.update({
+        where: {
+          id: +id,
+        },
+        data: {
+          billingaddress: billingaddress ? billingaddress : undefined,
+          shippingaddress: shippingaddress ? shippingaddress : undefined,
+          paymentinfo: paymentinfo ? paymentinfo : undefined,
+          fulfilled: fulfilled,
+          subtotal: subtotal ? subtotal : undefined,
+          tax: tax ? tax : undefined,
+          total: total ? total : undefined,
+          discountid: discountid ? discountid : undefined,
+          orderdate: orderdate ? orderdate : undefined,
+        },
+      });
+      res.send({ updatedOrder });
+    } else res.send("You cannot update somebody else's order");
+  } catch (error) {
+    next(error);
+  }
+});
+
+// Create Order
+
 module.exports = orderRouter;

@@ -753,6 +753,7 @@ const orders = [
     billingaddress: "254 Spruce St, Loveland, CO, 80023",
     paymentinfo: "Visa",
     fulfilled: false,
+    subtotal: 1.57,
   },
   {
     userid: 2,

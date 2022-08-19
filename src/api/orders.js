@@ -30,3 +30,28 @@ export const fetchCart = async () => {
   const result = await response.json();
   return result;
 };
+
+export const editOrder = async (
+  orderid,
+  shippingaddress,
+  billingaddress,
+  paymentinfo,
+  fulfilled,
+  userid
+) => {
+  const response = await fetch(`/api/orders/${orderid}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      shippingaddress,
+      billingaddress,
+      paymentinfo,
+      fulfilled,
+      userid,
+    }),
+  });
+  const result = await response.json();
+  return result;
+};

@@ -1,7 +1,6 @@
 export const editUser = async (
   firstname,
   lastname,
-  password,
   username,
   email,
   shippingaddress,
@@ -16,7 +15,6 @@ export const editUser = async (
     body: JSON.stringify({
       firstname,
       lastname,
-      password,
       username,
       email,
       shippingaddress,

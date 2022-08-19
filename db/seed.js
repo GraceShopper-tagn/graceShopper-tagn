@@ -287,14 +287,16 @@ const seedDb = async () => {
 
   console.log("Creating Cart Items...");
   for (let k = 1; k < 9; k++) {
-    const cartItem = await prisma.cartitems.create({
-      data: {
-        orderid: k,
-        productsizeid: k,
-        quantity: k,
-      },
-    });
-    console.log(cartItem);
+    for (let i = 0; i < 5; i++) {
+      const cartItem = await prisma.cartitems.create({
+        data: {
+          orderid: k,
+          productsizeid: k + i * 26,
+          quantity: k + i,
+        },
+      });
+      console.log(cartItem);
+    }
   }
 };
 

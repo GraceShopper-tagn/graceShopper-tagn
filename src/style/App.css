@@ -33,3 +33,7 @@ nav > * {
   display: flex;
   flex-direction: column;
 } */
+
+.cartItem {
+  border: 1px black solid;
+}

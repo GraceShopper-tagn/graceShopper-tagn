@@ -12,7 +12,7 @@ export default function EditUser() {
   const [email, setEmail] = useState(user.email);
   const [shippingAddress, setShippingAddress] = useState(user.shippingaddress);
   const [billingAddress, setBillingAddress] = useState(user.billingaddress);
-  const [paymentInfo, setPaymentInfo] = useState(user.paymentinfo);
+  const [paymentinfo, setPaymentInfo] = useState(user.paymentinfo);
   let navigate = useNavigate();
 
   return (
@@ -26,19 +26,18 @@ export default function EditUser() {
           const result = await editUser(
             firstName,
             lastName,
-            password,
             username,
             email,
             shippingAddress,
             billingAddress,
-            paymentInfo
+            paymentinfo
           );
 
           if (result.updatedUser) {
             const updatedUser = result.updatedUser;
             await setUser(updatedUser);
-            alert("Account edited. Please log back in.");
-            navigate("/login");
+            //alert("Account edited. Please log back in.");
+            //navigate("/login");
           } else alert("You must be logged in to edit your profile.");
         }}
       >
@@ -73,7 +72,7 @@ export default function EditUser() {
           onChange={(e) => setBillingAddress(e.target.value)}
         />
         <input
-          value={paymentInfo}
+          value={paymentinfo}
           placeholder={user.paymentinfo}
           onChange={(e) => setPaymentInfo(e.target.value)}
         />
