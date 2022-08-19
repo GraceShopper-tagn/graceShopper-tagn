@@ -3,11 +3,11 @@ const prisma = require("../db/prisma");
 
 cartItemsRouter.post("/", async (req, res, next) => {
   try {
-    const { orderid, productid } = req.body;
+    const { orderid, productsizeid } = req.body;
     const cartItem = await prisma.cartitems.create({
       data: {
         orderid,
-        productid,
+        productsizeid,
       },
     });
     res.send(cartItem);

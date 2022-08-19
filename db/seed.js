@@ -26,9 +26,9 @@ const dropTables = async () => {
   await prisma.$executeRaw`DROP TABLE IF EXISTS categories;`;
   await prisma.$executeRaw`DROP TABLE IF EXISTS productphotos;`;
   await prisma.$executeRaw`DROP TABLE IF EXISTS photos;`;
+  await prisma.$executeRaw`DROP TABLE IF EXISTS cartitems;`;
   await prisma.$executeRaw`DROP TABLE IF EXISTS productsizes;`;
   await prisma.$executeRaw`DROP TABLE IF EXISTS sizes;`;
-  await prisma.$executeRaw`DROP TABLE IF EXISTS cartitems;`;
   await prisma.$executeRaw`DROP TABLE IF EXISTS reviews;`;
   await prisma.$executeRaw`DROP TABLE IF EXISTS favorites;`;
   await prisma.$executeRaw`DROP TABLE IF EXISTS orders;`;
@@ -115,15 +115,6 @@ const createTables = async () => {
     content varchar(255) NOT NULL
     );`;
   await prisma.$executeRaw`
-      CREATE TABLE cartitems (
-      id SERIAL PRIMARY KEY,
-      orderid INTEGER REFERENCES orders(id),
-      productid INTEGER REFERENCES products(id),
-      quantity INTEGER NOT NULL DEFAULT 1,
-      subtotal FLOAT DEFAULT 0.0
-      );
-  `;
-  await prisma.$executeRaw`
   CREATE TABLE sizes (
     id SERIAL PRIMARY KEY,
     size FLOAT UNIQUE NOT NULL
@@ -134,6 +125,15 @@ const createTables = async () => {
       productid INTEGER REFERENCES products(id),
       sizeid INTEGER REFERENCES sizes(id),
       inventory INTEGER NOT NULL DEFAULT 0
+      );
+  `;
+  await prisma.$executeRaw`
+      CREATE TABLE cartitems (
+      id SERIAL PRIMARY KEY,
+      orderid INTEGER REFERENCES orders(id),
+      productsizeid INTEGER REFERENCES productsizes(id),
+      quantity INTEGER NOT NULL DEFAULT 1,
+      subtotal FLOAT DEFAULT 0.0
       );
   `;
   await prisma.$executeRaw`
@@ -290,7 +290,7 @@ const seedDb = async () => {
     const cartItem = await prisma.cartitems.create({
       data: {
         orderid: k,
-        productid: k,
+        productsizeid: k,
         quantity: k,
       },
     });

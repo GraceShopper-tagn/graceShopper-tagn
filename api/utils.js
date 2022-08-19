@@ -18,25 +18,25 @@ const userRequired = (req, res, next) => {
 
 // Checks that a specific user is logged in
 
-// Merge this and admin required?
-const authRequired = (req, res, next) => {
-  // attach the user to req.user
-  const user = req.user;
+// // Merge this and admin required?
+// const authRequired = (req, res, next) => {
+//   // attach the user to req.user
+//   const user = req.user;
 
-  try {
-    const { id } = req.params;
-    const user = jwt.verify(token, process.env.JWT_SECRET);
-    if (+user.id !== +id) throw error;
-    req.user = user;
-  } catch (error) {
-    res.status(401).send({
-      loggedIn: false,
-      message: "You are not authorized to perform this action",
-    });
-    return;
-  }
-  next();
-};
+//   try {
+//     const { id } = req.params;
+//     const user = jwt.verify(token, process.env.JWT_SECRET);
+//     if (+user.id !== +id) throw error;
+//     req.user = user;
+//   } catch (error) {
+//     res.status(401).send({
+//       loggedIn: false,
+//       message: "You are not authorized to perform this action",
+//     });
+//     return;
+//   }
+//   next();
+// };
 
 //checks that a specific user is an admin
 
@@ -52,4 +52,4 @@ const adminRequired = (req, res, next) => {
   }
 };
 
-module.exports = { authRequired, userRequired, adminRequired };
+module.exports = { userRequired, adminRequired };

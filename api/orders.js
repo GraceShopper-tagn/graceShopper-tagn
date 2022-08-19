@@ -11,16 +11,21 @@ orderRouter.get("/", userRequired, async (req, res, next) => {
         users: true,
         cartitems: {
           include: {
-            products: {
+            productsizes: {
               include: {
-                producttags: {
-                  include: { tags: true },
-                },
-                productphotos: {
+                products: {
                   include: {
-                    photos: true,
+                    producttags: {
+                      include: { tags: true },
+                    },
+                    productphotos: {
+                      include: {
+                        photos: true,
+                      },
+                    },
                   },
                 },
+                sizes: true,
               },
             },
           },
@@ -51,16 +56,21 @@ orderRouter.get("/cart", userRequired, async (req, res, next) => {
         users: true,
         cartitems: {
           include: {
-            products: {
+            productsizes: {
               include: {
-                producttags: {
-                  include: { tags: true },
-                },
-                productphotos: {
+                products: {
                   include: {
-                    photos: true,
+                    producttags: {
+                      include: { tags: true },
+                    },
+                    productphotos: {
+                      include: {
+                        photos: true,
+                      },
+                    },
                   },
                 },
+                sizes: true,
               },
             },
           },
@@ -85,16 +95,21 @@ orderRouter.get("/fulfilled", userRequired, async (req, res, next) => {
         users: true,
         cartitems: {
           include: {
-            products: {
+            productsizes: {
               include: {
-                producttags: {
-                  include: { tags: true },
-                },
-                productphotos: {
+                products: {
                   include: {
-                    photos: true,
+                    producttags: {
+                      include: { tags: true },
+                    },
+                    productphotos: {
+                      include: {
+                        photos: true,
+                      },
+                    },
                   },
                 },
+                sizes: true,
               },
             },
           },
