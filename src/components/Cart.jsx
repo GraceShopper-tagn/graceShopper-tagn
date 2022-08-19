@@ -18,7 +18,7 @@ export default function Cart() {
   useEffect(() => {
     try {
       const cartItems = cart.cartitems.map((cartItem, i) => {
-        const product = cartItem.products;
+        const product = cartItem.productsizes.products;
         const name = product.name;
         const price = product.price;
         const brand = product.producttags[0].tags.name;
@@ -27,9 +27,10 @@ export default function Cart() {
         const gender = product.producttags[3].tags.name;
         const photoUrl = product.productphotos[0].photos.url;
         const photoName = product.productphotos[0].photos.name;
-        // const quantity = cartItem.quantity;
+        const quantity = cartItem.quantity;
+        const size = cartItem.productsizes.sizes.size;
+
         // const subtotal = price * quantity;
-        // const size =
         // console.log("product", cartItem[0].products);
 
         return (
@@ -40,6 +41,9 @@ export default function Cart() {
             <h3>
               <img src={photoUrl} alt={photoName} height="20px"></img>
               {brand} {name} {gender} {activity} Shoe, {color}
+            </h3>
+            <h3>
+              Price {price} {quantity} {size}
             </h3>
             {/* <h3>{cartitem.cartitemtags[1].tags.name}</h3> */}
             {/* <h3>{cartitem.products.name}</h3> */}
