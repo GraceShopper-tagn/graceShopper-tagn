@@ -15,6 +15,7 @@ import useAuth from "../hooks/useAuth";
 import Products from "./Products";
 import Product from "./Product";
 import Cart from "./Cart";
+import AddToCart from "./AddToCart";
 
 const App = () => {
   useEffect(() => {
@@ -41,6 +42,7 @@ const App = () => {
         <Route path="/Admin" element={<DeleteUser />} />
         <Route path="/products" element={<Products />} />
         <Route path="/products/:id" element={<Product />} />
+        <Route path="/addtocart" element={<AddToCart />} />
         <Route path="/cart" element={<Cart />} />
       </Routes>
     </div>

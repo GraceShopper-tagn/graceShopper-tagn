@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getProduct } from "../api/products";
 import { useLocation, useParams } from "react-router-dom";
 import { getInventoryBySize } from "../api/products";
+import { useNavigate } from "react-router-dom";
 
 export default function Product() {
   const { id } = useParams();
@@ -9,7 +10,8 @@ export default function Product() {
   const [sizesToDisplay, setSizesToDisplay] = useState([]);
   const [selectedSizeId, setSelectedSizeId] = useState(1);
   const [singleSizeInventory, setSingleSizeInventory] = useState();
-  const [sizeId, setSizeid] = useState();
+  const [shoeId, setShoeId] = useState();
+  let navigate = useNavigate();
 
   useEffect(() => {
     const getOneProduct = async () => {
@@ -44,6 +46,10 @@ export default function Product() {
     getSizeInventory();
   }, [selectedSizeId]);
 
+  useEffect(() => {
+    localStorage.setItem("shoeid", JSON.stringify(id));
+  }, []);
+
   return (
     <div>
       <h2>{product.name}</h2>
@@ -68,6 +74,15 @@ export default function Product() {
           {sizesToDisplay}
         </select>
         <h4>There are {singleSizeInventory} of this model left.</h4>
+      </form>
+      <form>
+        <button
+          onClick={() => {
+            navigate(`/addtocart`);
+          }}
+        >
+          Add To Cart
+        </button>
       </form>
     </div>
     //need to add button for add cart item
