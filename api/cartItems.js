@@ -6,8 +6,8 @@ cartItemsRouter.post("/", async (req, res, next) => {
     const { orderid, productsizeid } = req.body;
     const cartItem = await prisma.cartitems.create({
       data: {
-        orderid,
-        productsizeid,
+        orderid: +orderid,
+        productsizeid: +productsizeid,
       },
     });
     res.send(cartItem);

@@ -1,17 +1,40 @@
 import React, { useState, useEffect } from "react";
 import { getProduct } from "../api/products";
 import { useLocation, useParams } from "react-router-dom";
+import { fetchCart } from "../api/orders";
+import { addToCart } from "../api/cartItems";
 
 export default function AddToCart() {
   const [product, setProduct] = useState([]);
+  const [orderId, setOrderId] = useState([]);
+  const [cartItem, setCartItem] = useState();
   const localShoeId = JSON.parse(localStorage.getItem("shoeid"));
+  const localSizeId = JSON.parse(localStorage.getItem("sizeid"));
 
   useEffect(() => {
     const getOneProduct = async () => {
       const product = await getProduct(localShoeId);
+      console.log("PRODUCT IN CART ITEM: ", product);
       setProduct(product);
     };
     getOneProduct();
+  }, []);
+
+  useEffect(() => {
+    const getCart = async () => {
+      const currentCart = await fetchCart();
+      setOrderId(currentCart[0].id);
+    };
+    getCart();
+  }, []);
+
+  useEffect(() => {
+    const getCartItem = async () => {
+      const currentItem = await addToCart(2, +localSizeId);
+      console.log("CURRENT ITEM: ", currentItem);
+      setCartItem(currentItem);
+    };
+    getCartItem();
   }, []);
 
   return (
@@ -29,7 +52,8 @@ export default function AddToCart() {
         height="250"
       />
       <form>
-        <output name="calculate">Test</output>
+        <output name="calculate">{cartItem.quantity}</output>
+        <button></button>
       </form>
     </div>
   );

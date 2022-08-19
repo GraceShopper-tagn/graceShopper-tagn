@@ -50,6 +50,10 @@ export default function Product() {
     localStorage.setItem("shoeid", JSON.stringify(id));
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem("sizeid", JSON.stringify(selectedSizeId));
+  }, []);
+
   return (
     <div>
       <h2>{product.name}</h2>
