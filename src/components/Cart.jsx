@@ -11,9 +11,27 @@ export default function Cart() {
   const { cart, setCart } = useCart();
   const [cartitemsToDisplay, setCartitemsToDisplay] = useState([]);
   const [totalsToDisplay, setTotalsToDisplay] = useState({});
-  const [shippingAddress, setShippingAddress] = useState(cart.shippingaddress);
-  const [billingAddress, setBillingAddress] = useState(cart.billingaddress);
-  const [paymentInfo, setPaymentInfo] = useState(cart.paymentinfo);
+  const [shippingAddress, setShippingAddress] = useState(
+    cart
+      ? cart.shippingaddress
+        ? cart.shippingaddress
+        : user.shippingAddress
+      : user.shippingAddress
+  );
+  const [billingAddress, setBillingAddress] = useState(
+    cart
+      ? cart.billingaddress
+        ? cart.billingaddress
+        : user.billingaddress
+      : user.billingaddress
+  );
+  const [paymentInfo, setPaymentInfo] = useState(
+    cart
+      ? cart.paymentinfo
+        ? cart.paymentinfo
+        : user.paymentinfo
+      : user.paymentinfo
+  );
   const [date, setDate] = useState(new Date());
 
   useEffect(() => {
@@ -28,9 +46,9 @@ export default function Cart() {
 
   useEffect(() => {
     const getTotalsToDisplay = async () => {
-      const sub = displayPrice(`${cart.subtotal}`);
-      const tax = displayPrice(`${cart.tax}`);
-      const tot = displayPrice(`${cart.total}`);
+      const sub = displayPrice(`${cart ? cart.subtotal : null}`);
+      const tax = displayPrice(`${cart ? cart.tax : null}`);
+      const tot = displayPrice(`${cart ? cart.total : null}`);
       const totalsToDisplay = { sub: sub, tax: tax, tot: tot };
       setTotalsToDisplay(totalsToDisplay);
     };
@@ -105,23 +123,24 @@ export default function Cart() {
 
           if (result.updatedOrder) {
             alert("Shipping and payment information has been updated.");
+            window.location.reload(false);
           } else alert("Not updated :(");
         }}
       >
         <h4>Edit shipping and payment information</h4>
         <input
           value={shippingAddress}
-          placeholder={cart.shippingaddress}
+          placeholder={cart ? cart.shippingaddress : "Shipping Address"}
           onChange={(e) => setShippingAddress(e.target.value)}
         />
         <input
           value={billingAddress}
-          placeholder={cart.billingaddress}
+          placeholder={cart ? cart.billingaddress : "Billing Address"}
           onChange={(e) => setBillingAddress(e.target.value)}
         />
         <input
           value={paymentInfo}
-          placeholder={cart.paymentinfo}
+          placeholder={cart ? cart.paymentinfo : "Payment Information"}
           onChange={(e) => setPaymentInfo(e.target.value)}
         />
         <button type="Submit">Submit Changes?</button>
@@ -141,9 +160,10 @@ export default function Cart() {
           );
 
           if (result.updatedOrder) {
-            const newCart = await newOrder(user);
-            setCart(newCart);
             alert("Order submitted! Thanks for shopping with us.");
+            const newCart = await newOrder(user);
+            setCart(newCart[0]);
+
             navigate("/products");
           } else alert("Order not submitted :(");
         }}

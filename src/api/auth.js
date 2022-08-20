@@ -4,7 +4,10 @@ export const registerUser = async (
   password,
   firstname,
   lastname,
-  email
+  email,
+  shippingaddress,
+  billingaddress,
+  paymentinfo
 ) => {
   const response = await fetch(`/api/auth/register`, {
     method: "POST",
@@ -17,6 +20,9 @@ export const registerUser = async (
       firstname,
       lastname,
       email,
+      shippingaddress,
+      billingaddress,
+      paymentinfo,
     }),
   });
   const result = await response.json();

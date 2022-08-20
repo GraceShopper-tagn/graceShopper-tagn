@@ -10,7 +10,16 @@ const SALT_ROUNDS = 10;
 // first name, lastname, email, username, password
 authRouter.post("/register", async (req, res, next) => {
   try {
-    const { username, password, firstname, lastname, email } = req.body;
+    const {
+      username,
+      password,
+      firstname,
+      lastname,
+      email,
+      shippingaddress,
+      billingaddress,
+      paymentinfo,
+    } = req.body;
     const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS);
     const user = await prisma.users.create({
       data: {
@@ -19,6 +28,9 @@ authRouter.post("/register", async (req, res, next) => {
         username: username,
         email: email,
         password: hashedPassword,
+        shippingaddress: shippingaddress ? shippingaddress : null,
+        billingaddress: billingaddress ? billingaddress : null,
+        paymentinfo: paymentinfo ? paymentinfo : null,
       },
     });
     console.log("user", user);

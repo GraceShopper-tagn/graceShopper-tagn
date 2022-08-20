@@ -1,5 +1,5 @@
 const prisma = require("../db/prisma");
-const { userRequired, adminRequired } = require("./utils");
+const { userRequired, adminRequired, getUser } = require("./utils");
 const orderRouter = require("express").Router();
 
 // Returns all orders if user is admin, only that user's orders if not.
@@ -45,40 +45,42 @@ orderRouter.get("/", userRequired, async (req, res, next) => {
   }
 });
 
-orderRouter.get("/cart", userRequired, async (req, res, next) => {
+orderRouter.get("/cart", getUser, async (req, res, next) => {
   try {
-    const orders = await prisma.orders.findMany({
-      where: {
-        userid: req.user.id,
-      },
-      include: {
-        discounts: true,
-        users: true,
-        cartitems: {
-          include: {
-            productsizes: {
-              include: {
-                products: {
-                  include: {
-                    producttags: {
-                      include: { tags: true },
-                    },
-                    productphotos: {
-                      include: {
-                        photos: true,
+    if (req.user) {
+      const orders = await prisma.orders.findMany({
+        where: {
+          userid: req.user.id,
+        },
+        include: {
+          discounts: true,
+          users: true,
+          cartitems: {
+            include: {
+              productsizes: {
+                include: {
+                  products: {
+                    include: {
+                      producttags: {
+                        include: { tags: true },
+                      },
+                      productphotos: {
+                        include: {
+                          photos: true,
+                        },
                       },
                     },
                   },
+                  sizes: true,
                 },
-                sizes: true,
               },
             },
           },
         },
-      },
-    });
-    const ordersToSend = orders.filter((order) => !order.fulfilled);
-    res.send(ordersToSend);
+      });
+      const ordersToSend = orders.filter((order) => !order.fulfilled);
+      res.send(ordersToSend[0]);
+    }
   } catch (error) {
     next(error);
   }
@@ -181,6 +183,26 @@ orderRouter.patch("/:id", userRequired, async (req, res, next) => {
   }
 });
 
+orderRouter.patch("/:id/claim", async (req, res, next) => {
+  const { id } = req.params;
+  const { userid, billingaddress, shippingaddress, paymentinfo } = req.body;
+  try {
+    const updatedOrder = await prisma.orders.update({
+      where: {
+        id: +id,
+      },
+      data: {
+        billingaddress: billingaddress ? billingaddress : undefined,
+        shippingaddress: shippingaddress ? shippingaddress : undefined,
+        paymentinfo: paymentinfo ? paymentinfo : undefined,
+        userid: userid,
+      },
+    });
+    res.send(updatedOrder);
+  } catch (error) {
+    next(error);
+  }
+});
 // Create Order
 
 orderRouter.post("/", async (req, res, next) => {
@@ -196,7 +218,7 @@ orderRouter.post("/", async (req, res, next) => {
         userid: userid ? userid : undefined,
       },
     });
-    res.send({ newOrder });
+    res.send(newOrder);
   } catch (error) {
     next(error);
   }

@@ -9,6 +9,17 @@ export const fetchAllOrders = async () => {
   return result;
 };
 
+export const fetchOrderById = async (id) => {
+  const response = await fetch(`/api/orders/${id}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const result = await response.json();
+  return result;
+};
+
 export const fetchFulfilledOrders = async () => {
   const response = await fetch(`/api/orders/fulfilled`, {
     method: "GET",
@@ -52,6 +63,20 @@ export const editOrder = async (
       fulfilled,
       userid,
       orderdate,
+    }),
+  });
+  const result = await response.json();
+  return result;
+};
+
+export const claimOrder = async (orderid, userid) => {
+  const response = await fetch(`/api/orders/${orderid}/claim`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      userid,
     }),
   });
   const result = await response.json();

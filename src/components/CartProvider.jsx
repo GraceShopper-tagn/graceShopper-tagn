@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CartContext from "../contexts/CartContext";
-import { fetchCart } from "../api/orders";
+import { fetchCart, fetchOrderById, newOrder } from "../api/orders";
 import useAuth from "../hooks/useAuth";
 
 export default function CartProvider({ children }) {
@@ -9,15 +9,23 @@ export default function CartProvider({ children }) {
 
   useEffect(() => {
     async function getCart() {
-      const cartToSet = await fetchCart();
-      if (cartToSet) {
-        await setCart(cartToSet[0]);
+      let cartToSet;
+      if (user) {
+        cartToSet = await fetchCart();
       } else {
-        setCart({});
+        if (localStorage.cartid) {
+          cartToSet = await fetchOrderById(localStorage.getItem("cartid"));
+        } else {
+          cartToSet = await newOrder();
+        }
+      }
+      if (cartToSet) {
+        await setCart(cartToSet);
+        localStorage.setItem("cartid", cartToSet.id);
       }
     }
     getCart();
-  }, []);
+  }, [user]);
 
   useEffect(() => {
     console.log("cart", cart);
