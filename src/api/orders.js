@@ -37,7 +37,8 @@ export const editOrder = async (
   billingaddress,
   paymentinfo,
   fulfilled,
-  userid
+  userid,
+  orderdate
 ) => {
   const response = await fetch(`/api/orders/${orderid}`, {
     method: "PATCH",
@@ -50,8 +51,11 @@ export const editOrder = async (
       paymentinfo,
       fulfilled,
       userid,
+      orderdate,
     }),
   });
   const result = await response.json();
   return result;
 };
+
+// export const newCart = await fetch

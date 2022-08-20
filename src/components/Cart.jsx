@@ -14,6 +14,7 @@ export default function Cart() {
   const [shippingAddress, setShippingAddress] = useState(cart.shippingaddress);
   const [billingAddress, setBillingAddress] = useState(cart.billingaddress);
   const [paymentInfo, setPaymentInfo] = useState(cart.paymentinfo);
+  const [date, setDate] = useState(new Date());
 
   useEffect(() => {
     const getCart = async () => {
@@ -22,6 +23,7 @@ export default function Cart() {
       setCart(cart);
     };
     getCart();
+    console.log(date);
   }, []);
 
   useEffect(() => {
@@ -97,7 +99,8 @@ export default function Cart() {
             billingAddress,
             paymentInfo,
             false,
-            user.id
+            user.id,
+            date
           );
 
           if (result.updatedOrder) {
@@ -133,7 +136,8 @@ export default function Cart() {
             billingAddress,
             paymentInfo,
             true,
-            user.id
+            user.id,
+            date
           );
 
           if (result.updatedOrder) {
