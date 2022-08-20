@@ -183,4 +183,23 @@ orderRouter.patch("/:id", userRequired, async (req, res, next) => {
 
 // Create Order
 
+orderRouter.post("/", async (req, res, next) => {
+  try {
+    const { billingaddress, shippingaddress, paymentinfo, discountid, userid } =
+      req.body;
+    const newOrder = await prisma.orders.create({
+      data: {
+        billingaddress: billingaddress ? billingaddress : undefined,
+        shippingaddress: shippingaddress ? shippingaddress : undefined,
+        paymentinfo: paymentinfo ? paymentinfo : undefined,
+        discountid: discountid ? discountid : undefined,
+        userid: userid ? userid : undefined,
+      },
+    });
+    res.send({ newOrder });
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = orderRouter;

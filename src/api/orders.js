@@ -58,4 +58,20 @@ export const editOrder = async (
   return result;
 };
 
-// export const newCart = await fetch
+export const newOrder = async (user, discountid) => {
+  const response = await fetch(`/api/orders/`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      billingaddress: user ? user.billingaddress : undefined,
+      shippingaddress: user ? user.shippingaddress : undefined,
+      paymentinfo: user ? user.paymentinfo : undefined,
+      discountid: discountid ? discountid : undefined,
+      userid: user ? user.id : undefined,
+    }),
+  });
+  const result = await response.json();
+  return result;
+};

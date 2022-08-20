@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { fetchCart } from "../api/orders";
+import { fetchCart, newOrder } from "../api/orders";
 import useCart from "../hooks/useCart";
 import { editOrder } from "../api/orders";
 import useAuth from "../hooks/useAuth";
@@ -141,6 +141,8 @@ export default function Cart() {
           );
 
           if (result.updatedOrder) {
+            const newCart = await newOrder(user);
+            setCart(newCart);
             alert("Order submitted! Thanks for shopping with us.");
             navigate("/products");
           } else alert("Order not submitted :(");
