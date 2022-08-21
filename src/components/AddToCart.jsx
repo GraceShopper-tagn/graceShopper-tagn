@@ -19,10 +19,6 @@ export default function AddToCart() {
   const [subTotal, setSubTotal] = useState();
   const localShoeId = JSON.parse(localStorage.getItem("shoeid"));
   const localSizeId = JSON.parse(localStorage.getItem("sizeid"));
-  const localInventory = JSON.parse(
-    localStorage.getItem("available-inventory")
-  );
-
   let navigate = useNavigate();
 
   useEffect(() => {
@@ -95,11 +91,7 @@ export default function AddToCart() {
         <button
           onClick={async () => {
             event.preventDefault();
-            let increased = await increaseQty(
-              cartItemId,
-              productPrice,
-              localInventory
-            );
+            let increased = await increaseQty(cartItemId, productPrice);
             setSubTotal(increased.subtotal);
             setQuantity(increased.quantity);
           }}

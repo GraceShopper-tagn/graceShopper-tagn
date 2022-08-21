@@ -14,14 +14,13 @@ export const addToCart = async (orderid, productsizeid, productprice) => {
 
 // increaseQty
 // PATCH ->
-export const increaseQty = async (id, productprice, inventory) => {
+export const increaseQty = async (id, productprice) => {
   const response = await fetch(`api/cartitems/increment`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       id,
       productprice,
-      inventory,
     }),
   });
   const result = await response.json();

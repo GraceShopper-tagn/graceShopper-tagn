@@ -64,10 +64,6 @@ export default function Product() {
         <select
           onChange={async (e) => {
             localStorage.setItem("sizeid", JSON.stringify(e.target.value));
-            localStorage.setItem(
-              "available-inventory",
-              JSON.stringify(singleSizeInventory)
-            );
             setSelectedSizeId(e.target.value);
           }}
           id="shoe-size"
