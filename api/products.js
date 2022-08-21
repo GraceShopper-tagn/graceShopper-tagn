@@ -52,7 +52,7 @@ productRouter.get("/:id", async (req, res, next) => {
 
 productRouter.get("/:id/:sizeId", async (req, res, next) => {
   const { id, sizeId } = req.params;
-  let sizeInventory = 0;
+
   try {
     const getInventory = await prisma.productsizes.findMany({
       where: {
@@ -75,10 +75,3 @@ productRouter.get("/:id/:sizeId", async (req, res, next) => {
 });
 
 module.exports = productRouter;
-
-// where: {
-//   sizes: +size,
-// },
-// select: {
-//   inventory: true,
-// },
