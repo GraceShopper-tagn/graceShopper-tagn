@@ -444,6 +444,11 @@ const products = [
     description: "Test Description",
     price: 50.0,
   },
+  {
+    name: "Big Kids Classic Boots",
+    description: "Test Description",
+    price: 120.0,
+  },
 ];
 
 const photos = [
@@ -507,6 +512,10 @@ const photos = [
     name: "Big Kids Disruptor II-photo",
     url: "https://slimages.macysassets.com/is/image/MCY/products/7/optimized/11174917_fpx.tif?op_sharpen=1&wid=700&hei=855&fit=fit,1&fmt=webp",
   },
+  // {
+  //   name: "Big Kids Classic Boots",
+  //   url: "https://slimages.macysassets.com/is/image/MCY/products/3/optimized/19897123_fpx.tif?op_sharpen=1&wid=700&hei=855&fit=fit,1&fmt=webp",
+  // },
 ];
 
 const productphotos = [
@@ -570,6 +579,10 @@ const productphotos = [
     productid: 15,
     photoid: 15,
   },
+  // {
+  //   productid: 16,
+  //   photoid: 16,
+  // },
 ];
 
 const favorites = [
@@ -735,6 +748,10 @@ const producttags = [
     productid: 15,
     tags: [13, 20, 34, 41],
   },
+  // {
+  //   productid: 16,
+  //   tags: [13, 20, 34, 41],
+  // },
 ];
 
 const orders = [
