@@ -38,7 +38,7 @@ export default function AddToCart() {
   useEffect(() => {
     const getCart = async () => {
       const currentCart = await fetchCart();
-      console.log("CURRENT CART: ", currentCart);
+      // console.log("CURRENT CART: ", currentCart);
       //   console.log("ORDER ID: ", currentCart[0].id);
       let idToSet = currentCart[0]?.id ? currentCart[0]?.id : null;
       console.log("ID TO SET: ", idToSet);

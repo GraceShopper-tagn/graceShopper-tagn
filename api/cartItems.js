@@ -21,6 +21,7 @@ cartItemsRouter.post("/", async (req, res, next) => {
 cartItemsRouter.patch("/increment", async (req, res, next) => {
   try {
     const { id, productprice, inventory } = req.body;
+    console.log("THIS IS ID FROM CARTITEMS", id);
     const cartItem = await prisma.cartitems.update({
       where: {
         id: +id,
@@ -31,8 +32,10 @@ cartItemsRouter.patch("/increment", async (req, res, next) => {
       },
     });
 
-    if (cartitems.quantity > +inventory) {
-      alert("Number of shoes ordered exceeds available inventory!");
+    for (quantity of inventory) {
+      if (cartitems.quantity >= +inventory) {
+        alert("Number of shoes ordered exceeds available inventory!");
+      }
     }
 
     res.send(cartItem);
