@@ -3,11 +3,12 @@ const prisma = require("../db/prisma");
 
 cartItemsRouter.post("/", async (req, res, next) => {
   try {
-    const { orderid, productsizeid } = req.body;
+    const { orderid, productsizeid, productprice } = req.body;
     const cartItem = await prisma.cartitems.create({
       data: {
         orderid: +orderid,
         productsizeid: +productsizeid,
+        subtotal: +productprice,
       },
     });
     res.send(cartItem);
@@ -18,13 +19,14 @@ cartItemsRouter.post("/", async (req, res, next) => {
 
 cartItemsRouter.patch("/increment", async (req, res, next) => {
   try {
-    const { id } = req.body;
+    const { id, productprice } = req.body;
     const cartItem = await prisma.cartitems.update({
       where: {
         id: +id,
       },
       data: {
         quantity: { increment: 1 },
+        subtotal: { increment: +productprice },
       },
     });
     res.send(cartItem);
@@ -35,13 +37,14 @@ cartItemsRouter.patch("/increment", async (req, res, next) => {
 
 cartItemsRouter.patch("/decrement", async (req, res, next) => {
   try {
-    const { id } = req.body;
+    const { id, productprice } = req.body;
     const cartItem = await prisma.cartitems.update({
       where: {
         id: +id,
       },
       data: {
         quantity: { increment: -1 },
+        subtotal: { increment: -productprice },
       },
     });
     res.send(cartItem);

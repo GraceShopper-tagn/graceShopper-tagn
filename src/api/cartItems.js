@@ -1,10 +1,11 @@
-export const addToCart = async (orderid, productsizeid) => {
+export const addToCart = async (orderid, productsizeid, productprice) => {
   const response = await fetch(`api/cartitems`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       orderid,
       productsizeid,
+      productprice,
     }),
   });
   const result = await response.json();
@@ -13,12 +14,13 @@ export const addToCart = async (orderid, productsizeid) => {
 
 // increaseQty
 // PATCH ->
-export const increaseQty = async (id) => {
+export const increaseQty = async (id, productprice) => {
   const response = await fetch(`api/cartitems/increment`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       id,
+      productprice,
     }),
   });
   const result = await response.json();
@@ -26,12 +28,13 @@ export const increaseQty = async (id) => {
 };
 // decreaseQty
 // PATCH ->
-export const decreaseQty = async (id) => {
+export const decreaseQty = async (id, productprice) => {
   const response = await fetch(`api/cartitems/decrement`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       id,
+      productprice,
     }),
   });
   const result = await response.json();

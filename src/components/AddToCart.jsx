@@ -13,8 +13,10 @@ import { useNavigate } from "react-router-dom";
 export default function AddToCart() {
   const [product, setProduct] = useState([]);
   const [orderId, setOrderId] = useState();
-  const [cartItem, setCartItem] = useState();
+  const [cartItemId, setCartItemId] = useState();
   const [quantity, setQuantity] = useState(1);
+  const [productPrice, setProductPrice] = useState();
+  const [subTotal, setSubTotal] = useState();
   const localShoeId = JSON.parse(localStorage.getItem("shoeid"));
   const localSizeId = JSON.parse(localStorage.getItem("sizeid"));
   let navigate = useNavigate();
@@ -23,6 +25,8 @@ export default function AddToCart() {
     const getOneProduct = async () => {
       const product = await getProduct(localShoeId);
       setProduct(product);
+      setProductPrice(product.price);
+      setSubTotal(product.price);
     };
     getOneProduct();
   }, []);
@@ -42,9 +46,13 @@ export default function AddToCart() {
 
   useEffect(() => {
     const getCartItem = async () => {
-      const currentItem = await addToCart(+orderId, +localSizeId);
+      const currentItem = await addToCart(
+        +orderId,
+        +localSizeId,
+        +productPrice
+      );
       console.log("CURRENT ITEM: ", currentItem.id);
-      setCartItem(currentItem.id);
+      setCartItemId(currentItem.id);
     };
     getCartItem();
   }, [orderId]);
@@ -68,11 +76,13 @@ export default function AddToCart() {
         <h4 className="display-quantity">
           Current number of items to add to cart: {quantity}
         </h4>
+        <h4>Subtotal: {subTotal}</h4>
 
         <button
           onClick={async () => {
             event.preventDefault();
-            let decreased = await decreaseQty(cartItem);
+            let decreased = await decreaseQty(cartItemId, productPrice);
+            setSubTotal(decreased.subtotal);
             setQuantity(decreased.quantity);
           }}
         >
@@ -81,7 +91,8 @@ export default function AddToCart() {
         <button
           onClick={async () => {
             event.preventDefault();
-            let increased = await increaseQty(cartItem);
+            let increased = await increaseQty(cartItemId, productPrice);
+            setSubTotal(increased.subtotal);
             setQuantity(increased.quantity);
           }}
         >
@@ -90,7 +101,7 @@ export default function AddToCart() {
         <button
           onClick={async () => {
             event.preventDefault();
-            let removed = await removeFromCart(cartItem);
+            let removed = await removeFromCart(cartItemId);
             navigate("/products");
           }}
         >
