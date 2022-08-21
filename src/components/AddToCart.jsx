@@ -94,7 +94,7 @@ export default function AddToCart() {
             navigate("/products");
           }}
         >
-          Delete
+          Remove From Cart
         </button>
       </form>
     </div>
