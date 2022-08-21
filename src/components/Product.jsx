@@ -64,13 +64,19 @@ export default function Product() {
         <select
           onChange={async (e) => {
             localStorage.setItem("sizeid", JSON.stringify(e.target.value));
+            localStorage.setItem(
+              "available-inventory",
+              JSON.stringify(singleSizeInventory)
+            );
             setSelectedSizeId(e.target.value);
           }}
           id="shoe-size"
         >
           {sizesToDisplay}
         </select>
-        <h4>There are {singleSizeInventory} of this model left.</h4>
+        <h4>
+          There are {singleSizeInventory} of this model left in this size.
+        </h4>
       </form>
       <form>
         <button
