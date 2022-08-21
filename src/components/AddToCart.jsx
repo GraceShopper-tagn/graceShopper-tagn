@@ -19,9 +19,6 @@ export default function AddToCart() {
   const [subTotal, setSubTotal] = useState();
   const localShoeId = JSON.parse(localStorage.getItem("shoeid"));
   const localSizeId = JSON.parse(localStorage.getItem("sizeid"));
-  const localInventory = JSON.parse(
-    localStorage.getItem("available-inventory")
-  );
 
   let navigate = useNavigate();
 
@@ -41,7 +38,7 @@ export default function AddToCart() {
       // console.log("CURRENT CART: ", currentCart);
       //   console.log("ORDER ID: ", currentCart[0].id);
       let idToSet = currentCart[0]?.id ? currentCart[0]?.id : null;
-      console.log("ID TO SET: ", idToSet);
+      // console.log("ID TO SET: ", idToSet);
       setOrderId(idToSet);
       //   console.log("ORDER ID: ", orderId);
     };
@@ -95,11 +92,7 @@ export default function AddToCart() {
         <button
           onClick={async () => {
             event.preventDefault();
-            let increased = await increaseQty(
-              cartItemId,
-              productPrice,
-              localInventory
-            );
+            let increased = await increaseQty(cartItemId, productPrice);
             setSubTotal(increased.subtotal);
             setQuantity(increased.quantity);
           }}
