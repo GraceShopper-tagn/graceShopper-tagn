@@ -794,6 +794,31 @@ const products = [
     description: "Test Description",
     price: 130.0,
   },
+  {
+    name: "XP 2.0",
+    description: "Test Description",
+    price: 130.0,
+  },
+  {
+    name: "LT Pro",
+    description: "Test Description",
+    price: 130.0,
+  },
+  {
+    name: "Professional Patent",
+    description: "Test Description",
+    price: 145.0,
+  },
+  {
+    name: "Ingrid",
+    description: "Test Description",
+    price: 125.0,
+  },
+  {
+    name: "Debossed Pumps",
+    description: "Test Description",
+    price: 450.0,
+  },
 ];
 
 const photos = [
@@ -1137,6 +1162,26 @@ const photos = [
     name: "Minimus TR",
     url: "https://m.media-amazon.com/images/I/71UGo7tcdyL._AC_SR1840,1472_.jpg",
   },
+  {
+    name: "XP 2.0",
+    url: "https://m.media-amazon.com/images/I/81g9qfX0NcL._AC_SR1840,1472_.jpg",
+  },
+  {
+    name: "LT Pro",
+    url: "https://m.media-amazon.com/images/I/81JNeriD1CL._AC_SR1840,1472_.jpg",
+  },
+  {
+    name: "Professional Patent",
+    url: "https://m.media-amazon.com/images/I/819gwlpvtPL._AC_SR1840,1472_.jpg",
+  },
+  {
+    name: "Ingrid",
+    url: "https://m.media-amazon.com/images/I/81ZYajLuULL._AC_SR1840,1472_.jpg",
+  },
+  {
+    name: "Debossed Pumps",
+    url: "https://cdna.lystit.com/photos/stefaniamode/bf198be7/balenciaga-green-Pumps-x-Crocs-110m.jpeg",
+  },
 ];
 
 const productphotos = [
@@ -1479,6 +1524,26 @@ const productphotos = [
   {
     productid: 85,
     photoid: 85,
+  },
+  {
+    productid: 86,
+    photoid: 86,
+  },
+  {
+    productid: 87,
+    photoid: 87,
+  },
+  {
+    productid: 88,
+    photoid: 88,
+  },
+  {
+    productid: 89,
+    photoid: 89,
+  },
+  {
+    productid: 90,
+    photoid: 90,
   },
 ];
 
@@ -1925,6 +1990,26 @@ const producttags = [
   {
     productid: 85,
     tags: [8, 18, 30, 40],
+  },
+  {
+    productid: 86, //dansko
+    tags: [11, 27, 34, 40],
+  },
+  {
+    productid: 87,
+    tags: [11, 18, 34, 40],
+  },
+  {
+    productid: 88,
+    tags: [11, 21, 34, 40],
+  },
+  {
+    productid: 89,
+    tags: [11, 26, 34, 40],
+  },
+  {
+    productid: 90, //balenciaga
+    tags: [12, 25, 36, 40],
   },
 ];
 
