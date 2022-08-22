@@ -748,10 +748,10 @@ const producttags = [
     productid: 15,
     tags: [13, 20, 34, 41],
   },
-  // {
-  //   productid: 16,
-  //   tags: [13, 20, 34, 41],
-  // },
+  {
+    productid: 16,
+    tags: [14, 26, 38, 41],
+  },
 ];
 
 const orders = [
