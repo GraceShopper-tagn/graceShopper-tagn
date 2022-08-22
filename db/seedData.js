@@ -729,6 +729,71 @@ const products = [
     description: "Test Description",
     price: 60.0,
   },
+  {
+    name: "Wave Rider 25",
+    description: "Test Description",
+    price: 130.0,
+  },
+  {
+    name: "Wave Horizon 5",
+    description: "Test Description",
+    price: 130.0,
+  },
+  {
+    name: "Wave Inspire 18",
+    description: "Test Description",
+    price: 140.0,
+  },
+  {
+    name: "Wave Sky",
+    description: "Test Description",
+    price: 170.0,
+  },
+  {
+    name: "Wave Rebellion",
+    description: "Test Description",
+    price: 180.0,
+  },
+  {
+    name: "Wave Sky 4",
+    description: "Test Description",
+    price: 160.0,
+  },
+  {
+    name: "840v5",
+    description: "Test Description",
+    price: 130.0,
+  },
+  {
+    name: "Fresh Foam 860v12",
+    description: "Test Description",
+    price: 135.0,
+  },
+  {
+    name: "Fresh Foam X",
+    description: "Test Description",
+    price: 160.0,
+  },
+  {
+    name: "Fresh Foam Vongo",
+    description: "Test Description",
+    price: 150.0,
+  },
+  {
+    name: "Fresh Foam Roav",
+    description: "Test Description",
+    price: 85.0,
+  },
+  {
+    name: "Nergize",
+    description: "Test Description",
+    price: 65.0,
+  },
+  {
+    name: "Minimus TR",
+    description: "Test Description",
+    price: 130.0,
+  },
 ];
 
 const photos = [
@@ -1020,6 +1085,58 @@ const photos = [
     name: "Chelsea",
     url: "https://images.boardriders.com/global/dcshoes-products/all/default/xlarge/303226_dcshoes,p_ws4_frt1.jpg",
   },
+  {
+    name: "Wave Rider 25",
+    url: "https://m.media-amazon.com/images/I/81HZfOnUtKS._AC_SR1840,1472_.jpg",
+  },
+  {
+    name: "Wave Horizon 5",
+    url: "https://m.media-amazon.com/images/I/81KmfZ5tz9L._AC_SR1840,1472_.jpg",
+  },
+  {
+    name: "Wave Inspire 18",
+    url: "https://m.media-amazon.com/images/I/71LEG3qbGQL._AC_SR1840,1472_.jpg",
+  },
+  {
+    name: "Wave Sky",
+    url: "https://m.media-amazon.com/images/I/81qZKNm9-KL._AC_SR1840,1472_.jpg",
+  },
+  {
+    name: "Wave Rebellion",
+    url: "https://m.media-amazon.com/images/I/81aPHzAxtTL._AC_SR1840,1472_.jpg",
+  },
+  {
+    name: "Wave Sky 4",
+    url: "https://m.media-amazon.com/images/I/71rQLTqsoaL._AC_SR1840,1472_.jpg",
+  },
+  {
+    name: "840v5",
+    url: "https://m.media-amazon.com/images/I/71c7m52SaqL._AC_SR1840,1472_.jpg",
+  },
+  {
+    name: "Fresh Foam 860v12",
+    url: "https://m.media-amazon.com/images/I/81VZioguG3L._AC_SR1840,1472_.jpg",
+  },
+  {
+    name: "Fresh Foam X",
+    url: "https://m.media-amazon.com/images/I/71F+RtZzbEL._AC_SR1840,1472_.jpg",
+  },
+  {
+    name: "Fresh Foam Vongo",
+    url: "https://m.media-amazon.com/images/I/71+b4KSK94S._AC_SR1840,1472_.jpg",
+  },
+  {
+    name: "Fresh Foam Roav",
+    url: "https://m.media-amazon.com/images/I/81D-iRvARtL._AC_SR1840,1472_.jpg",
+  },
+  {
+    name: "Nergize",
+    url: "https://m.media-amazon.com/images/I/712MbiVTBdL._AC_SR920,736_.jpg",
+  },
+  {
+    name: "Minimus TR",
+    url: "https://m.media-amazon.com/images/I/71UGo7tcdyL._AC_SR1840,1472_.jpg",
+  },
 ];
 
 const productphotos = [
@@ -1310,6 +1427,58 @@ const productphotos = [
   {
     productid: 72,
     photoid: 72,
+  },
+  {
+    productid: 73,
+    photoid: 73,
+  },
+  {
+    productid: 74,
+    photoid: 74,
+  },
+  {
+    productid: 75,
+    photoid: 75,
+  },
+  {
+    productid: 76,
+    photoid: 76,
+  },
+  {
+    productid: 77,
+    photoid: 77,
+  },
+  {
+    productid: 78,
+    photoid: 78,
+  },
+  {
+    productid: 79,
+    photoid: 79,
+  },
+  {
+    productid: 80,
+    photoid: 80,
+  },
+  {
+    productid: 81,
+    photoid: 81,
+  },
+  {
+    productid: 82,
+    photoid: 82,
+  },
+  {
+    productid: 83,
+    photoid: 83,
+  },
+  {
+    productid: 84,
+    photoid: 84,
+  },
+  {
+    productid: 85,
+    photoid: 85,
   },
 ];
 
@@ -1704,6 +1873,58 @@ const producttags = [
   {
     productid: 72,
     tags: [4, 20, 34, 40],
+  },
+  {
+    productid: 73, //mizuno
+    tags: [10, 29, 30, 40],
+  },
+  {
+    productid: 74,
+    tags: [10, 21, 30, 40],
+  },
+  {
+    productid: 75,
+    tags: [10, 19, 30, 40],
+  },
+  {
+    productid: 76,
+    tags: [10, 21, 30, 40],
+  },
+  {
+    productid: 77,
+    tags: [10, 29, 30, 40],
+  },
+  {
+    productid: 78,
+    tags: [10, 18, 30, 40],
+  },
+  {
+    productid: 79, //new balance
+    tags: [8, 20, 30, 40],
+  },
+  {
+    productid: 80,
+    tags: [8, 18, 30, 40],
+  },
+  {
+    productid: 81,
+    tags: [8, 18, 30, 40],
+  },
+  {
+    productid: 82,
+    tags: [8, 20, 30, 40],
+  },
+  {
+    productid: 83,
+    tags: [8, 21, 30, 40],
+  },
+  {
+    productid: 84,
+    tags: [8, 18, 30, 40],
+  },
+  {
+    productid: 85,
+    tags: [8, 18, 30, 40],
   },
 ];
 
