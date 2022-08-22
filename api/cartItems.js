@@ -11,6 +11,7 @@ cartItemsRouter.post("/", async (req, res, next) => {
         subtotal: +productprice,
       },
     });
+    updateOrderSubtotal(orderid, productprice);
     res.send(cartItem);
   } catch (error) {
     next(error);
@@ -29,6 +30,7 @@ cartItemsRouter.patch("/increment", async (req, res, next) => {
         subtotal: { increment: +productprice },
       },
     });
+    updateOrderSubtotal(cartItem.orderid, productprice);
 
     res.send(cartItem);
   } catch (error) {
@@ -48,6 +50,7 @@ cartItemsRouter.patch("/decrement", async (req, res, next) => {
         subtotal: { increment: -productprice },
       },
     });
+    updateOrderSubtotal(cartItem.orderid, -productprice);
     res.send(cartItem);
   } catch (error) {
     next(error);
@@ -62,10 +65,26 @@ cartItemsRouter.delete("/delete", async (req, res, next) => {
         id: +id,
       },
     });
+    updateOrderSubtotal(cartItem.orderid, -cartItem.subtotal);
     res.send(cartItem);
   } catch (error) {
     next(error);
   }
 });
+
+const updateOrderSubtotal = async (id, price) => {
+  try {
+    const order = await prisma.orders.update({
+      where: { id: +id },
+      data: {
+        subtotal: { increment: price },
+        tax: { increment: price * 0.07 },
+        total: { increment: price * 1.07 },
+      },
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 
 module.exports = cartItemsRouter;
