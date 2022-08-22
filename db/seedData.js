@@ -449,6 +449,86 @@ const products = [
     description: "Test Description",
     price: 120.0,
   },
+  {
+    name: "GEL-NIMBUS 24",
+    description: "Test Description",
+    price: 160.0,
+  },
+  {
+    name: "GEL-NIMBUS 24",
+    description: "Test Description",
+    price: 160.0,
+  },
+  {
+    name: "GEL-NIMBUS 24",
+    description: "Test Description",
+    price: 160.0,
+  },
+  {
+    name: "GEL-NIMBUS 24",
+    description: "Test Description",
+    price: 160.0,
+  },
+  {
+    name: "GEL-NIMBUS 24",
+    description: "Test Description",
+    price: 160.0,
+  },
+  {
+    name: "GEL-NIMBUS 24",
+    description: "Test Description",
+    price: 160.0,
+  },
+  {
+    name: "GEL-NIMBUS 24",
+    description: "Test Description",
+    price: 160.0,
+  },
+  {
+    name: "GEL-NIMBUS 24",
+    description: "Test Description",
+    price: 160.0,
+  },
+  {
+    name: "GEL-NIMBUS 24",
+    description: "Test Description",
+    price: 160.0,
+  },
+  {
+    name: "GEL-NIMBUS 24",
+    description: "Test Description",
+    price: 160.0,
+  },
+  {
+    name: "GEL-NIMBUS 24",
+    description: "Test Description",
+    price: 160.0,
+  },
+  {
+    name: "GEL-NIMBUS 24",
+    description: "Test Description",
+    price: 160.0,
+  },
+  {
+    name: "GEL-NIMBUS 24",
+    description: "Test Description",
+    price: 160.0,
+  },
+  {
+    name: "GEL-NIMBUS 24",
+    description: "Test Description",
+    price: 160.0,
+  },
+  {
+    name: "GEL-NIMBUS 24",
+    description: "Test Description",
+    price: 160.0,
+  },
+  {
+    name: "GEL-NIMBUS 24",
+    description: "Test Description",
+    price: 160.0,
+  },
 ];
 
 const photos = [
@@ -512,10 +592,74 @@ const photos = [
     name: "Big Kids Disruptor II-photo",
     url: "https://slimages.macysassets.com/is/image/MCY/products/7/optimized/11174917_fpx.tif?op_sharpen=1&wid=700&hei=855&fit=fit,1&fmt=webp",
   },
-  // {
-  //   name: "Big Kids Classic Boots",
-  //   url: "https://slimages.macysassets.com/is/image/MCY/products/3/optimized/19897123_fpx.tif?op_sharpen=1&wid=700&hei=855&fit=fit,1&fmt=webp",
-  // },
+  {
+    name: "Big Kids Classic Boots",
+    url: "https://slimages.macysassets.com/is/image/MCY/products/3/optimized/19897123_fpx.tif?op_sharpen=1&wid=700&hei=855&fit=fit,1&fmt=webp",
+  },
+  {
+    name: "GEL-NIMBUS 24",
+    url: "https://images.asics.com/is/image/asics/1011B359_400_SR_RT_GLB?$zoom$",
+  },
+  {
+    name: "GEL-NIMBUS 24",
+    url: "https://images.asics.com/is/image/asics/1011B359_020_SR_RT_GLB?$zoom$",
+  },
+  {
+    name: "GEL-NIMBUS 24",
+    url: "https://images.asics.com/is/image/asics/1011B359_402_SR_RT_GLB?$zoom$",
+  },
+  {
+    name: "GEL-NIMBUS 24",
+    url: "https://images.asics.com/is/image/asics/1011B359_403_SR_RT_GLB?$zoom$",
+  },
+  {
+    name: "GEL-NIMBUS 24",
+    url: "https://images.asics.com/is/image/asics/1011B359_401_SR_RT_GLB?$zoom$",
+  },
+  {
+    name: "GEL-NIMBUS 24",
+    url: "https://images.asics.com/is/image/asics/1011B359_022_SR_RT_GLB?$zoom$",
+  },
+  {
+    name: "GEL-NIMBUS 24",
+    url: "https://images.asics.com/is/image/asics/1011B359_405_SR_RT_GLB?$zoom$",
+  },
+  {
+    name: "GEL-NIMBUS 24",
+    url: "https://images.asics.com/is/image/asics/1011B359_750_SR_RT_GLB?$zoom$",
+  },
+  {
+    name: "GEL-NIMBUS 24",
+    url: "https://images.asics.com/is/image/asics/1011B359_404_SR_RT_GLB?$zoom$",
+  },
+  {
+    name: "GEL-NIMBUS 24",
+    url: "https://images.asics.com/is/image/asics/1011B359_100_SR_RT_GLB?$zoom$",
+  },
+  {
+    name: "GEL-NIMBUS 24",
+    url: "https://images.asics.com/is/image/asics/1011B359_300_SR_RT_GLB?$zoom$",
+  },
+  {
+    name: "GEL-NIMBUS 24",
+    url: "https://images.asics.com/is/image/asics/1011B359_301_SR_RT_GLB?$zoom$",
+  },
+  {
+    name: "GEL-NIMBUS 24",
+    url: "https://images.asics.com/is/image/asics/1011B359_021_SR_RT_GLB?$zoom$",
+  },
+  {
+    name: "GEL-NIMBUS 24",
+    url: "https://images.asics.com/is/image/asics/1011B359_003_SR_RT_GLB?$zoom$",
+  },
+  {
+    name: "GEL-NIMBUS 24",
+    url: "https://images.asics.com/is/image/asics/1011B359_001_SR_RT_GLB?$zoom$",
+  },
+  {
+    name: "GEL-NIMBUS 24",
+    url: "https://images.asics.com/is/image/asics/1011B359_002_SR_RT_GLB?$zoom$",
+  },
 ];
 
 const productphotos = [
@@ -579,10 +723,74 @@ const productphotos = [
     productid: 15,
     photoid: 15,
   },
-  // {
-  //   productid: 16,
-  //   photoid: 16,
-  // },
+  {
+    productid: 16,
+    photoid: 16,
+  },
+  {
+    productid: 17,
+    photoid: 17,
+  },
+  {
+    productid: 18,
+    photoid: 18,
+  },
+  {
+    productid: 19,
+    photoid: 19,
+  },
+  {
+    productid: 20,
+    photoid: 20,
+  },
+  {
+    productid: 21,
+    photoid: 21,
+  },
+  {
+    productid: 22,
+    photoid: 22,
+  },
+  {
+    productid: 23,
+    photoid: 23,
+  },
+  {
+    productid: 24,
+    photoid: 24,
+  },
+  {
+    productid: 25,
+    photoid: 25,
+  },
+  {
+    productid: 26,
+    photoid: 26,
+  },
+  {
+    productid: 27,
+    photoid: 27,
+  },
+  {
+    productid: 28,
+    photoid: 28,
+  },
+  {
+    productid: 29,
+    photoid: 29,
+  },
+  {
+    productid: 30,
+    photoid: 30,
+  },
+  {
+    productid: 31,
+    photoid: 31,
+  },
+  {
+    productid: 32,
+    photoid: 32,
+  },
 ];
 
 const favorites = [
@@ -751,6 +959,70 @@ const producttags = [
   {
     productid: 16,
     tags: [14, 26, 38, 41],
+  },
+  {
+    productid: 17,
+    tags: [5, 19, 30, 39],
+  },
+  {
+    productid: 18,
+    tags: [5, 24, 30, 39],
+  },
+  {
+    productid: 19,
+    tags: [5, 19, 30, 39],
+  },
+  {
+    productid: 20,
+    tags: [5, 23, 30, 39],
+  },
+  {
+    productid: 21,
+    tags: [5, 19, 30, 39],
+  },
+  {
+    productid: 22,
+    tags: [5, 24, 30, 39],
+  },
+  {
+    productid: 23,
+    tags: [5, 24, 30, 39],
+  },
+  {
+    productid: 24,
+    tags: [5, 23, 30, 39],
+  },
+  {
+    productid: 25,
+    tags: [5, 20, 30, 39],
+  },
+  {
+    productid: 26,
+    tags: [5, 18, 30, 39],
+  },
+  {
+    productid: 27, //green
+    tags: [5, 25, 30, 39],
+  },
+  {
+    productid: 28,
+    tags: [5, 25, 30, 39],
+  },
+  {
+    productid: 29,
+    tags: [5, 28, 30, 39],
+  },
+  {
+    productid: 30,
+    tags: [5, 19, 30, 39],
+  },
+  {
+    productid: 31,
+    tags: [5, 20, 30, 39],
+  },
+  {
+    productid: 32,
+    tags: [5, 18, 30, 39],
   },
 ];
 
