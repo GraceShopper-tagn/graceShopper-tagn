@@ -9,6 +9,17 @@ export const fetchAllOrders = async () => {
   return result;
 };
 
+export const fetchOrderById = async (id) => {
+  const response = await fetch(`/api/orders/${id}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const result = await response.json();
+  return result;
+};
+
 export const fetchFulfilledOrders = async () => {
   const response = await fetch(`/api/orders/fulfilled`, {
     method: "GET",
@@ -26,6 +37,65 @@ export const fetchCart = async () => {
     headers: {
       "Content-Type": "application/json",
     },
+  });
+  const result = await response.json();
+  return result;
+};
+
+export const editOrder = async (
+  orderid,
+  shippingaddress,
+  billingaddress,
+  paymentinfo,
+  fulfilled,
+  userid,
+  orderdate
+) => {
+  const response = await fetch(`/api/orders/${orderid}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      shippingaddress,
+      billingaddress,
+      paymentinfo,
+      fulfilled,
+      userid,
+      orderdate,
+    }),
+  });
+  const result = await response.json();
+  return result;
+};
+
+export const claimOrder = async (orderid, userid) => {
+  const response = await fetch(`/api/orders/${orderid}/claim`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      userid,
+    }),
+  });
+  const result = await response.json();
+  return result;
+};
+
+export const newOrder = async (user, discountid) => {
+  const response = await fetch(`/api/orders/`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      billingaddress: user ? user.billingaddress : undefined,
+      shippingaddress: user ? user.shippingaddress : undefined,
+      paymentinfo: user ? user.paymentinfo : undefined,
+      discountid: discountid ? discountid : undefined,
+      userid: user ? user.id : undefined,
+    }),
   });
   const result = await response.json();
   return result;
