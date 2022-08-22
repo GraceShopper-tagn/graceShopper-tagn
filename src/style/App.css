@@ -1,4 +1,4 @@
-.app-container {
+/* .app-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,6 +34,6 @@ nav > * {
   flex-direction: column;
 } */
 
-.cartItem {
+/* .cartItem {
   border: 1px black solid;
-}
+} */
