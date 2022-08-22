@@ -1,5 +1,4 @@
 const cartItemsRouter = require("express").Router();
-const { cartitems } = require("../db/prisma");
 const prisma = require("../db/prisma");
 
 cartItemsRouter.post("/", async (req, res, next) => {

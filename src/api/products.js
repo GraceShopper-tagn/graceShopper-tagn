@@ -21,7 +21,7 @@ export const getProduct = async (id) => {
   return result;
 };
 
-export const getInventoryBySize = async (id, sizeId) => {
+export const getProductSize = async (id, sizeId) => {
   const response = await fetch(`/api/products/${id}/${sizeId}`, {
     method: "GET",
     headers: {

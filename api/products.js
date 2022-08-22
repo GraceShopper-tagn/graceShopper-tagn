@@ -58,10 +58,6 @@ productRouter.get("/:id/:sizeId", async (req, res, next) => {
       where: {
         productid: +id,
       },
-      select: {
-        inventory: true,
-        sizeid: true,
-      },
     });
     for (productSize of getInventory) {
       if (productSize.sizeid === +sizeId) {

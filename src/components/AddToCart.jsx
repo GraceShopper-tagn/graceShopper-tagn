@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getProduct } from "../api/products";
+import { getProduct, getProductSize } from "../api/products";
 import { fetchCart } from "../api/orders";
 import {
   addToCart,
@@ -8,22 +8,21 @@ import {
   removeFromCart,
 } from "../api/cartItems";
 import { useNavigate } from "react-router-dom";
+import useCart from "../hooks/useCart";
 
 export default function AddToCart() {
+  const { cart } = useCart();
   const [product, setProduct] = useState([]);
   const [orderId, setOrderId] = useState();
   const [cartItemId, setCartItemId] = useState();
   const [quantity, setQuantity] = useState(1);
   const [productPrice, setProductPrice] = useState();
   const [subTotal, setSubTotal] = useState();
+  const [productsize, setProductsize] = useState();
   const localShoeId = JSON.parse(localStorage.getItem("shoeid"));
   const localSizeId = JSON.parse(localStorage.getItem("sizeid"));
   const localInventory = JSON.parse(localStorage.getItem("size-inventory"));
   let navigate = useNavigate();
-
-  // console.log("LOCAL SHOE ID: ", localShoeId);
-  // console.log("LOCAL SIZE ID: ", localSizeId);
-  // console.log("LOCAL INVENTORY: ", localInventory);
 
   useEffect(() => {
     const getOneProduct = async () => {
@@ -31,29 +30,27 @@ export default function AddToCart() {
       setProduct(product);
       setProductPrice(product.price);
       setSubTotal(product.price);
+      const productSize = await getProductSize(localShoeId, localSizeId);
+      setProductsize(productSize);
+      setOrderId(cart.id);
     };
     getOneProduct();
   }, []);
 
   useEffect(() => {
-    const getCart = async () => {
-      const currentCart = await fetchCart();
-      let idToSet = currentCart[0]?.id;
-      setOrderId(idToSet);
-    };
-    getCart();
-  }, []);
-
-  useEffect(() => {
-    const getCartItem = async () => {
-      const currentItem = await addToCart(
-        +orderId,
-        +localSizeId,
-        +productPrice
-      );
-      setCartItemId(currentItem.id);
-    };
-    getCartItem();
+    try {
+      const getCartItem = async () => {
+        // setProductsize
+        const productsizeid = productsize.id;
+        const currentItem = await addToCart(
+          orderId,
+          productsizeid,
+          productPrice
+        );
+        setCartItemId(currentItem.id);
+      };
+      getCartItem();
+    } catch {}
   }, [orderId]);
 
   return (
@@ -78,8 +75,8 @@ export default function AddToCart() {
         <h4>Subtotal: ${subTotal}.00</h4>
 
         <button
-          onClick={async () => {
-            event.preventDefault();
+          onClick={async (e) => {
+            e.preventDefault();
             let decreased = await decreaseQty(cartItemId, productPrice);
             setSubTotal(decreased.subtotal);
             setQuantity(decreased.quantity);
@@ -88,8 +85,8 @@ export default function AddToCart() {
           -
         </button>
         <button
-          onClick={async () => {
-            event.preventDefault();
+          onClick={async (e) => {
+            e.preventDefault();
             let increased = await increaseQty(cartItemId, productPrice);
             setSubTotal(increased.subtotal);
             setQuantity(increased.quantity);
@@ -98,8 +95,8 @@ export default function AddToCart() {
           +
         </button>
         <button
-          onClick={async () => {
-            event.preventDefault();
+          onClick={async (e) => {
+            e.preventDefault();
             let removed = await removeFromCart(cartItemId);
             navigate(`/products/${localShoeId}`);
           }}

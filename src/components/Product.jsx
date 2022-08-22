@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { getProduct } from "../api/products";
 import { useParams } from "react-router-dom";
-import { getInventoryBySize } from "../api/products";
+import { getProductSize } from "../api/products";
 import { useNavigate } from "react-router-dom";
+import { addToCart } from "../api/cartItems";
 
 export default function Product() {
   const { id } = useParams();
@@ -34,7 +35,7 @@ export default function Product() {
 
   useEffect(() => {
     const getSizeInventory = async () => {
-      const sizeInventory = await getInventoryBySize(id, selectedSizeId);
+      const sizeInventory = await getProductSize(id, selectedSizeId);
       let inventory = sizeInventory.inventory;
       localStorage.setItem("size-inventory", JSON.stringify(inventory));
       setSingleSizeInventory(inventory);
