@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { getProduct } from "../api/products";
-import { Navigate, useLocation, useParams } from "react-router-dom";
 import { fetchCart } from "../api/orders";
 import {
   addToCart,
@@ -19,7 +18,12 @@ export default function AddToCart() {
   const [subTotal, setSubTotal] = useState();
   const localShoeId = JSON.parse(localStorage.getItem("shoeid"));
   const localSizeId = JSON.parse(localStorage.getItem("sizeid"));
+  const localInventory = JSON.parse(localStorage.getItem("size-inventory"));
   let navigate = useNavigate();
+
+  // console.log("LOCAL SHOE ID: ", localShoeId);
+  // console.log("LOCAL SIZE ID: ", localSizeId);
+  // console.log("LOCAL INVENTORY: ", localInventory);
 
   useEffect(() => {
     const getOneProduct = async () => {
@@ -34,15 +38,11 @@ export default function AddToCart() {
   useEffect(() => {
     const getCart = async () => {
       const currentCart = await fetchCart();
-      console.log("CURRENT CART: ", currentCart);
-      //   console.log("ORDER ID: ", currentCart[0].id);
-      let idToSet = currentCart[0]?.id ? currentCart[0]?.id : null;
-      console.log("ID TO SET: ", idToSet);
+      let idToSet = currentCart[0]?.id;
       setOrderId(idToSet);
-      //   console.log("ORDER ID: ", orderId);
     };
     getCart();
-  }, [product]);
+  }, []);
 
   useEffect(() => {
     const getCartItem = async () => {
@@ -51,7 +51,6 @@ export default function AddToCart() {
         +localSizeId,
         +productPrice
       );
-      console.log("CURRENT ITEM: ", currentItem.id);
       setCartItemId(currentItem.id);
     };
     getCartItem();

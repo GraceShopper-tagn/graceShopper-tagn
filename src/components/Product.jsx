@@ -27,7 +27,6 @@ export default function Product() {
         return <option value={size.sizes.id}>{size.sizes.size}</option>;
       });
       setSizesToDisplay(sizesToDisplay);
-      //setSelectedSizeId(1);
     };
 
     getSizes();
@@ -36,8 +35,9 @@ export default function Product() {
   useEffect(() => {
     const getSizeInventory = async () => {
       const sizeInventory = await getInventoryBySize(id, selectedSizeId);
-      let setInventory = sizeInventory.inventory;
-      setSingleSizeInventory(setInventory);
+      let inventory = sizeInventory.inventory;
+      localStorage.setItem("size-inventory", JSON.stringify(inventory));
+      setSingleSizeInventory(inventory);
     };
     getSizeInventory();
   }, [selectedSizeId]);
