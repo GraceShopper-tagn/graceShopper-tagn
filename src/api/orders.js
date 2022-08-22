@@ -100,3 +100,18 @@ export const newOrder = async (user, discountid) => {
   const result = await response.json();
   return result;
 };
+
+// export const seedSubtotal = async (orderid, quantity, price) => {
+//   const response = await fetch(`/api/orders/${orderid}/seed`, {
+//     method: "PATCH",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({
+//       quantity,
+//       price,
+//     }),
+//   });
+//   const result = await response.json();
+//   return result;
+// };

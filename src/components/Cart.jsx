@@ -4,6 +4,7 @@ import useCart from "../hooks/useCart";
 import { editOrder } from "../api/orders";
 import useAuth from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import EditQuantity from "./EditQuantity";
 
 export default function Cart() {
   const { user } = useAuth();
@@ -93,6 +94,7 @@ export default function Cart() {
             <h3>Price: {displayPrice(price)}</h3>
             <h3>Quantity: {quantity}</h3>
             <h3>Subtotal: {displayPrice(subtotal)}</h3>
+            <EditQuantity cartItemId={cartItem.id} productPrice={price} />
           </div>
         );
       });
