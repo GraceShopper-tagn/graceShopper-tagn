@@ -1748,28 +1748,28 @@ const productphotos = [
   },
   {
     productid: 103,
-    photoid: 10,
+    photoid: 103,
   },
   {
     productid: 104,
-    photoid: 10,
+    photoid: 104,
   },
   {
     productid: 105,
-    photoid: 10,
+    photoid: 105,
   },
   {
     productid: 106,
-    photoid: 10,
+    photoid: 106,
   },
   {
     productid: 107,
-    photoid: 10,
+    photoid: 107,
   },
-  {
-    productid: 108,
-    photoid: 10,
-  },
+  // {
+  //   productid: 108,
+  //   photoid: 108,
+  // },
 ];
 
 const favorites = [
@@ -2286,23 +2286,23 @@ const producttags = [
     tags: [8, 18, 34, 41],
   },
   {
-    productid: 10, //crocs
+    productid: 103, //crocs
     tags: [16, 18, 34, 41],
   },
   {
-    productid: 10,
+    productid: 104,
     tags: [16, 29, 34, 41],
   },
   {
-    productid: 10,
+    productid: 105,
     tags: [16, 23, 34, 41],
   },
   {
-    productid: 10,
+    productid: 106,
     tags: [16, 19, 34, 41],
   },
   {
-    productid: 10,
+    productid: 107,
     tags: [16, 21, 34, 41],
   },
 ];
