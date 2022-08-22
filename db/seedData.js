@@ -649,6 +649,86 @@ const products = [
     description: "Test Description",
     price: 140.0,
   },
+  {
+    name: "Metcon",
+    description: "Test Description",
+    price: 120.0,
+  },
+  {
+    name: "Metcon",
+    description: "Test Description",
+    price: 120.0,
+  },
+  {
+    name: "Metcon",
+    description: "Test Description",
+    price: 120.0,
+  },
+  {
+    name: "Metcon",
+    description: "Test Description",
+    price: 120.0,
+  },
+  {
+    name: "Metcon",
+    description: "Test Description",
+    price: 120.0,
+  },
+  {
+    name: "Metcon",
+    description: "Test Description",
+    price: 120.0,
+  },
+  {
+    name: "Metcon",
+    description: "Test Description",
+    price: 120.0,
+  },
+  {
+    name: "ZoomX Invincible",
+    description: "Test Description",
+    price: 180.0,
+  },
+  {
+    name: "ZoomX Invincible",
+    description: "Test Description",
+    price: 180.0,
+  },
+  {
+    name: "ZoomX Invincible",
+    description: "Test Description",
+    price: 180.0,
+  },
+  {
+    name: "Manteca",
+    description: "Test Description",
+    price: 70.0,
+  },
+  {
+    name: "Manteca",
+    description: "Test Description",
+    price: 70.0,
+  },
+  {
+    name: "Manteca",
+    description: "Test Description",
+    price: 70.0,
+  },
+  {
+    name: "Manteca",
+    description: "Test Description",
+    price: 70.0,
+  },
+  {
+    name: "Manteca",
+    description: "Test Description",
+    price: 70.0,
+  },
+  {
+    name: "Chelsea",
+    description: "Test Description",
+    price: 60.0,
+  },
 ];
 
 const photos = [
@@ -876,6 +956,70 @@ const photos = [
     name: "All Love Lightning Trainer",
     url: "https://cdn.shopify.com/s/files/1/0558/4169/products/AYNL_RedTrainer_SF_LT-1500-1000-4_1.jpg?v=1643672164",
   },
+  {
+    name: "Metcon",
+    url: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/dec6a91c-e68d-431b-880b-65a63fd17803/free-metcon-4-womens-training-shoes-pxHVt9.png",
+  },
+  {
+    name: "Metcon",
+    url: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/572f528f-e372-4d86-83af-12d2d72babb6/free-metcon-4-womens-training-shoes-pxHVt9.png",
+  },
+  {
+    name: "Metcon",
+    url: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/650e0442-897c-4db2-8802-c9cc46ff124b/free-metcon-4-womens-training-shoes-pxHVt9.png",
+  },
+  {
+    name: "Metcon",
+    url: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/b44022f0-406d-4ca3-a29c-b6f39e80c9ca/free-metcon-4-womens-training-shoes-pxHVt9.png",
+  },
+  {
+    name: "Metcon",
+    url: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/9dc60cdf-80bd-4cc2-955f-48b1de50a599/free-metcon-4-womens-training-shoes-pxHVt9.png",
+  },
+  {
+    name: "Metcon",
+    url: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/068cf820-ea0a-4690-9fe5-aae40287d026/free-metcon-4-womens-training-shoes-pxHVt9.png",
+  },
+  {
+    name: "Metcon",
+    url: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/897b359d-f2f8-4379-b875-549aadbf52d6/free-metcon-4-womens-training-shoes-pxHVt9.png",
+  },
+  {
+    name: "ZoomX Invincible",
+    url: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/76e6dd8d-5a2e-435c-bd9b-294b2e929d95/zoomx-invincible-run-flyknit-2-womens-road-running-shoes-gxbpXH.png",
+  },
+  {
+    name: "ZoomX Invincible",
+    url: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/f7543e21-3a0a-41e7-8a4a-b0519128178c/zoomx-invincible-run-flyknit-2-womens-road-running-shoes-gxbpXH.png",
+  },
+  {
+    name: "ZoomX Invincible",
+    url: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/c613e5c0-207b-49c4-abf7-bcb620b45ca7/zoomx-invincible-run-flyknit-2-womens-road-running-shoes-gxbpXH.png",
+  },
+  {
+    name: "Manteca",
+    url: "https://images.boardriders.com/global/dcshoes-products/all/default/xlarge/adjs100147_dcshoes,p_ws4_frt1.jpg",
+  },
+  {
+    name: "Manteca",
+    url: "https://images.boardriders.com/global/dcshoes-products/all/default/xlarge/adjs100147_dcshoes,p_wpn_frt1.jpg",
+  },
+  {
+    name: "Manteca",
+    url: "https://images.boardriders.com/global/dcshoes-products/all/default/xlarge/adjs100147_dcshoes,p_lep_frt1.jpg",
+  },
+  {
+    name: "Manteca",
+    url: "https://images.boardriders.com/global/dcshoes-products/all/default/xlarge/adjs100147_dcshoes,p_kmi_frt1.jpg",
+  },
+  {
+    name: "Manteca",
+    url: "https://images.boardriders.com/global/dcshoes-products/all/default/xlarge/adjs100147_dcshoes,p_ddm_frt1.jpg",
+  },
+  {
+    name: "Chelsea",
+    url: "https://images.boardriders.com/global/dcshoes-products/all/default/xlarge/303226_dcshoes,p_ws4_frt1.jpg",
+  },
 ];
 
 const productphotos = [
@@ -1102,6 +1246,70 @@ const productphotos = [
   {
     productid: 56,
     photoid: 56,
+  },
+  {
+    productid: 57,
+    photoid: 57,
+  },
+  {
+    productid: 58,
+    photoid: 58,
+  },
+  {
+    productid: 59,
+    photoid: 59,
+  },
+  {
+    productid: 60,
+    photoid: 60,
+  },
+  {
+    productid: 61,
+    photoid: 61,
+  },
+  {
+    productid: 62,
+    photoid: 62,
+  },
+  {
+    productid: 63,
+    photoid: 63,
+  },
+  {
+    productid: 64,
+    photoid: 64,
+  },
+  {
+    productid: 65,
+    photoid: 65,
+  },
+  {
+    productid: 66,
+    photoid: 66,
+  },
+  {
+    productid: 67,
+    photoid: 67,
+  },
+  {
+    productid: 68,
+    photoid: 68,
+  },
+  {
+    productid: 69,
+    photoid: 69,
+  },
+  {
+    productid: 70,
+    photoid: 70,
+  },
+  {
+    productid: 71,
+    photoid: 71,
+  },
+  {
+    productid: 72,
+    photoid: 72,
   },
 ];
 
@@ -1431,6 +1639,71 @@ const producttags = [
   {
     productid: 56,
     tags: [9, 28, 30, 39],
+  },
+  {
+    //womens shoe start
+    productid: 57,
+    tags: [3, 28, 30, 40], //nikes
+  },
+  {
+    productid: 58,
+    tags: [3, 19, 30, 40],
+  },
+  {
+    productid: 59,
+    tags: [3, 25, 30, 40],
+  },
+  {
+    productid: 60,
+    tags: [3, 18, 30, 40],
+  },
+  {
+    productid: 61,
+    tags: [3, 20, 30, 40],
+  },
+  {
+    productid: 62,
+    tags: [3, 28, 30, 40],
+  },
+  {
+    productid: 63,
+    tags: [3, 20, 30, 40],
+  },
+  {
+    productid: 64,
+    tags: [3, 19, 32, 40],
+  },
+  {
+    productid: 65,
+    tags: [3, 18, 32, 40],
+  },
+  {
+    productid: 66,
+    tags: [3, 19, 32, 40],
+  },
+  {
+    productid: 67, //DC
+    tags: [4, 20, 34, 40],
+  },
+  {
+    productid: 68,
+    tags: [4, 29, 34, 40],
+  },
+  {
+    productid: 69,
+    tags: [4, 26, 34, 40],
+  },
+  {
+    productid: 70,
+    tags: [4, 18, 34, 40],
+  },
+  {
+    productid: 71,
+    tags: [4, 19, 34, 40],
+  },
+  {
+    productid: 72,
+    tags: [4, 20, 34, 40],
   },
 ];
 
