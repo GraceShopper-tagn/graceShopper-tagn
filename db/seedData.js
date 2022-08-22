@@ -1001,7 +1001,7 @@ const producttags = [
     tags: [5, 18, 30, 39],
   },
   {
-    productid: 27, //green
+    productid: 27,
     tags: [5, 25, 30, 39],
   },
   {
