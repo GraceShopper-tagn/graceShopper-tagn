@@ -549,6 +549,61 @@ const products = [
     description: "Test Description",
     price: 165.0,
   },
+  {
+    name: "Speedgoat 5",
+    description: "Test Description",
+    price: 150.0,
+  },
+  {
+    name: "Gaviota 4",
+    description: "Test Description",
+    price: 170.0,
+  },
+  {
+    name: "Rincon 3",
+    description: "Test Description",
+    price: 125.0,
+  },
+  {
+    name: "Mafate Speed 3",
+    description: "Test Description",
+    price: 180.0,
+  },
+  {
+    name: "Stinson ATR 6",
+    description: "Test Description",
+    price: 150.0,
+  },
+  {
+    name: "Carbon X 3",
+    description: "Test Description",
+    price: 200.0,
+  },
+  {
+    name: "Kawana",
+    description: "Test Description",
+    price: 140.0,
+  },
+  {
+    name: "Mach Supersonic",
+    description: "Test Description",
+    price: 150.0,
+  },
+  {
+    name: "Tecton X",
+    description: "Test Description",
+    price: 200.0,
+  },
+  {
+    name: "Torrent 2",
+    description: "Test Description",
+    price: 125.0,
+  },
+  {
+    name: "Clifton Edge",
+    description: "Test Description",
+    price: 150.0,
+  },
 ];
 
 const photos = [
@@ -696,6 +751,50 @@ const photos = [
     name: "Bondi 8",
     url: "https://m.media-amazon.com/images/I/71bVPpT6xxL._AC_SR1840,1472_.jpg",
   },
+  {
+    name: "Speedgoat 5",
+    url: "https://m.media-amazon.com/images/I/71RTIkc4jzL._AC_SR1840,1472_.jpg",
+  },
+  {
+    name: "Gaviota 4",
+    url: "https://m.media-amazon.com/images/I/81qRDx4K9LL._AC_SR1840,1472_.jpg",
+  },
+  {
+    name: "Rincon 3",
+    url: "https://m.media-amazon.com/images/I/71Mb8XzdRxL._AC_SR1840,1472_.jpg",
+  },
+  {
+    name: "Mafate Speed 3",
+    url: "https://m.media-amazon.com/images/I/7163H+GCkXL._AC_SR1840,1472_.jpg",
+  },
+  {
+    name: "Stinson ATR 6",
+    url: "https://m.media-amazon.com/images/I/71wNnahZBCL._AC_SR1840,1472_.jpg",
+  },
+  {
+    name: "Carbon X 3",
+    url: "https://m.media-amazon.com/images/I/71y0jUh7+GL._AC_SR1840,1472_.jpg",
+  },
+  {
+    name: "Kawana",
+    url: "https://m.media-amazon.com/images/I/71ajwh3W5kL._AC_SR1840,1472_.jpg",
+  },
+  {
+    name: "Mach Supersonic",
+    url: "https://m.media-amazon.com/images/I/718etfaeAOL._AC_SR1840,1472_.jpg",
+  },
+  {
+    name: "Tecton X",
+    url: "https://m.media-amazon.com/images/I/81mNQqP-GzL._AC_SR1840,1472_.jpg",
+  },
+  {
+    name: "Torrent 2",
+    url: "https://m.media-amazon.com/images/I/81nxC4ofzoL._AC_SR1840,1472_.jpg",
+  },
+  {
+    name: "Clifton Edge",
+    url: "https://m.media-amazon.com/images/I/71ehfjzVP-L._AC_SR920,736_.jpg",
+  },
 ];
 
 const productphotos = [
@@ -842,6 +941,50 @@ const productphotos = [
   {
     productid: 36,
     photoid: 36,
+  },
+  {
+    productid: 37,
+    photoid: 37,
+  },
+  {
+    productid: 38,
+    photoid: 38,
+  },
+  {
+    productid: 39,
+    photoid: 39,
+  },
+  {
+    productid: 40,
+    photoid: 40,
+  },
+  {
+    productid: 41,
+    photoid: 41,
+  },
+  {
+    productid: 42,
+    photoid: 42,
+  },
+  {
+    productid: 43,
+    photoid: 43,
+  },
+  {
+    productid: 44,
+    photoid: 44,
+  },
+  {
+    productid: 45,
+    photoid: 45,
+  },
+  {
+    productid: 46,
+    photoid: 46,
+  },
+  {
+    productid: 47,
+    photoid: 47,
   },
 ];
 
@@ -1013,7 +1156,7 @@ const producttags = [
     tags: [14, 26, 38, 41],
   },
   {
-    productid: 17,
+    productid: 17, //asics
     tags: [5, 19, 30, 39],
   },
   {
@@ -1091,6 +1234,50 @@ const producttags = [
   {
     productid: 36,
     tags: [6, 24, 30, 39],
+  },
+  {
+    productid: 37,
+    tags: [6, 19, 30, 39],
+  },
+  {
+    productid: 38,
+    tags: [6, 19, 30, 39],
+  },
+  {
+    productid: 39,
+    tags: [6, 18, 30, 39],
+  },
+  {
+    productid: 40,
+    tags: [6, 19, 30, 39],
+  },
+  {
+    productid: 41,
+    tags: [6, 18, 30, 39],
+  },
+  {
+    productid: 42,
+    tags: [6, 27, 30, 39],
+  },
+  {
+    productid: 43,
+    tags: [6, 20, 30, 39],
+  },
+  {
+    productid: 44,
+    tags: [6, 22, 30, 39],
+  },
+  {
+    productid: 45,
+    tags: [6, 22, 30, 39],
+  },
+  {
+    productid: 46,
+    tags: [6, 24, 30, 39],
+  },
+  {
+    productid: 47,
+    tags: [6, 20, 30, 39],
   },
 ];
 
