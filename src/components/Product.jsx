@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { getProduct } from "../api/products";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getInventoryBySize } from "../api/products";
+import { useNavigate } from "react-router-dom";
 
 export default function Product() {
   const { id } = useParams();
@@ -9,12 +10,12 @@ export default function Product() {
   const [sizesToDisplay, setSizesToDisplay] = useState([]);
   const [selectedSizeId, setSelectedSizeId] = useState(1);
   const [singleSizeInventory, setSingleSizeInventory] = useState();
-  const [sizeId, setSizeid] = useState();
+
+  let navigate = useNavigate();
 
   useEffect(() => {
     const getOneProduct = async () => {
       const product = await getProduct(id);
-      console.log("One Product: ", product);
       setProduct(product);
     };
     getOneProduct();
@@ -26,7 +27,6 @@ export default function Product() {
         return <option value={size.sizes.id}>{size.sizes.size}</option>;
       });
       setSizesToDisplay(sizesToDisplay);
-      selectedSizeId(1);
     };
 
     getSizes();
@@ -35,14 +35,16 @@ export default function Product() {
   useEffect(() => {
     const getSizeInventory = async () => {
       const sizeInventory = await getInventoryBySize(id, selectedSizeId);
-      console.log("Size Inventory: ", sizeInventory);
-      console.log("sizeInventory.inventory: ", sizeInventory.inventory);
-      let setInventory = +sizeInventory.inventory;
-      setSingleSizeInventory(setInventory);
-      console.log("SINGLE SIZE INVENTORY!!!: ", singleSizeInventory);
+      let inventory = sizeInventory.inventory;
+      localStorage.setItem("size-inventory", JSON.stringify(inventory));
+      setSingleSizeInventory(inventory);
     };
     getSizeInventory();
   }, [selectedSizeId]);
+
+  useEffect(() => {
+    localStorage.setItem("shoeid", JSON.stringify(id));
+  }, []);
 
   return (
     <div>
@@ -61,15 +63,26 @@ export default function Product() {
       <form>
         <select
           onChange={async (e) => {
+            localStorage.setItem("sizeid", JSON.stringify(e.target.value));
             setSelectedSizeId(e.target.value);
           }}
           id="shoe-size"
         >
           {sizesToDisplay}
         </select>
-        <h4>There are {singleSizeInventory} of this model left.</h4>
+        <h4>
+          There are {singleSizeInventory} of this model left in this size.
+        </h4>
+      </form>
+      <form>
+        <button
+          onClick={() => {
+            navigate(`/addtocart`);
+          }}
+        >
+          Add To Cart
+        </button>
       </form>
     </div>
-    //need to add button for add cart item
   );
 }

@@ -11,7 +11,6 @@ export const getAllProducts = async () => {
 };
 
 export const getProduct = async (id) => {
-  console.log("product id: ", id);
   const response = await fetch(`/api/products/${id}`, {
     method: "GET",
     headers: {
@@ -19,12 +18,10 @@ export const getProduct = async (id) => {
     },
   });
   const result = await response.json();
-  console.log("get product result", result);
   return result;
 };
 
 export const getInventoryBySize = async (id, sizeId) => {
-  // console.log("product id: ", id);
   const response = await fetch(`/api/products/${id}/${sizeId}`, {
     method: "GET",
     headers: {
@@ -32,6 +29,6 @@ export const getInventoryBySize = async (id, sizeId) => {
     },
   });
   const result = await response.json();
-  console.log("GET INVENTORY BY SIZE RESULT: ", result);
+
   return result;
 };
