@@ -859,6 +859,26 @@ const products = [
     description: "Test Description",
     price: 70.0,
   },
+  {
+    name: "Driftie",
+    description: "Test Description",
+    price: 80.0,
+  },
+  {
+    name: "990v3",
+    description: "Test Description",
+    price: 110.0,
+  },
+  {
+    name: "990v4",
+    description: "Test Description",
+    price: 110.0,
+  },
+  {
+    name: "990v5",
+    description: "Test Description",
+    price: 110.0,
+  },
 ];
 
 const photos = [
@@ -1254,6 +1274,22 @@ const photos = [
     name: "DinaSoft Nitrel V8",
     url: "https://nb.scene7.com/is/image/NB/wtntrln5_nb_05_i?$pdpflexf2$&fmt=webp&wid=472&hei=472",
   },
+  {
+    name: "Driftie",
+    url: "https://slimages.macysassets.com/is/image/MCY/products/4/optimized/21708564_fpx.tif?op_sharpen=1&wid=700&hei=855&fit=fit,1&fmt=webp",
+  },
+  {
+    name: "990v3",
+    url: "https://nb.scene7.com/is/image/NB/gc990gy3_nb_05_i?$pdpflexf2$&fmt=webp&wid=472&hei=472",
+  },
+  {
+    name: "990v4",
+    url: "https://nb.scene7.com/is/image/NB/gc990nb3_nb_05_i?$pdpflexf2$&fmt=webp&wid=472&hei=472",
+  },
+  {
+    name: "990v5",
+    url: "https://nb.scene7.com/is/image/NB/gc990bs3_nb_05_i?$pdpflexf2$&fmt=webp&wid=472&hei=472",
+  },
 ];
 
 const productphotos = [
@@ -1648,6 +1684,22 @@ const productphotos = [
   {
     productid: 98,
     photoid: 98,
+  },
+  {
+    productid: 99,
+    photoid: 99,
+  },
+  {
+    productid: 100,
+    photoid: 100,
+  },
+  {
+    productid: 101,
+    photoid: 101,
+  },
+  {
+    productid: 102,
+    photoid: 102,
   },
 ];
 
@@ -2146,6 +2198,22 @@ const producttags = [
   {
     productid: 98,
     tags: [8, 28, 37, 40],
+  },
+  {
+    productid: 99,
+    tags: [15, 22, 34, 41],
+  },
+  {
+    productid: 100,
+    tags: [8, 24, 34, 41],
+  },
+  {
+    productid: 101,
+    tags: [8, 19, 34, 41],
+  },
+  {
+    productid: 102,
+    tags: [8, 18, 34, 41],
   },
 ];
 
