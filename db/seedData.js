@@ -879,6 +879,31 @@ const products = [
     description: "Test Description",
     price: 110.0,
   },
+  {
+    name: "Classic Clogs",
+    description: "Test Description",
+    price: 35.0,
+  },
+  {
+    name: "Classic Clogs",
+    description: "Test Description",
+    price: 35.0,
+  },
+  {
+    name: "Classic Clogs",
+    description: "Test Description",
+    price: 35.0,
+  },
+  {
+    name: "Classic Clogs",
+    description: "Test Description",
+    price: 35.0,
+  },
+  {
+    name: "Classic Clogs",
+    description: "Test Description",
+    price: 35.0,
+  },
 ];
 
 const photos = [
@@ -1290,6 +1315,26 @@ const photos = [
     name: "990v5",
     url: "https://nb.scene7.com/is/image/NB/gc990bs3_nb_05_i?$pdpflexf2$&fmt=webp&wid=472&hei=472",
   },
+  {
+    name: "Classic Clogs",
+    url: "https://slimages.macysassets.com/is/image/MCY/products/2/optimized/8441012_fpx.tif?op_sharpen=1&wid=700&hei=855&fit=fit,1&fmt=webp",
+  },
+  {
+    name: "Classic Clogs",
+    url: "https://media.crocs.com/images/t_pdphero/f_auto%2Cq_auto/products/204536_669_ALT100/crocs",
+  },
+  {
+    name: "Classic Clogs",
+    url: "https://media.crocs.com/images/t_pdphero/f_auto%2Cq_auto/products/204536_7C1_ALT100/crocs",
+  },
+  {
+    name: "Classic Clogs",
+    url: "https://media.crocs.com/images/t_pdphero/f_auto%2Cq_auto/products/204536_4SN_ALT100/crocs",
+  },
+  {
+    name: "Classic Clogs",
+    url: "https://media.crocs.com/images/t_pdphero/f_auto%2Cq_auto/products/204536_5PR_ALT100/crocs",
+  },
 ];
 
 const productphotos = [
@@ -1700,6 +1745,30 @@ const productphotos = [
   {
     productid: 102,
     photoid: 102,
+  },
+  {
+    productid: 103,
+    photoid: 10,
+  },
+  {
+    productid: 104,
+    photoid: 10,
+  },
+  {
+    productid: 105,
+    photoid: 10,
+  },
+  {
+    productid: 106,
+    photoid: 10,
+  },
+  {
+    productid: 107,
+    photoid: 10,
+  },
+  {
+    productid: 108,
+    photoid: 10,
   },
 ];
 
@@ -2200,11 +2269,12 @@ const producttags = [
     tags: [8, 28, 37, 40],
   },
   {
-    productid: 99,
+    //kids start
+    productid: 99, //driftie
     tags: [15, 22, 34, 41],
   },
   {
-    productid: 100,
+    productid: 100, //new balance
     tags: [8, 24, 34, 41],
   },
   {
@@ -2214,6 +2284,26 @@ const producttags = [
   {
     productid: 102,
     tags: [8, 18, 34, 41],
+  },
+  {
+    productid: 10, //crocs
+    tags: [16, 18, 34, 41],
+  },
+  {
+    productid: 10,
+    tags: [16, 29, 34, 41],
+  },
+  {
+    productid: 10,
+    tags: [16, 23, 34, 41],
+  },
+  {
+    productid: 10,
+    tags: [16, 19, 34, 41],
+  },
+  {
+    productid: 10,
+    tags: [16, 21, 34, 41],
   },
 ];
 
