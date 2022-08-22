@@ -904,6 +904,71 @@ const products = [
     description: "Test Description",
     price: 35.0,
   },
+  {
+    name: "Little Posite One",
+    description: "Test Description",
+    price: 90.0,
+  },
+  {
+    name: "Little Posite One",
+    description: "Test Description",
+    price: 90.0,
+  },
+  {
+    name: "Little Posite One",
+    description: "Test Description",
+    price: 90.0,
+  },
+  {
+    name: "Little Posite One",
+    description: "Test Description",
+    price: 90.0,
+  },
+  {
+    name: "Lynx Zero",
+    description: "Test Description",
+    price: 55.0,
+  },
+  {
+    name: "Lynx Zero",
+    description: "Test Description",
+    price: 55.0,
+  },
+  {
+    name: "Lynx Zero",
+    description: "Test Description",
+    price: 55.0,
+  },
+  {
+    name: "Lynx Zero",
+    description: "Test Description",
+    price: 55.0,
+  },
+  {
+    name: "Lynx Zero",
+    description: "Test Description",
+    price: 55.0,
+  },
+  {
+    name: "Lynx Zero",
+    description: "Test Description",
+    price: 55.0,
+  },
+  {
+    name: "Manteca 4",
+    description: "Test Description",
+    price: 55.0,
+  },
+  {
+    name: "Manteca 5",
+    description: "Test Description",
+    price: 55.0,
+  },
+  {
+    name: "Manteca 6",
+    description: "Test Description",
+    price: 55.0,
+  },
 ];
 
 const photos = [
@@ -1334,6 +1399,58 @@ const photos = [
   {
     name: "Classic Clogs",
     url: "https://media.crocs.com/images/t_pdphero/f_auto%2Cq_auto/products/204536_5PR_ALT100/crocs",
+  },
+  {
+    name: "Little Posite One",
+    url: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/e443a2e6-f1fe-4500-918b-d8f570f4c385/little-posite-one-big-kids-shoes-vXrPpL.png",
+  },
+  {
+    name: "Little Posite One",
+    url: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/1823cff9-9497-4189-90d6-3edb40d336f9/little-posite-one-big-kids-shoes-vXrPpL.png",
+  },
+  {
+    name: "Little Posite One",
+    url: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/c2efa932-27cb-418f-a062-09dcc63585ce/little-posite-one-big-kids-shoes-vXrPpL.png",
+  },
+  {
+    name: "Little Posite One",
+    url: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/1a0f6f54-e271-4645-a8c0-c514477927ed/little-posite-one-big-kids-shoes-vXrPpL.png",
+  },
+  {
+    name: "Lynx Zero",
+    url: "https://images.boardriders.com/global/dcshoes-products/all/default/xlarge/adbs100269_dcshoes,p_wea_frt1.jpg",
+  },
+  {
+    name: "Lynx Zero",
+    url: "https://images.boardriders.com/global/dcshoes-products/all/default/xlarge/adbs100269_dcshoes,p_ca2_frt1.jpg",
+  },
+  {
+    name: "Lynx Zero",
+    url: "https://images.boardriders.com/global/dcshoes-products/all/default/xlarge/adbs100269_dcshoes,p_br4_frt1.jpg",
+  },
+  {
+    name: "Lynx Zero",
+    url: "https://images.boardriders.com/global/dcshoes-products/all/default/xlarge/adbs100269_dcshoes,p_xssw_frt1.jpg",
+  },
+  {
+    name: "Lynx Zero",
+    url: "https://images.boardriders.com/global/dcshoes-products/all/default/xlarge/adbs100269_dcshoes,p_xksw_frt1.jpg",
+  },
+  {
+    name: "Lynx Zero",
+    url: "https://images.boardriders.com/global/dcshoes-products/all/default/xlarge/adbs100269_dcshoes,p_bkw_frt1.jpg",
+  },
+  {
+    name: "Manteca 4",
+    url: "https://images.boardriders.com/global/dcshoes-products/all/default/xlarge/adbs300378_dcshoes,p_xssb_frt1.jpg",
+  },
+  {
+    name: "Manteca 5",
+    url: "https://images.boardriders.com/global/dcshoes-products/all/default/xlarge/adbs300378_dcshoes,p_bs5_frt1.jpg",
+  },
+  {
+    name: "Manteca 6",
+    url: "https://images.boardriders.com/global/dcshoes-products/all/default/xlarge/adbs300378_dcshoes,p_bkw_frt1.jpg",
   },
 ];
 
@@ -1766,10 +1883,58 @@ const productphotos = [
     productid: 107,
     photoid: 107,
   },
-  // {
-  //   productid: 108,
-  //   photoid: 108,
-  // },
+  {
+    productid: 108,
+    photoid: 108,
+  },
+  {
+    productid: 109,
+    photoid: 109,
+  },
+  {
+    productid: 110,
+    photoid: 110,
+  },
+  {
+    productid: 111,
+    photoid: 111,
+  },
+  {
+    productid: 112,
+    photoid: 112,
+  },
+  {
+    productid: 113,
+    photoid: 113,
+  },
+  {
+    productid: 114,
+    photoid: 114,
+  },
+  {
+    productid: 115,
+    photoid: 115,
+  },
+  {
+    productid: 116,
+    photoid: 116,
+  },
+  {
+    productid: 117,
+    photoid: 117,
+  },
+  {
+    productid: 118,
+    photoid: 118,
+  },
+  {
+    productid: 119,
+    photoid: 119,
+  },
+  {
+    productid: 120,
+    photoid: 120,
+  },
 ];
 
 const favorites = [
@@ -2304,6 +2469,58 @@ const producttags = [
   {
     productid: 107,
     tags: [16, 21, 34, 41],
+  },
+  {
+    productid: 108, //nike
+    tags: [3, 18, 32, 41],
+  },
+  {
+    productid: 109,
+    tags: [3, 19, 32, 41],
+  },
+  {
+    productid: 110,
+    tags: [3, 20, 32, 41],
+  },
+  {
+    productid: 111,
+    tags: [3, 25, 32, 41],
+  },
+  {
+    productid: 112, //DC
+    tags: [4, 26, 33, 41],
+  },
+  {
+    productid: 113,
+    tags: [4, 18, 33, 41],
+  },
+  {
+    productid: 114,
+    tags: [4, 19, 33, 41],
+  },
+  {
+    productid: 115,
+    tags: [4, 24, 33, 41],
+  },
+  {
+    productid: 116,
+    tags: [4, 20, 33, 41],
+  },
+  {
+    productid: 117,
+    tags: [4, 18, 33, 41],
+  },
+  {
+    productid: 118,
+    tags: [4, 24, 33, 41],
+  },
+  {
+    productid: 119,
+    tags: [4, 18, 33, 41],
+  },
+  {
+    productid: 120,
+    tags: [4, 18, 33, 41],
   },
 ];
 
