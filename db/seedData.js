@@ -604,6 +604,51 @@ const products = [
     description: "Test Description",
     price: 150.0,
   },
+  {
+    name: "LV Trainer",
+    description: "Test Description",
+    price: 1200.0,
+  },
+  {
+    name: "LeBron XIX",
+    description: "Test Description",
+    price: 200.0,
+  },
+  {
+    name: "Giannis Immortality",
+    description: "Test Description",
+    price: 80.0,
+  },
+  {
+    name: "Air Max 1 Golf",
+    description: "Test Description",
+    price: 115.0,
+  },
+  {
+    name: "Air Zoom Infinity Tour",
+    description: "Test Description",
+    price: 190.0,
+  },
+  {
+    name: "Fresh Foam Roav",
+    description: "Test Description",
+    price: 85.0,
+  },
+  {
+    name: "Fresh Foam Cruzv1",
+    description: "Test Description",
+    price: 85.0,
+  },
+  {
+    name: "Lightning Trainer",
+    description: "Test Description",
+    price: 140.0,
+  },
+  {
+    name: "All Love Lightning Trainer",
+    description: "Test Description",
+    price: 140.0,
+  },
 ];
 
 const photos = [
@@ -795,6 +840,42 @@ const photos = [
     name: "Clifton Edge",
     url: "https://m.media-amazon.com/images/I/71ehfjzVP-L._AC_SR920,736_.jpg",
   },
+  {
+    name: "LV Trainer",
+    url: "https://us.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-lv-trainer-sneaker-shoes--BM9U5PMX20_PM2_Front%20view.png?wid=2048&hei=2048",
+  },
+  {
+    name: "LeBron XIX",
+    url: "https://images.footlocker.com/is/image/EBFL2/Z0203003_a1?wid=500&hei=500&fmt=png-alpha",
+  },
+  {
+    name: "Giannis Immortality",
+    url: "https://images.footlocker.com/is/image/EBFL2/Z4099100_a1?wid=500&hei=500&fmt=png-alpha",
+  },
+  {
+    name: "Air Max 1 Golf",
+    url: "https://images.stockx.com/images/Nike-Air-Max-1-Golf-Black-Gum-White-Swoosh.jpg?fit=fill&bg=FFFFFF&w=576&h=384&fm=avif&auto=compress&dpr=1&trim=color&updated_at=1627415465&q=57",
+  },
+  {
+    name: "Air Zoom Infinity Tour",
+    url: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/39bada69-6a82-4c02-bfbb-abf3f2210e0e/air-zoom-infinity-tour-next-boa-mens-golf-shoes-wide-LxFSGW.png",
+  },
+  {
+    name: "Fresh Foam Roav",
+    url: "https://nb.scene7.com/is/image/NB/mroavrh1_nb_02_i?$pdpflexf22x$&fmt=webp&wid=944&hei=944",
+  },
+  {
+    name: "Fresh Foam Cruzv1",
+    url: "https://nb.scene7.com/is/image/NB/mcrzrwc_nb_02_i?$pdpflexf22x$&fmt=webp&wid=944&hei=944",
+  },
+  {
+    name: "Lightning Trainer",
+    url: "https://cdn.shopify.com/s/files/1/0558/4169/products/NavyLightningLow_Concrete_1500_1000-6_8a14f247-3ade-47b5-abda-1057b3e9f82b.jpg?v=1656524644",
+  },
+  {
+    name: "All Love Lightning Trainer",
+    url: "https://cdn.shopify.com/s/files/1/0558/4169/products/AYNL_RedTrainer_SF_LT-1500-1000-4_1.jpg?v=1643672164",
+  },
 ];
 
 const productphotos = [
@@ -985,6 +1066,42 @@ const productphotos = [
   {
     productid: 47,
     photoid: 47,
+  },
+  {
+    productid: 48,
+    photoid: 48,
+  },
+  {
+    productid: 49,
+    photoid: 49,
+  },
+  {
+    productid: 50,
+    photoid: 50,
+  },
+  {
+    productid: 51,
+    photoid: 51,
+  },
+  {
+    productid: 52,
+    photoid: 52,
+  },
+  {
+    productid: 53,
+    photoid: 53,
+  },
+  {
+    productid: 54,
+    photoid: 54,
+  },
+  {
+    productid: 55,
+    photoid: 55,
+  },
+  {
+    productid: 56,
+    photoid: 56,
   },
 ];
 
@@ -1278,6 +1395,42 @@ const producttags = [
   {
     productid: 47,
     tags: [6, 20, 30, 39],
+  },
+  {
+    productid: 48,
+    tags: [7, 19, 34, 39],
+  },
+  {
+    productid: 49,
+    tags: [3, 18, 32, 39],
+  },
+  {
+    productid: 50,
+    tags: [3, 20, 32, 39],
+  },
+  {
+    productid: 51,
+    tags: [3, 18, 35, 39],
+  },
+  {
+    productid: 52,
+    tags: [3, 19, 35, 39],
+  },
+  {
+    productid: 53,
+    tags: [8, 20, 30, 39],
+  },
+  {
+    productid: 54,
+    tags: [8, 20, 30, 39],
+  },
+  {
+    productid: 55,
+    tags: [9, 19, 30, 39],
+  },
+  {
+    productid: 56,
+    tags: [9, 28, 30, 39],
   },
 ];
 
