@@ -819,6 +819,46 @@ const products = [
     description: "Test Description",
     price: 450.0,
   },
+  {
+    name: "Fresh Foam X Tempo v2",
+    description: "Test Description",
+    price: 120.0,
+  },
+  {
+    name: "Fresh Foam X Tempo v3",
+    description: "Test Description",
+    price: 120.0,
+  },
+  {
+    name: "Fresh Foam X Tempo v4",
+    description: "Test Description",
+    price: 120.0,
+  },
+  {
+    name: "Fresh Foam X Tempo v5",
+    description: "Test Description",
+    price: 120.0,
+  },
+  {
+    name: "DinaSoft Nitrel V5",
+    description: "Test Description",
+    price: 70.0,
+  },
+  {
+    name: "DinaSoft Nitrel V6",
+    description: "Test Description",
+    price: 70.0,
+  },
+  {
+    name: "DinaSoft Nitrel V7",
+    description: "Test Description",
+    price: 70.0,
+  },
+  {
+    name: "DinaSoft Nitrel V8",
+    description: "Test Description",
+    price: 70.0,
+  },
 ];
 
 const photos = [
@@ -1182,6 +1222,38 @@ const photos = [
     name: "Debossed Pumps",
     url: "https://cdna.lystit.com/photos/stefaniamode/bf198be7/balenciaga-green-Pumps-x-Crocs-110m.jpeg",
   },
+  {
+    name: "Fresh Foam X Tempo v2",
+    url: "https://nb.scene7.com/is/image/NB/wtmpoln2_nb_05_i?$pdpflexf2$&fmt=webp&wid=472&hei=472",
+  },
+  {
+    name: "Fresh Foam X Tempo v3",
+    url: "https://nb.scene7.com/is/image/NB/wtmpoll2_nb_05_i?$pdpflexf2$&fmt=webp&wid=472&hei=472",
+  },
+  {
+    name: "Fresh Foam X Tempo v4",
+    url: "https://nb.scene7.com/is/image/NB/wtmpolk2_nb_05_i?$pdpflexf2$&fmt=webp&wid=472&hei=472",
+  },
+  {
+    name: "Fresh Foam X Tempo v5",
+    url: "https://nb.scene7.com/is/image/NB/wtmpolm2_nb_05_i?$pdpflexf2$&fmt=webp&wid=472&hei=472",
+  },
+  {
+    name: "DinaSoft Nitrel V5",
+    url: "https://nb.scene7.com/is/image/NB/wtntrlk5_nb_05_i?$pdpflexf2$&fmt=webp&wid=472&hei=472",
+  },
+  {
+    name: "DinaSoft Nitrel V6",
+    url: "https://nb.scene7.com/is/image/NB/wtntrlb5_nb_05_i?$pdpflexf2$&fmt=webp&wid=472&hei=472",
+  },
+  {
+    name: "DinaSoft Nitrel V7",
+    url: "https://nb.scene7.com/is/image/NB/wtntrll5_nb_05_i?$pdpflexf2$&fmt=webp&wid=472&hei=472",
+  },
+  {
+    name: "DinaSoft Nitrel V8",
+    url: "https://nb.scene7.com/is/image/NB/wtntrln5_nb_05_i?$pdpflexf2$&fmt=webp&wid=472&hei=472",
+  },
 ];
 
 const productphotos = [
@@ -1544,6 +1616,38 @@ const productphotos = [
   {
     productid: 90,
     photoid: 90,
+  },
+  {
+    productid: 91,
+    photoid: 91,
+  },
+  {
+    productid: 92,
+    photoid: 92,
+  },
+  {
+    productid: 93,
+    photoid: 93,
+  },
+  {
+    productid: 94,
+    photoid: 94,
+  },
+  {
+    productid: 95,
+    photoid: 95,
+  },
+  {
+    productid: 96,
+    photoid: 96,
+  },
+  {
+    productid: 97,
+    photoid: 97,
+  },
+  {
+    productid: 98,
+    photoid: 98,
   },
 ];
 
@@ -2010,6 +2114,38 @@ const producttags = [
   {
     productid: 90, //balenciaga
     tags: [12, 25, 36, 40],
+  },
+  {
+    productid: 91, //new balance
+    tags: [8, 21, 30, 40],
+  },
+  {
+    productid: 92,
+    tags: [8, 29, 30, 40],
+  },
+  {
+    productid: 93,
+    tags: [8, 18, 30, 40],
+  },
+  {
+    productid: 94,
+    tags: [8, 24, 30, 40],
+  },
+  {
+    productid: 95,
+    tags: [8, 18, 37, 40],
+  },
+  {
+    productid: 96,
+    tags: [8, 29, 37, 40],
+  },
+  {
+    productid: 97,
+    tags: [8, 25, 37, 40],
+  },
+  {
+    productid: 98,
+    tags: [8, 28, 37, 40],
   },
 ];
 
