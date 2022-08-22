@@ -38,19 +38,19 @@ export default function AddToCart() {
   useEffect(() => {
     const getCart = async () => {
       const currentCart = await fetchCart();
-      let idToSet = currentCart[0]?.id;
+      console.log("CURRENT CART: ", currentCart);
+      let idToSet = currentCart.id;
+      console.log("ID TO SET: ", idToSet);
       setOrderId(idToSet);
     };
     getCart();
   }, []);
 
+  // currentCart[0]?.id;
+
   useEffect(() => {
     const getCartItem = async () => {
-      const currentItem = await addToCart(
-        +orderId,
-        +localSizeId,
-        +productPrice
-      );
+      const currentItem = await addToCart(orderId, +localSizeId, +productPrice);
       setCartItemId(currentItem.id);
     };
     getCartItem();
