@@ -18,6 +18,7 @@ const {
   producttags,
   orders,
 } = require("./seedData");
+const { seedSubtotal } = require("../src/api/orders");
 
 const dropTables = async () => {
   console.log(`Dropping tables...`);
@@ -295,6 +296,7 @@ const seedDb = async () => {
           quantity: k + i,
         },
       });
+      // seedSubtotal(k, k + i, 70.0);
       console.log(cartItem);
     }
   }

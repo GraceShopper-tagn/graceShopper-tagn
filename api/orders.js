@@ -203,6 +203,29 @@ orderRouter.patch("/:id/claim", async (req, res, next) => {
     next(error);
   }
 });
+
+// orderRouter.patch("/:id/seed", async (req, res, next) => {
+//   try {
+//     const { id } = req.params;
+//     const { quantity, price } = req.body;
+//     const order = await prisma.orders.update({
+//       where: {
+//         id: +id,
+//       },
+//       data: {
+//         subtotal: { increment: +(quantity * price) },
+//         tax: { increment: +(quantity * price) * 0.07 },
+//         total: { increment: +(quantity * price) * 1.07 },
+//       },
+//     });
+//     updateOrderSubtotal(cartItem.orderid, productprice);
+
+//     res.send(cartItem);
+//   } catch (error) {
+//     next(error);
+//   }
+// });
+
 // Create Order
 
 orderRouter.post("/", async (req, res, next) => {

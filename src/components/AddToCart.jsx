@@ -78,8 +78,14 @@ export default function AddToCart() {
           onClick={async (e) => {
             e.preventDefault();
             let decreased = await decreaseQty(cartItemId, productPrice);
-            setSubTotal(decreased.subtotal);
-            setQuantity(decreased.quantity);
+            if (decreased.quantity === 0) {
+              await removeFromCart(cartItemId);
+              alert("Product removed. Returning to product page.");
+              navigate(`/products/${localShoeId}`);
+            } else {
+              setSubTotal(decreased.subtotal);
+              setQuantity(decreased.quantity);
+            }
           }}
         >
           -
@@ -98,6 +104,8 @@ export default function AddToCart() {
           onClick={async (e) => {
             e.preventDefault();
             let removed = await removeFromCart(cartItemId);
+            alert("Product removed. Returning to product page.");
+
             navigate(`/products/${localShoeId}`);
           }}
         >

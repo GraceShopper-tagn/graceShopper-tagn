@@ -18,6 +18,20 @@ cartItemsRouter.post("/", async (req, res, next) => {
   }
 });
 
+cartItemsRouter.get("/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const cartItem = await prisma.cartitems.findUnique({
+      where: {
+        id: +id,
+      },
+    });
+    res.send(cartItem);
+  } catch (error) {
+    next(error);
+  }
+});
+
 cartItemsRouter.patch("/increment", async (req, res, next) => {
   try {
     const { id, productprice } = req.body;
