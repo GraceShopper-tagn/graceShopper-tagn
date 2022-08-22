@@ -529,6 +529,26 @@ const products = [
     description: "Test Description",
     price: 160.0,
   },
+  {
+    name: "Air LeBron 18 Low",
+    description: "Test Description",
+    price: 160.0,
+  },
+  {
+    name: "Mach 4",
+    description: "Test Description",
+    price: 130.0,
+  },
+  {
+    name: "Challenger ATR 6",
+    description: "Test Description",
+    price: 140.0,
+  },
+  {
+    name: "Bondi 8",
+    description: "Test Description",
+    price: 165.0,
+  },
 ];
 
 const photos = [
@@ -660,6 +680,22 @@ const photos = [
     name: "GEL-NIMBUS 24",
     url: "https://images.asics.com/is/image/asics/1011B359_002_SR_RT_GLB?$zoom$",
   },
+  {
+    name: "LeBron 18 Low",
+    url: "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/83d355d1-db6d-478f-bc2c-f2b99adb382a/lebron-18-low-x-atmos-basketball-shoes-bC7rKB.png",
+  },
+  {
+    name: "Mach 4",
+    url: "https://m.media-amazon.com/images/I/71OGQn5xnvS._AC_SR1840,1472_.jpg",
+  },
+  {
+    name: "Challenger ATR 6",
+    url: "https://m.media-amazon.com/images/I/71O+7yIpsfL._AC_SR1840,1472_.jpg",
+  },
+  {
+    name: "Bondi 8",
+    url: "https://m.media-amazon.com/images/I/71bVPpT6xxL._AC_SR1840,1472_.jpg",
+  },
 ];
 
 const productphotos = [
@@ -790,6 +826,22 @@ const productphotos = [
   {
     productid: 32,
     photoid: 32,
+  },
+  {
+    productid: 33,
+    photoid: 33,
+  },
+  {
+    productid: 34,
+    photoid: 34,
+  },
+  {
+    productid: 35,
+    photoid: 35,
+  },
+  {
+    productid: 36,
+    photoid: 36,
   },
 ];
 
@@ -1023,6 +1075,22 @@ const producttags = [
   {
     productid: 32,
     tags: [5, 18, 30, 39],
+  },
+  {
+    productid: 33,
+    tags: [3, 26, 32, 39],
+  },
+  {
+    productid: 34, //hokas
+    tags: [6, 20, 30, 39],
+  },
+  {
+    productid: 35,
+    tags: [6, 18, 30, 39],
+  },
+  {
+    productid: 36,
+    tags: [6, 24, 30, 39],
   },
 ];
 
