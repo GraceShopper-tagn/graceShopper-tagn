@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { fetchCart, newOrder } from "../api/orders";
+import { fetchCart, fetchOrderById, newOrder } from "../api/orders";
 import useCart from "../hooks/useCart";
 import { editOrder } from "../api/orders";
 import useAuth from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import EditQuantity from "./EditQuantity";
+import { editInventory } from "../api/products";
 
 export default function Cart() {
   const { user } = useAuth();
@@ -22,12 +23,13 @@ export default function Cart() {
 
   useEffect(() => {
     const getCart = async () => {
-      const cart = await fetchCart();
+      if (user) {
+        const cart = await fetchCart();
+      } else cart = await fetchOrderById(localStorage.cartid);
       console.log(cart);
       setCart(cart);
     };
     getCart();
-    console.log(date);
   }, []);
 
   useEffect(() => {
@@ -72,6 +74,7 @@ export default function Cart() {
           const quantity = cartItem.quantity;
           const size = cartItem.productsizes.sizes.size;
           const subtotal = quantity * price * 1.0;
+          const inventory = cartItem.productsizes.inventory;
 
           return (
             <div className="cartItem" key={`Key ${i}`}>
@@ -82,7 +85,11 @@ export default function Cart() {
               <h3>Price: ${price.toFixed(2)}</h3>
               <h3>Quantity: {quantity}</h3>
               <h3>Subtotal: {subtotal.toFixed(2)}</h3>
-              <EditQuantity cartItemId={cartItem.id} productPrice={price} />
+              <EditQuantity
+                cartItemId={cartItem.id}
+                productPrice={price}
+                inventory={inventory}
+              />
             </div>
           );
         })
@@ -91,7 +98,7 @@ export default function Cart() {
       );
       setCartitemsToDisplay(cartItems);
     } catch {}
-  }, []);
+  }, [cart]);
 
   return (
     <div>
@@ -156,7 +163,13 @@ export default function Cart() {
             alert("Order submitted! Thanks for shopping with us.");
             const newCart = await newOrder(user);
             setCart(newCart[0]);
-
+            for (const cartItem of cart.cartitems) {
+              const newItem = await editInventory(
+                cartItem.productsizeid,
+                cartItem.quantity
+              );
+              console.log(newItem);
+            }
             navigate("/products");
           } else alert("Order not submitted :(");
         }}

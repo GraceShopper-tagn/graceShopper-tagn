@@ -6,7 +6,7 @@ import {
   removeFromCart,
 } from "../api/cartItems";
 
-export default function EditQuantity({ cartItemId, productPrice }) {
+export default function EditQuantity({ cartItemId, productPrice, inventory }) {
   const [cartItem, setCartItem] = useState();
   const [quantity, setQuantity] = useState();
 
@@ -23,9 +23,7 @@ export default function EditQuantity({ cartItemId, productPrice }) {
       try {
         const quantity = cartItem.quantity;
         setQuantity(quantity);
-      } catch {
-        setQuantity(1);
-      }
+      } catch {}
     };
     getQuantity();
   }, [cartItem]);
@@ -50,8 +48,17 @@ export default function EditQuantity({ cartItemId, productPrice }) {
       <button
         onClick={async (e) => {
           e.preventDefault();
-          await increaseQty(cartItemId, productPrice);
-          window.location.reload(false);
+          console.log(quantity, inventory);
+          if (quantity === inventory) {
+            alert(
+              `Sorry, there ${
+                inventory === 1 ? "is" : "are"
+              } only ${inventory} in stock.`
+            );
+          } else {
+            await increaseQty(cartItemId, productPrice);
+            window.location.reload(false);
+          }
         }}
       >
         +

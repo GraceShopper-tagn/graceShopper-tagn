@@ -87,4 +87,18 @@ const updateOrderSubtotal = async (id, price) => {
   }
 };
 
+cartItemsRouter.get("/:id", async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const cartItem = await prisma.cartitems.findUnique({
+      where: {
+        id: +id,
+      },
+    });
+    res.send(cartItem);
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = cartItemsRouter;

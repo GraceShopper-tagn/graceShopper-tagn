@@ -70,4 +70,23 @@ productRouter.get("/:id/:sizeId", async (req, res, next) => {
   }
 });
 
+productRouter.patch("/sizes/:id", async (req, res, next) => {
+  const { id } = req.params;
+  const { numPurchased } = req.body;
+  try {
+    const updatedSize = await prisma.productsizes.update({
+      where: {
+        id: +id,
+      },
+      data: {
+        inventory: { decrement: numPurchased },
+      },
+    });
+
+    res.send(updatedSize);
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = productRouter;

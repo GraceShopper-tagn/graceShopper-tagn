@@ -32,3 +32,18 @@ export const getProductSize = async (id, sizeId) => {
 
   return result;
 };
+
+export const editInventory = async (productsizeId, numPurchased) => {
+  const response = await fetch(`/api/products/sizes/${productsizeId}/`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      numPurchased,
+    }),
+  });
+  const result = await response.json();
+
+  return result;
+};

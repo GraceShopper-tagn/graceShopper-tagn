@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 import useCart from "../hooks/useCart";
 
 export default function AddToCart() {
-  const { cart } = useCart();
+  const { cart, setCart } = useCart();
   const [product, setProduct] = useState([]);
   const [orderId, setOrderId] = useState();
   const [cartItemId, setCartItemId] = useState();
@@ -32,6 +32,7 @@ export default function AddToCart() {
       setSubTotal(product.price);
       const productSize = await getProductSize(localShoeId, localSizeId);
       setProductsize(productSize);
+
       setOrderId(cart.id);
     };
     getOneProduct();
@@ -72,7 +73,7 @@ export default function AddToCart() {
         <h4 className="display-quantity">
           Current number of items to add to cart: {quantity}
         </h4>
-        <h4>Subtotal: ${subTotal}.00</h4>
+        <h4>Subtotal: ${subTotal}</h4>
 
         <button
           onClick={async (e) => {
@@ -93,9 +94,17 @@ export default function AddToCart() {
         <button
           onClick={async (e) => {
             e.preventDefault();
-            let increased = await increaseQty(cartItemId, productPrice);
-            setSubTotal(increased.subtotal);
-            setQuantity(increased.quantity);
+            if (quantity === localInventory) {
+              alert(
+                `Sorry, there ${
+                  localInventory === 1 ? "is" : "are"
+                } only ${localInventory} in stock.`
+              );
+            } else {
+              let increased = await increaseQty(cartItemId, productPrice);
+              setSubTotal(increased.subtotal);
+              setQuantity(increased.quantity);
+            }
           }}
         >
           +
