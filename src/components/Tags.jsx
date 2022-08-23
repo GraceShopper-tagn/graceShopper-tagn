@@ -17,6 +17,7 @@ export default function Tags() {
   useEffect(() => {
     const getTags = async () => {
       const allTags = await getAllTags();
+      //console.log("ALL TAGS: ", allTags);
       setTags(allTags);
     };
     getTags();
@@ -35,7 +36,7 @@ export default function Tags() {
     };
 
     getBrands();
-  }, []);
+  }, [brandId]);
 
   useEffect(() => {
     const getColors = async () => {
@@ -50,7 +51,7 @@ export default function Tags() {
     };
 
     getColors();
-  }, []);
+  }, [colorId]);
 
   useEffect(() => {
     const getActivities = async () => {
@@ -65,7 +66,7 @@ export default function Tags() {
     };
 
     getActivities();
-  }, []);
+  }, [activityID]);
 
   useEffect(() => {
     const getGenders = async () => {
@@ -80,7 +81,7 @@ export default function Tags() {
     };
 
     getGenders();
-  }, []);
+  }, [genderID]);
 
   return (
     <form>
