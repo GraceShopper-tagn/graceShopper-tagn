@@ -1,50 +1,41 @@
 import React from "react";
-import { Link, Navigate } from "react-router-dom";
-import { FullNav, NavP } from "./styles/navbar";
+import { Link } from "react-router-dom";
+import { FullNav, LinkNav } from "./styles/navbar";
 import "bootstrap/dist/css/bootstrap.css";
-import { DropdownButton } from "react-bootstrap";
-import { ListGroupItem } from "react-bootstrap";
+import { DropdownButton, Container, ListGroupItem } from "react-bootstrap";
 import { AiOutlineSearch } from "react-icons/ai";
 import styles from "./styles/navbar.css";
 import useAuth from "../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 export default function NavBar() {
   const { user } = useAuth();
+  const navigate = useNavigate();
   return (
     <nav>
       <FullNav>
-        <DropdownButton style={{ background: "#DA9C6C" }} title="SUPPORT">
-          <ListGroupItem key="1">Contact Info</ListGroupItem>
-          <ListGroupItem key="2">FAQ</ListGroupItem>
-          <ListGroupItem key="2">Give Us Feedback</ListGroupItem>
-        </DropdownButton>
-        <NavP>
-          TAGN specializes in assisting their customers in every way possible!{" "}
-          <strong>Enjoy our products</strong>
-        </NavP>
-
         <div className={styles.searchNav}>
-          <div>
+          <div class="sticky-top">
             <img
-              onClick={() => Navigate("/")}
+              onClick={() => navigate("/products")}
               src="logo.png"
               alt="group logo"
               style={{ cursor: "pointer" }}
-              height="125px"
+              height="100px"
             />
-          </div>
-          <div>
             <AiOutlineSearch
-              style={{ position: "absolute", width: "20px", height: "40px" }}
+              style={{
+                marginLeft: "7.5%",
+                width: "20px",
+                height: "40px",
+              }}
             />
             <input type="search" placeholder="Find your soles" />
             <button> SEARCH </button>
           </div>
         </div>
-
-        <header className="header-format">
-          <h1>Shoes</h1>
-        </header>
+      </FullNav>
+      <LinkNav>
         <Link className="links" to="/products">
           Store
         </Link>
@@ -79,7 +70,7 @@ export default function NavBar() {
             Administrator
           </Link>
         )}
-      </FullNav>
+      </LinkNav>
     </nav>
   );
 }

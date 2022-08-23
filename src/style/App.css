@@ -20,10 +20,10 @@ nav {
 }
 
 nav > * {
-  flex-basis: 25%
+  flex-basis: 25%;
 }
 
-/* header {
+header {
   margin: 0;
   width: 100%;
   flex-basis: 100%;
@@ -32,8 +32,7 @@ nav > * {
 .app-container {
   display: flex;
   flex-direction: column;
-} */
-
-/* .cartItem {
+}
+ .cartItem {
   border: 1px black solid;
 } */
