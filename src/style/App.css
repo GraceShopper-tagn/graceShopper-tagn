@@ -37,3 +37,7 @@ nav > * {
 .cartItem {
   border: 1px black solid;
 }
+
+.orderCard {
+  border: 1px black solid;
+}
