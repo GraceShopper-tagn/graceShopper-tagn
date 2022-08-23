@@ -17,7 +17,7 @@ export const NavP = styled.p`
 `;
 
 export const LinkNav = styled.div`
-  color: gray;
+  background-color: #f2e49b;
   font-size: 18px;
   width: 100%;
   display: flex;

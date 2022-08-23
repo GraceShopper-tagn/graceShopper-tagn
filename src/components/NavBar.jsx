@@ -20,8 +20,9 @@ export default function NavBar() {
               onClick={() => navigate("/products")}
               src="logo.png"
               alt="group logo"
+              class="rounded"
               style={{ cursor: "pointer" }}
-              height="100px"
+              height="90px"
             />
             <AiOutlineSearch
               style={{
