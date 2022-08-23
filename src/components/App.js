@@ -14,6 +14,7 @@ import Products from "./Products";
 import Product from "./Product";
 import Cart from "./Cart";
 import AddToCart from "./AddToCart";
+import Order from "./Order";
 
 const App = () => {
   useEffect(() => {
@@ -42,6 +43,7 @@ const App = () => {
         <Route path="/products/:id" element={<Product />} />
         <Route path="/addtocart" element={<AddToCart />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/orders/:id" element={<Order />} />
         <Route path="/*" element={<Products />} />{" "}
       </Routes>
     </div>

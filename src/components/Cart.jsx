@@ -26,7 +26,6 @@ export default function Cart() {
       if (user) {
         const cart = await fetchCart();
       } else cart = await fetchOrderById(localStorage.cartid);
-      console.log(cart);
       setCart(cart);
     };
     getCart();
