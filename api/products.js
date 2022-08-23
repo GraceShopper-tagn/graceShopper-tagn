@@ -74,4 +74,30 @@ productRouter.get("/:id/:sizeId", async (req, res, next) => {
   }
 });
 
+productRouter.get(
+  "/:brand/:color/:activity/:gender",
+  async (req, res, next) => {
+    const { brand, color, activity, gender } = req.params;
+
+    try {
+      const getInventoryByTag = await prisma.products.findMany({
+        where: {
+          producttags: {
+            every: {
+              tagid: {
+                in: [+brand, +color, +activity, +gender],
+              },
+            },
+          },
+        },
+        include: { productphotos: { select: { photos: true } } },
+      });
+
+      res.send(getInventoryByTag);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
 module.exports = productRouter;

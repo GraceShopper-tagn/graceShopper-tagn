@@ -20,7 +20,7 @@ nav {
 }
 
 nav > * {
-  flex-basis: 25%
+  flex-basis: 25%;
 }
 
 /* header {
@@ -36,4 +36,9 @@ nav > * {
 
 .cartItem {
   border: 1px black solid;
+}
+
+.productFilter {
+  box-sizing: border-box;
+  float: left;
 }

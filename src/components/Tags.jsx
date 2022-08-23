@@ -17,7 +17,7 @@ export default function Tags() {
   useEffect(() => {
     const getTags = async () => {
       const allTags = await getAllTags();
-      //console.log("ALL TAGS: ", allTags);
+      console.log("ALL TAGS: ", allTags);
       setTags(allTags);
     };
     getTags();
