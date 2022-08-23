@@ -10,8 +10,6 @@ import NavBar from "./NavBar";
 import Register from "./Register";
 import UserProfile from "./UserProfile";
 import LogOut from "./Logout";
-import DeleteUser from "./Admin";
-import useAuth from "../hooks/useAuth";
 import Products from "./Products";
 import Product from "./Product";
 import Cart from "./Cart";
@@ -35,15 +33,16 @@ const App = () => {
     <div className="app-container">
       <NavBar />
       <Routes>
+        <Route path="/" element={<h1>Home</h1>}></Route>
         <Route path="/Register" element={<Register />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/user" element={<UserProfile />} />
         <Route path="/Logout" element={<LogOut />} />
-        {/* <Route path="/Admin" element={<DeleteUser />} /> */}
         <Route path="/products" element={<Products />} />
         <Route path="/products/:id" element={<Product />} />
         <Route path="/addtocart" element={<AddToCart />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/*" element={<Products />} />{" "}
       </Routes>
     </div>
   );

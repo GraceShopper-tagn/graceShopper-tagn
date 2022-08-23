@@ -8,6 +8,7 @@ export default function Products() {
   let navigate = useNavigate();
 
   useEffect(() => {
+    window.history.replaceState(null, "", "/products");
     const getProducts = async () => {
       const allProducts = await getAllProducts();
       setProducts(allProducts);

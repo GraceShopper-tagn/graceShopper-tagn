@@ -21,4 +21,19 @@ apiRouter.use("/users", require("./users"));
 apiRouter.use("/products", require("./products"));
 apiRouter.use("/cartitems", require("./cartItems"));
 apiRouter.use("/orders", require("./orders"));
+
+apiRouter.get("*", (req, res, next) => {
+  res.statusCode = 404;
+  res.send({ message: "Uh oh, what r u looking for?" });
+});
+
+apiRouter.use((err, req, res, next) => {
+  console.error(err.stack);
+
+  if (!err.status) {
+    res.status(500).send(err);
+  }
+
+  res.status(err.status).send(err.message, err.name, err.error);
+});
 module.exports = apiRouter;
