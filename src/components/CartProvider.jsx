@@ -8,22 +8,24 @@ export default function CartProvider({ children }) {
   const { user } = useAuth();
 
   useEffect(() => {
-    async function getCart() {
-      let cartToSet;
-      if (user) {
-        cartToSet = await fetchCart();
-      } else {
-        if (localStorage.cartid) {
-          cartToSet = await fetchOrderById(localStorage.getItem("cartid"));
+    const getCart = async () => {
+      try {
+        let cartToSet;
+        if (user) {
+          cartToSet = await fetchCart();
         } else {
-          cartToSet = await newOrder();
+          if (localStorage.cartid) {
+            cartToSet = await fetchOrderById(localStorage.getItem("cartid"));
+          } else {
+            cartToSet = await newOrder();
+          }
         }
-      }
-      if (cartToSet) {
-        await setCart(cartToSet);
-        localStorage.setItem("cartid", cartToSet.id);
-      }
-    }
+        if (cartToSet) {
+          await setCart(cartToSet);
+          localStorage.setItem("cartid", cartToSet.id);
+        }
+      } catch {}
+    };
     getCart();
   }, [user]);
 

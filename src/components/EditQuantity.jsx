@@ -20,15 +20,19 @@ export default function EditQuantity({ cartItemId, productPrice }) {
 
   useEffect(() => {
     const getQuantity = async () => {
-      const quantity = cartItem.quantity;
-      setQuantity(quantity);
+      try {
+        const quantity = cartItem.quantity;
+        setQuantity(quantity);
+      } catch {
+        setQuantity(1);
+      }
     };
     getQuantity();
   }, [cartItem]);
 
   return (
     <form>
-      <h4 className="display-quantity">{quantity} in cart</h4>
+      <h4 className="display-quantity"></h4>
 
       <button
         onClick={async (e) => {

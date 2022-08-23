@@ -32,19 +32,23 @@ export default function Cart() {
 
   useEffect(() => {
     const getDataToDisplay = async () => {
-      const sub = cart.subtotal ? cart.subtotal : 0;
-      const tax = cart.tax ? cart.tax : 0;
-      const tot = cart.total ? cart.total : 0;
-      const shipping = cart.shippingaddress
+      const sub = cart ? cart.subtotal : 0;
+      const tax = cart ? cart.tax : 0;
+      const tot = cart ? cart.total : 0;
+      const shipping = cart
         ? cart.shippingaddress
-        : user.shippingaddress;
-      const billing = cart.billingaddress
+        : user
+        ? user.shippingaddress
+        : "";
+      const billing = cart
         ? cart.billingaddress
-        : user.billingaddress;
-      const payment = cart.paymentinfo ? cart.paymentinfo : user.paymentinfo;
-      setSubtotal(sub.toFixed(2));
-      setTax(tax.toFixed(2));
-      setTotal(tot.toFixed(2));
+        : user
+        ? user.billingaddress
+        : "";
+      const payment = cart ? cart.paymentinfo : user ? user.paymentinfo : "";
+      setSubtotal(sub ? sub.toFixed(2) : 0);
+      setTax(tax ? tax.toFixed(2) : 0);
+      setTotal(tot ? tot.toFixed(2) : 0);
       setShippingAddress(shipping);
       setBillingAddress(billing);
       setPaymentInfo(payment);
@@ -54,37 +58,40 @@ export default function Cart() {
 
   useEffect(() => {
     try {
-      const cartItems = cart.cartitems.map((cartItem, i) => {
-        const product = cartItem.productsizes.products;
-        const name = product.name;
-        const price = product.price;
-        const brand = product.producttags[0].tags.name;
-        const color = product.producttags[1].tags.name;
-        const activity = product.producttags[2].tags.name;
-        const gender = product.producttags[3].tags.name;
-        const photoUrl = product.productphotos[0].photos.url;
-        const photoName = product.productphotos[0].photos.name;
-        const quantity = cartItem.quantity;
-        const size = cartItem.productsizes.sizes.size;
-        const subtotal = quantity * price * 1.0;
+      const cartItems = cart.cartitems ? (
+        cart.cartitems.map((cartItem, i) => {
+          const product = cartItem.productsizes.products;
+          const name = product.name;
+          const price = product.price;
+          const brand = product.producttags[0].tags.name;
+          const color = product.producttags[1].tags.name;
+          const activity = product.producttags[2].tags.name;
+          const gender = product.producttags[3].tags.name;
+          const photoUrl = product.productphotos[0].photos.url;
+          const photoName = product.productphotos[0].photos.name;
+          const quantity = cartItem.quantity;
+          const size = cartItem.productsizes.sizes.size;
+          const subtotal = quantity * price * 1.0;
 
-        return (
-          <div className="cartItem" key={`Key ${i}`}>
-            <h3>
-              <img src={photoUrl} alt={photoName} height="20px"></img>
-              {brand} {name} {gender} {activity} Shoe, {color}, Size {size}
-            </h3>
-            {/* There has to be a way to cast price to a float */}
-            <h3>Price: ${price.toFixed(2)}</h3>
-            <h3>Quantity: {quantity}</h3>
-            <h3>Subtotal: {subtotal.toFixed(2)}</h3>
-            <EditQuantity cartItemId={cartItem.id} productPrice={price} />
-          </div>
-        );
-      });
+          return (
+            <div className="cartItem" key={`Key ${i}`}>
+              <h3>
+                <img src={photoUrl} alt={photoName} height="20px"></img>
+                {brand} {name} {gender} {activity} Shoe, {color}, Size {size}
+              </h3>
+              <h3>Price: ${price.toFixed(2)}</h3>
+              <h3>Quantity: {quantity}</h3>
+              <h3>Subtotal: {subtotal.toFixed(2)}</h3>
+              <EditQuantity cartItemId={cartItem.id} productPrice={price} />
+            </div>
+          );
+        })
+      ) : (
+        <h4>No cart items to display</h4>
+      );
       setCartitemsToDisplay(cartItems);
     } catch {}
-  }, [cart]);
+  }, []);
 
   return (
     <div>

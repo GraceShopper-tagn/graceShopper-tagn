@@ -20,14 +20,17 @@ export default function Product() {
       setProduct(product);
     };
     getOneProduct();
+    localStorage.setItem("sizeid", 1);
   }, []);
 
   useEffect(() => {
     const getSizes = async () => {
-      const sizesToDisplay = product.productsizes.map((size) => {
-        return <option value={size.sizes.id}>{size.sizes.size}</option>;
-      });
-      setSizesToDisplay(sizesToDisplay);
+      try {
+        const sizesToDisplay = product.productsizes.map((size) => {
+          return <option value={size.sizes.id}>{size.sizes.size}</option>;
+        });
+        setSizesToDisplay(sizesToDisplay);
+      } catch {}
     };
 
     getSizes();
