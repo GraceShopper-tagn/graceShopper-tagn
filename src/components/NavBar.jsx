@@ -1,9 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FullNav, LinkNav } from "./styles/navbar";
+import { FullNav, LinkNav, SearchBar } from "./styles/navbar";
 import "bootstrap/dist/css/bootstrap.css";
-import { DropdownButton, Container, ListGroupItem } from "react-bootstrap";
-import { AiOutlineSearch } from "react-icons/ai";
 import styles from "./styles/navbar.css";
 import useAuth from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
@@ -13,29 +11,24 @@ export default function NavBar() {
   const navigate = useNavigate();
   return (
     <nav>
-      <FullNav>
-        <div className={styles.searchNav}>
-          <div class="sticky-top">
+      <div className={styles.searchNav}>
+        <FullNav>
+          <div>
             <img
               onClick={() => navigate("/products")}
               src="logo.png"
               alt="group logo"
               class="rounded"
-              style={{ cursor: "pointer" }}
-              height="90px"
+              style={{ cursor: "pointer", height: "100px", width: "175px" }}
             />
-            <AiOutlineSearch
-              style={{
-                marginLeft: "7.5%",
-                width: "20px",
-                height: "40px",
-              }}
-            />
+          </div>
+          <SearchBar>
             <input type="search" placeholder="Find your soles" />
             <button> SEARCH </button>
-          </div>
-        </div>
-      </FullNav>
+          </SearchBar>
+        </FullNav>
+      </div>
+
       <LinkNav>
         <Link className="links" to="/products">
           Store

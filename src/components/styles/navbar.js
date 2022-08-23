@@ -4,17 +4,18 @@ export const FullNav = styled.div`
   height: 100px;
   background-color: #c55544;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
 `;
-export const NavP = styled.p`
-  color: black;
-  font-size: 18px;
-  margin-left: 10%;
-  margin-top 0;
-  width: 100%;
-  justify-content: flex-end;
+// export const NavP = styled.p`
+//   color: black;
+//   font-size: 18px;
+//   margin-left: 10%;
+//   margin-top 0;
+//   width: 100%;
+//   justify-content: flex-end;
 
-`;
+// `;
 
 export const LinkNav = styled.div`
   background-color: #f2e49b;
@@ -23,4 +24,14 @@ export const LinkNav = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+`;
+
+export const SearchBar = styled.form`
+  position: relative;
+  display: flex;
+  justify-content: right;
+  width: 70%;
+  height: 55%;
+  padding: 0.5%;
+  margin-top: 1.5%;
 `;

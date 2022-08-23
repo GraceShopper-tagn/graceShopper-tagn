@@ -18,10 +18,16 @@ export default function Products() {
   useEffect(() => {
     const getProductsToDisplay = products.map((product, i) => {
       return (
+        // Use cards to display products as a grid
         <div
           key={`Key ${i}`}
           onClick={() => navigate(`/products/${product.id}`)}
         >
+          <img
+            src={product.productphotos[0].photos.url}
+            width="250"
+            height="250"
+          />
           <h2>{product.name}</h2>
           <h2>{product.price}</h2>
           <h3>{product.producttags[0].tags.name}</h3>
@@ -29,11 +35,6 @@ export default function Products() {
           <h3>{product.producttags[2].tags.name}</h3>
           <h3>{product.producttags[3].tags.name}</h3>
           <h3>{product.description}</h3>
-          <img
-            src={product.productphotos[0].photos.url}
-            width="250"
-            height="250"
-          />
         </div>
       );
     });

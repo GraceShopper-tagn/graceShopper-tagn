@@ -1,4 +1,4 @@
-.searchNav {
+/* .searchNav {
   height: 75px;
   display: flex;
   align-items: center;
@@ -10,10 +10,10 @@
   display: flex;
   align-items: center;
 }
+
 .searchNav img {
   height: 60%;
-}
-
+} */
 input {
   background: transparent;
   margin: 0;
@@ -44,4 +44,13 @@ input + button {
 input + button:hover {
   background-color: #b28b4b;
   transition: all ease-in-out 0.3s;
+}
+
+.links {
+  color: #c14836;
+  text-decoration: none;
+}
+
+.links:hover {
+  color: #c7796d;
 }
