@@ -295,6 +295,18 @@ const seedDb = async () => {
           quantity: k + i,
         },
       });
+      try {
+        const order = await prisma.orders.update({
+          where: { id: +k },
+          data: {
+            subtotal: { increment: 70.0 * k },
+            tax: { increment: 70.0 * k * 0.07 },
+            total: { increment: 70 * k * 1.07 },
+          },
+        });
+      } catch (error) {
+        next(error);
+      }
       console.log(cartItem);
     }
   }

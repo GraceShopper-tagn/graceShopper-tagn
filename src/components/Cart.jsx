@@ -11,28 +11,13 @@ export default function Cart() {
   const navigate = useNavigate();
   const { cart, setCart } = useCart();
   const [cartitemsToDisplay, setCartitemsToDisplay] = useState([]);
-  const [totalsToDisplay, setTotalsToDisplay] = useState({});
-  const [shippingAddress, setShippingAddress] = useState(
-    cart
-      ? cart.shippingaddress
-        ? cart.shippingaddress
-        : user.shippingAddress
-      : user.shippingAddress
-  );
-  const [billingAddress, setBillingAddress] = useState(
-    cart
-      ? cart.billingaddress
-        ? cart.billingaddress
-        : user.billingaddress
-      : user.billingaddress
-  );
-  const [paymentInfo, setPaymentInfo] = useState(
-    cart
-      ? cart.paymentinfo
-        ? cart.paymentinfo
-        : user.paymentinfo
-      : user.paymentinfo
-  );
+  const [subtotal, setSubtotal] = useState(0);
+  const [tax, setTax] = useState(0);
+  const [total, setTotal] = useState(0);
+  const [shippingAddress, setShippingAddress] = useState("");
+
+  const [billingAddress, setBillingAddress] = useState("");
+  const [paymentInfo, setPaymentInfo] = useState("");
   const [date, setDate] = useState(new Date());
 
   useEffect(() => {
@@ -46,27 +31,26 @@ export default function Cart() {
   }, []);
 
   useEffect(() => {
-    const getTotalsToDisplay = async () => {
-      const sub = displayPrice(`${cart ? cart.subtotal : null}`);
-      const tax = displayPrice(`${cart ? cart.tax : null}`);
-      const tot = displayPrice(`${cart ? cart.total : null}`);
-      const totalsToDisplay = { sub: sub, tax: tax, tot: tot };
-      setTotalsToDisplay(totalsToDisplay);
+    const getDataToDisplay = async () => {
+      const sub = cart.subtotal ? cart.subtotal : 0;
+      const tax = cart.tax ? cart.tax : 0;
+      const tot = cart.total ? cart.total : 0;
+      const shipping = cart.shippingaddress
+        ? cart.shippingaddress
+        : user.shippingaddress;
+      const billing = cart.billingaddress
+        ? cart.billingaddress
+        : user.billingaddress;
+      const payment = cart.paymentinfo ? cart.paymentinfo : user.paymentinfo;
+      setSubtotal(sub.toFixed(2));
+      setTax(tax.toFixed(2));
+      setTotal(tot.toFixed(2));
+      setShippingAddress(shipping);
+      setBillingAddress(billing);
+      setPaymentInfo(payment);
     };
-    getTotalsToDisplay();
+    getDataToDisplay();
   }, [cartitemsToDisplay]);
-
-  const displayPrice = (num) => {
-    const str = `${num}`;
-    if (str.includes(".")) {
-      const i = num.indexOf(".");
-      if (num.length - i === 2) {
-        return `$${str}0`;
-      }
-      return `$${str}`;
-    }
-    return `$${str}.00`;
-  };
 
   useEffect(() => {
     try {
@@ -91,9 +75,9 @@ export default function Cart() {
               {brand} {name} {gender} {activity} Shoe, {color}, Size {size}
             </h3>
             {/* There has to be a way to cast price to a float */}
-            <h3>Price: {displayPrice(price)}</h3>
+            <h3>Price: ${price.toFixed(2)}</h3>
             <h3>Quantity: {quantity}</h3>
-            <h3>Subtotal: {displayPrice(subtotal)}</h3>
+            <h3>Subtotal: {subtotal.toFixed(2)}</h3>
             <EditQuantity cartItemId={cartItem.id} productPrice={price} />
           </div>
         );
@@ -105,9 +89,9 @@ export default function Cart() {
   return (
     <div>
       <h1>Cart</h1>
-      <h2>Subtotal: {cart ? totalsToDisplay.sub : "$0.00"}</h2>
-      <h2>Tax: {cart ? totalsToDisplay.tax : "$0.00"}</h2>
-      <h2>Total: {cart ? totalsToDisplay.tot : "$0.00"}</h2>
+      <h2>Subtotal: ${cart ? subtotal : "$0.00"}</h2>
+      <h2>Tax: ${cart ? tax : "$0.00"}</h2>
+      <h2>Total: ${cart ? total : "$0.00"}</h2>
       {cartitemsToDisplay}
       <form
         onSubmit={async (e) => {
