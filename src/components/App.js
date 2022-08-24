@@ -14,11 +14,8 @@ import Products from "./Products";
 import Product from "./Product";
 import Cart from "./Cart";
 import AddToCart from "./AddToCart";
-<<<<<<< HEAD
 import Order from "./Order";
-=======
 import FilteredProducts from "./FilteredProducts";
->>>>>>> tags
 
 const App = () => {
   useEffect(() => {
