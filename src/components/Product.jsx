@@ -22,6 +22,7 @@ export default function Product() {
       setSingleSizeInventory(product.productsizes[0].inventory);
       setSelectedSizeId(localStorage.sizeid);
     };
+    localStorage.removeItem("sizeid");
     getOneProduct();
   }, []);
 
