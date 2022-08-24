@@ -3,6 +3,7 @@ import { getProduct } from "../api/products";
 import { useParams } from "react-router-dom";
 import { getInventoryBySize } from "../api/products";
 import { useNavigate } from "react-router-dom";
+import "../components/styles/product.css";
 
 export default function Product() {
   const { id } = useParams();
@@ -47,42 +48,48 @@ export default function Product() {
   }, []);
 
   return (
-    <div>
-      <h2>{product.name}</h2>
-      <h3>{product.price}</h3>
-      <h3>{product.producttags ? product.producttags[0].tags.name : null}</h3>
-      <h3>{product.producttags ? product.producttags[1].tags.name : null}</h3>
-      <h3>{product.producttags ? product.producttags[2].tags.name : null}</h3>
-      <h3>{product.producttags ? product.producttags[3].tags.name : null}</h3>
-      <h3>{product.description}</h3>
+    <div class="product-card">
       <img
         src={product.productphotos ? product.productphotos[0].photos.url : null}
         width="250"
         height="250"
       />
-      <form>
-        <select
-          onChange={async (e) => {
-            localStorage.setItem("sizeid", JSON.stringify(e.target.value));
-            setSelectedSizeId(e.target.value);
-          }}
-          id="shoe-size"
-        >
-          {sizesToDisplay}
-        </select>
-        <h4>
-          There are {singleSizeInventory} of this model left in this size.
-        </h4>
-      </form>
-      <form>
-        <button
-          onClick={() => {
-            navigate(`/addtocart`);
-          }}
-        >
-          Add To Cart
-        </button>
-      </form>
+      <div class="product-card-titles">
+        <h2>{product.name}</h2>
+        <h4>${product.price.toFixed(2)}</h4>
+        <h5>{product.producttags ? product.producttags[0].tags.name : null}</h5>
+      </div>
+      <div class="product-tags">
+        <h6>{product.producttags ? product.producttags[1].tags.name : null}</h6>
+        <h6>{product.producttags ? product.producttags[2].tags.name : null}</h6>
+        <h6>{product.producttags ? product.producttags[3].tags.name : null}</h6>
+        <h6>{product.description}</h6>
+      </div>
+      <div class="product-quantity">
+        <form>
+          <select
+            onChange={async (e) => {
+              localStorage.setItem("sizeid", JSON.stringify(e.target.value));
+              setSelectedSizeId(e.target.value);
+            }}
+            id="shoe-size"
+          >
+            {sizesToDisplay}
+          </select>
+          <h4>
+            There are {singleSizeInventory} of this model left in this size.
+          </h4>
+        </form>
+        <form>
+          <button
+            onClick={() => {
+              navigate(`/addtocart`);
+            }}
+          >
+            Add To Cart
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

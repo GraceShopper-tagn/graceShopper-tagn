@@ -22,11 +22,11 @@ export default function Products() {
       return (
         // Use cards to display products as a grid
         <div
-          class="product-card"
+          class="products-card"
           key={`Key ${i}`}
           onClick={() => navigate(`/products/${product.id}`)}
         >
-          <div class="product-card-text">
+          <div class="products-card-text">
             <img
               src={product.productphotos[0].photos.url}
               width="250"
@@ -47,8 +47,8 @@ export default function Products() {
 
   return (
     <div>
-      <h1 class="product-title">Products</h1>
-      <div class="product-container">{productsToDisplay}</div>
+      <h1 class="products-title">Products</h1>
+      <div class="products-container">{productsToDisplay}</div>
     </div>
   );
 }
