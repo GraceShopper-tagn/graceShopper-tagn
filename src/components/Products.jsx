@@ -9,15 +9,15 @@ export default function Products() {
   const [productsToDisplay, setProductsToDisplay] = useState([]);
   const [tags, setTags] = useState();
   const [brandsToDisplay, setBrandsToDisplay] = useState([]);
-  const [brandId, setBrandId] = useState();
+  const [brandId, setBrandId] = useState(1);
   const [colorsToDisplay, setColorsToDisplay] = useState();
-  const [colorId, setColorId] = useState();
+  const [colorId, setColorId] = useState(18);
   const [activitiesToDisplay, setActivitiesToDisplay] = useState();
-  const [activityID, setActivityId] = useState();
+  const [activityID, setActivityId] = useState(30);
   const [gendersToDisplay, setGendersToDisplay] = useState();
-  const [genderID, setGenderId] = useState();
-  const [filteredProducts, setFilteredProducts] = useState();
-  const [filteredProductsToDisplay, setFilteredProductsToDisplay] = useState();
+  const [genderID, setGenderId] = useState(39);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+
   let navigate = useNavigate();
 
   useEffect(() => {
@@ -44,7 +44,7 @@ export default function Products() {
     };
 
     getBrands();
-  }, []);
+  }, [tags]);
 
   useEffect(() => {
     const getColors = async () => {
@@ -124,38 +124,11 @@ export default function Products() {
     setProductsToDisplay(getProductsToDisplay);
   }, [products]);
 
-  // useEffect(() => {
-  //   const getFilteredProductsToDisplay = filteredProducts.map(
-  //     (filteredProduct, i) => {
-  //       return (
-  //         <div
-  //           key={`Key ${i}`}
-  //           onClick={() => navigate(`/products/${filteredProduct.id}`)}
-  //         >
-  //           <h2>{filteredProduct.name}</h2>
-  //           <h2>{filteredProduct.price}</h2>
-  //           <h3>{filteredProduct.producttags[0].tags.name}</h3>
-  //           <h3>{filteredProduct.producttags[1].tags.name}</h3>
-  //           <h3>{filteredProduct.producttags[2].tags.name}</h3>
-  //           <h3>{filteredProduct.producttags[3].tags.name}</h3>
-  //           <h3>{filteredProduct.description}</h3>
-  //           <img
-  //             src={filteredProduct.productphotos[0].photos.url}
-  //             width="250"
-  //             height="250"
-  //           />
-  //         </div>
-  //       );
-  //     }
-  //   );
-  //   setFilteredProductsToDisplay(getFilteredProductsToDisplay);
-  // }, [filteredProducts]);
-
   return (
     <div>
       <h1>Products</h1>
+
       {productsToDisplay}
-      {/* {filteredProductsToDisplay} */}
 
       <div className="productFilter">
         <form>
@@ -229,106 +202,22 @@ export default function Products() {
                 +activityID,
                 +genderID
               );
-              console.log("FILTERED: ", filtered);
-              setFilteredProducts(filtered);
-            }}
-          >
-            Submit Filter
-          </button>
-        </form>
-
-        <form>
-          <button
-            onClick={async () => {
-              event.preventDefault();
-              setBrandId(1);
-              setColorId(18);
-              setActivityId(30);
-              setGenderId(39);
-            }}
-          >
-            Clear Filter
-          </button>
-        </form>
-
-        {/* <form>
-          <h3>Select Brand</h3>
-
-          <select
-            onChange={async (e) => {
-              event.preventDefault();
-              window.location.reload(false);
-              setBrandId(e.target.value);
-            }}
-            className="brandsDisplay"
-          >
-            {brandsToDisplay}
-          </select>
-
-          <h3>Select Color</h3>
-
-          <select
-            onChange={async (e) => {
-              event.preventDefault();
-              setColorId(e.target.value);
-            }}
-            className="colorsDisplay"
-          >
-            {colorsToDisplay}
-          </select>
-
-          <h3>Select Activity</h3>
-
-          <select
-            onChange={async (e) => {
-              event.preventDefault();
-              setActivityId(e.target.value);
-            }}
-            className="activitiesDisplay"
-          >
-            {activitiesToDisplay}
-          </select>
-
-          <h3>Select Gender</h3>
-
-          <select
-            onChange={async (e) => {
-              event.preventDefault();
-              setGenderId(e.target.value);
-            }}
-            className="gendersDisplay"
-          >
-            {gendersToDisplay}
-          </select>
-
-          <button
-            onClick={async () => {
-              event.preventDefault();
-              let filtered = await getProductsByTags(
-                +brandId,
-                +colorId,
-                +activityID,
-                +genderID
+              // console.log("FILTERED: ", filtered);
+              localStorage.setItem(
+                "filtered-products",
+                JSON.stringify(filtered)
               );
-              console.log("FILTERED: ", filtered);
               setFilteredProducts(filtered);
+              {
+                filteredProducts.length !== 0
+                  ? navigate("/products/filtered")
+                  : navigate("/products");
+              }
             }}
           >
             Submit Filter
           </button>
-
-          <button
-            onClick={async () => {
-              event.preventDefault();
-              await setBrandId(1);
-              await setColorId(18);
-              await setActivityId(30);
-              await setGenderId(39);
-            }}
-          >
-            Clear Filter
-          </button>
-        </form> */}
+        </form>
       </div>
     </div>
   );

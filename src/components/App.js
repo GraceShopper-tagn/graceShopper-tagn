@@ -17,6 +17,7 @@ import Product from "./Product";
 import Cart from "./Cart";
 import AddToCart from "./AddToCart";
 import Tags from "./Tags";
+import FilteredProducts from "./FilteredProducts";
 
 const App = () => {
   useEffect(() => {
@@ -46,6 +47,7 @@ const App = () => {
         <Route path="/addtocart" element={<AddToCart />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/tags" element={<Tags />} />
+        <Route path="/products/filtered" element={<FilteredProducts />} />
       </Routes>
     </div>
   );
