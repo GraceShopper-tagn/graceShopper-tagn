@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getAllProducts } from "../api/products";
 import { useNavigate } from "react-router-dom";
+import { Container } from "react-bootstrap";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
@@ -19,6 +20,7 @@ export default function Products() {
     const getProductsToDisplay = products.map((product, i) => {
       return (
         // Use cards to display products as a grid
+
         <div
           key={`Key ${i}`}
           onClick={() => navigate(`/products/${product.id}`)}
@@ -42,9 +44,13 @@ export default function Products() {
   }, [products]);
 
   return (
-    <div>
-      <h1>Products</h1>
-      {productsToDisplay}
-    </div>
+    <Container>
+      <div>
+        <h1>Products</h1>
+        {/* <Products> */}
+        {productsToDisplay}
+        {/* </Products> */}
+      </div>
+    </Container>
   );
 }
