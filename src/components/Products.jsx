@@ -40,7 +40,6 @@ export default function Products() {
           return <option value={tag.id}>{tag.name}</option>;
         });
       setBrandsToDisplay(brands);
-      // window.location.reload(false);
     };
 
     getBrands();
@@ -137,7 +136,6 @@ export default function Products() {
           <select
             onChange={async (e) => {
               e.preventDefault();
-              // window.location.reload(false);
               setBrandId(e.target.value);
             }}
             className="brandsDisplay"
@@ -190,7 +188,7 @@ export default function Products() {
 
         <form>
           <button
-            onClick={async () => {
+            onClick={async (e) => {
               e.preventDefault();
               let filtered = await getProductsByTags(
                 +brandId,
