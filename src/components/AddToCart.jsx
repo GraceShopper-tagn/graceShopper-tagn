@@ -38,6 +38,8 @@ export default function AddToCart() {
     getOneProduct();
   }, []);
 
+  // currentCart[0]?.id;
+
   useEffect(() => {
     try {
       const getCartItem = async () => {

@@ -65,6 +65,7 @@ export default function Product() {
         height="250"
       />
       <form>
+        <h3>Select Size</h3>
         <select
           onChange={async (e) => {
             localStorage.setItem("sizeid", JSON.stringify(e.target.value));

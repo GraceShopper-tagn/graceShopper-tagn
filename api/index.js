@@ -36,4 +36,5 @@ apiRouter.use((err, req, res, next) => {
 
   res.status(err.status).send(err.message, err.name, err.error);
 });
+apiRouter.use("/tags", require("./tags"));
 module.exports = apiRouter;

@@ -43,6 +43,18 @@ export const editInventory = async (productsizeId, numPurchased) => {
       numPurchased,
     }),
   });
+};
+
+export const getProductsByTags = async (brand, color, activity, gender) => {
+  const response = await fetch(
+    `/api/products/${brand}/${color}/${activity}/${gender}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
   const result = await response.json();
 
   return result;
