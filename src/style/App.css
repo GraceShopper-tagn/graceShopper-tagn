@@ -20,7 +20,7 @@ nav {
 }
 
 nav > * {
-  flex-basis: 25%
+  flex-basis: 25%;
 }
 
 /* header {
