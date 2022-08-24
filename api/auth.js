@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const { userRequired, adminRequired } = require("./utils");
 const authRouter = require("express").Router();
 
-const { JWT_SECRET, COOKIE_SECRET } = process.env;
+const { JWT_SECRET } = process.env;
 const SALT_ROUNDS = 10;
 
 // first name, lastname, email, username, password
@@ -33,7 +33,6 @@ authRouter.post("/register", async (req, res, next) => {
         paymentinfo: paymentinfo ? paymentinfo : null,
       },
     });
-    console.log("user", user);
     delete user.password;
 
     const token = jwt.sign(user, JWT_SECRET);
@@ -46,7 +45,6 @@ authRouter.post("/register", async (req, res, next) => {
 
     delete user.password;
     req.user = user;
-    console.log("req.user", req.user);
 
     res.send({ user });
   } catch (error) {
@@ -139,7 +137,6 @@ authRouter.get(`/:id`, userRequired, adminRequired, async (req, res, next) => {
         id: +id,
       },
     });
-    console.log(user);
     res.send(user);
   } catch (error) {
     next(error);
@@ -155,7 +152,6 @@ authRouter.post("/delete", adminRequired, async (req, res, next) => {
         email: email,
       },
     });
-    console.log(deletedUser);
     res.send(deletedUser);
   } catch (error) {
     next(error);

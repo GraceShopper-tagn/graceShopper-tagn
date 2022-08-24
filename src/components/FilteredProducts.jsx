@@ -12,7 +12,6 @@ export default function FilteredProducts() {
     localStorage.getItem("filtered-products")
   );
 
-  //   console.log("LOCAL FILTERED PRODUCTS: ", filteredProducts);
   if (filteredProducts.length === 0) {
     alert(
       "There aren't any products that match your search, please try again."

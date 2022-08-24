@@ -22,12 +22,19 @@ export default function Cart() {
   const [date, setDate] = useState(new Date());
 
   useEffect(() => {
+    window.onload = function () {
+      if (!window.location.hash) {
+        window.location = window.location + "#loaded";
+        window.location.reload();
+      }
+    };
     const getCart = async () => {
       if (user) {
         const cart = await fetchCart();
       } else cart = await fetchOrderById(localStorage.cartid);
       setCart(cart);
     };
+    window.onload();
     getCart();
   }, []);
 
@@ -162,12 +169,12 @@ export default function Cart() {
             alert("Order submitted! Thanks for shopping with us.");
             const newCart = await newOrder(user);
             setCart(newCart[0]);
+            localStorage.setItem("cartid", cart.id);
             for (const cartItem of cart.cartitems) {
               const newItem = await editInventory(
                 cartItem.productsizeid,
                 cartItem.quantity
               );
-              console.log(newItem);
             }
             navigate("/products");
           } else alert("Order not submitted :(");
