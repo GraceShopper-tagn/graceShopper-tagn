@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getAllProducts } from "../api/products";
 import { useNavigate } from "react-router-dom";
 import { Container } from "react-bootstrap";
+import "../components/styles/products.css";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
@@ -21,7 +22,7 @@ export default function Products() {
       return (
         // Use cards to display products as a grid
         <div class="row">
-          <div class="col-lg-3 col-md-4 col-xs-6">
+          <div class="col-lg-4 col-md-4 col-xs-6">
             <div
               key={`Key ${i}`}
               onClick={() => navigate(`/products/${product.id}`)}
