@@ -7,14 +7,14 @@ import { useNavigate } from "react-router-dom";
 export default function Products() {
   const [products, setProducts] = useState([]);
   const [productsToDisplay, setProductsToDisplay] = useState([]);
-  const [tags, setTags] = useState();
+  const [tags, setTags] = useState([]);
   const [brandsToDisplay, setBrandsToDisplay] = useState([]);
   const [brandId, setBrandId] = useState(1);
-  const [colorsToDisplay, setColorsToDisplay] = useState();
+  const [colorsToDisplay, setColorsToDisplay] = useState([]);
   const [colorId, setColorId] = useState(18);
-  const [activitiesToDisplay, setActivitiesToDisplay] = useState();
+  const [activitiesToDisplay, setActivitiesToDisplay] = useState([]);
   const [activityID, setActivityId] = useState(30);
-  const [gendersToDisplay, setGendersToDisplay] = useState();
+  const [gendersToDisplay, setGendersToDisplay] = useState([]);
   const [genderID, setGenderId] = useState(39);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
@@ -208,11 +208,12 @@ export default function Products() {
                 JSON.stringify(filtered)
               );
               setFilteredProducts(filtered);
-              {
-                filteredProducts.length !== 0
-                  ? navigate("/products/filtered")
-                  : navigate("/products");
-              }
+              navigate("/products/filtered");
+              // {
+              //   filteredProducts.length !== 0
+              //     ? navigate("/products/filtered")
+              //     : navigate("/products");
+              // }
             }}
           >
             Submit Filter
