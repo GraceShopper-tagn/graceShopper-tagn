@@ -21,25 +21,23 @@ export default function Products() {
     const getProductsToDisplay = products.map((product, i) => {
       return (
         // Use cards to display products as a grid
-        <div class="row">
-          <div class="col-lg-4 col-md-4 col-xs-6">
-            <div
-              key={`Key ${i}`}
-              onClick={() => navigate(`/products/${product.id}`)}
-            >
-              <img
-                src={product.productphotos[0].photos.url}
-                width="250"
-                height="250"
-              />
-              <h2>{product.name}</h2>
-              <h2>{product.price}</h2>
-              <h3>{product.producttags[0].tags.name}</h3>
-              <h3>{product.producttags[1].tags.name}</h3>
-              <h3>{product.producttags[2].tags.name}</h3>
-              <h3>{product.producttags[3].tags.name}</h3>
-              <h3>{product.description}</h3>
-            </div>
+        <div
+          class="product-card"
+          key={`Key ${i}`}
+          onClick={() => navigate(`/products/${product.id}`)}
+        >
+          <div class="product-card-text">
+            <img
+              src={product.productphotos[0].photos.url}
+              width="250"
+              height="250"
+            />
+            <h3>{product.name}</h3>
+            <h4>${product.price.toFixed(2)}</h4>
+            <h5>{product.producttags[0].tags.name}</h5>
+            <h5>{product.producttags[1].tags.name}</h5>
+            <h5>{product.producttags[2].tags.name}</h5>
+            <h5>{product.producttags[3].tags.name}</h5>
           </div>
         </div>
       );
@@ -48,11 +46,9 @@ export default function Products() {
   }, [products]);
 
   return (
-    <Container>
-      <div>
-        <h1>Products</h1>
-        {productsToDisplay}
-      </div>
-    </Container>
+    <div>
+      <h1 class="product-title">Products</h1>
+      <div class="product-container">{productsToDisplay}</div>
+    </div>
   );
 }

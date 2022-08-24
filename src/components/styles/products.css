@@ -10,6 +10,32 @@
   grid-gap: 20px;
 }
 
-.container {
+.product-container {
   display: flex;
+  flex-flow: row wrap;
+  width: 100vw;
+}
+
+.product-card {
+  display: flex;
+  flex-flow: row wrap;
+  flex-basis: 0;
+  text-align: center;
+  width: 30vw;
+  height: 55vh;
+  padding-bottom: 100px;
+}
+
+.product-card-text {
+  display: flex;
+  flex-flow: column wrap;
+  text-align: center;
+  padding: 10px 15px 3px 15px;
+}
+
+.product-title {
+  display: flex;
+  justify-content: center;
+  padding-top: 25px;
+  padding-bottom: 25px;
 }
