@@ -22,7 +22,6 @@ export default function UserProfile() {
   }, []);
 
   useEffect(() => {
-    console.log(orders);
     if (orders) {
       const getOrdersToDisplay = orders.map((order, i) => {
         return (

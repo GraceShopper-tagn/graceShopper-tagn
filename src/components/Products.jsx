@@ -25,7 +25,6 @@ export default function Products() {
     const getTags = async () => {
       const allTags = await getAllTags();
       // window.location.reload(false);
-      console.log("ALL TAGS: ", allTags);
       setTags(allTags);
     };
     getTags();
@@ -137,9 +136,8 @@ export default function Products() {
 
           <select
             onChange={async (e) => {
-              event.preventDefault();
+              e.preventDefault();
               // window.location.reload(false);
-              console.log(e.target.value);
               setBrandId(e.target.value);
             }}
             className="brandsDisplay"
@@ -153,8 +151,7 @@ export default function Products() {
 
           <select
             onChange={async (e) => {
-              event.preventDefault();
-              console.log(e.target.value);
+              e.preventDefault();
               setColorId(e.target.value);
             }}
             className="colorsDisplay"
@@ -168,8 +165,7 @@ export default function Products() {
 
           <select
             onChange={async (e) => {
-              event.preventDefault();
-              console.log(e.target.value);
+              e.preventDefault();
               setActivityId(e.target.value);
             }}
             className="activitiesDisplay"
@@ -183,8 +179,7 @@ export default function Products() {
 
           <select
             onChange={async (e) => {
-              event.preventDefault();
-              console.log(e.target.value);
+              e.preventDefault();
               setGenderId(e.target.value);
             }}
             className="gendersDisplay"
@@ -196,14 +191,13 @@ export default function Products() {
         <form>
           <button
             onClick={async () => {
-              event.preventDefault();
+              e.preventDefault();
               let filtered = await getProductsByTags(
                 +brandId,
                 +colorId,
                 +activityID,
                 +genderID
               );
-              // console.log("FILTERED: ", filtered);
               localStorage.setItem(
                 "filtered-products",
                 JSON.stringify(filtered)
