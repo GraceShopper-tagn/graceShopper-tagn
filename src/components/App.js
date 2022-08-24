@@ -16,7 +16,7 @@ import Products from "./Products";
 import Product from "./Product";
 import Cart from "./Cart";
 import AddToCart from "./AddToCart";
-import Tags from "./Tags";
+// import Tags from "./Tags";
 import FilteredProducts from "./FilteredProducts";
 
 const App = () => {
@@ -46,7 +46,7 @@ const App = () => {
         <Route path="/products/:id" element={<Product />} />
         <Route path="/addtocart" element={<AddToCart />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/tags" element={<Tags />} />
+        {/* <Route path="/tags" element={<Tags />} /> */}
         <Route path="/products/filtered" element={<FilteredProducts />} />
       </Routes>
     </div>
