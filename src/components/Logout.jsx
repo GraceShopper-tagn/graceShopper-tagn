@@ -2,6 +2,7 @@ import React from "react";
 import { logoutUser } from "../api/auth";
 import useAuth from "../hooks/useAuth";
 import useCart from "../hooks/useCart";
+import { Button } from "react-bootstrap";
 
 export default function LogOut({}) {
   const { user, setUser } = useAuth();
@@ -21,7 +22,7 @@ export default function LogOut({}) {
         }
       }}
     >
-      <button type="submit">Log Out</button>
+      <Button type="submit">Log Out</Button>
     </form>
   );
 }

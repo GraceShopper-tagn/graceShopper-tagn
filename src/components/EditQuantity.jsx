@@ -48,7 +48,6 @@ export default function EditQuantity({ cartItemId, productPrice, inventory }) {
       <button
         onClick={async (e) => {
           e.preventDefault();
-          console.log(quantity, inventory);
           if (quantity === inventory) {
             alert(
               `Sorry, there ${

@@ -29,9 +29,7 @@ export default function CartProvider({ children }) {
     getCart();
   }, [user]);
 
-  useEffect(() => {
-    console.log("cart", cart);
-  }, [cart]);
+  useEffect(() => {}, [cart]);
 
   return (
     <CartContext.Provider
