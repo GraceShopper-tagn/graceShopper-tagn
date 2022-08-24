@@ -24,7 +24,7 @@ export default function Products() {
     window.history.replaceState(null, "", "/products");
     const getTags = async () => {
       const allTags = await getAllTags();
-      // window.location.reload(false);
+      console.log("ALL TAGS: ", allTags);
       setTags(allTags);
     };
     getTags();
@@ -204,11 +204,6 @@ export default function Products() {
               );
               setFilteredProducts(filtered);
               navigate("/products/filtered");
-              // {
-              //   filteredProducts.length !== 0
-              //     ? navigate("/products/filtered")
-              //     : navigate("/products");
-              // }
             }}
           >
             Submit Filter

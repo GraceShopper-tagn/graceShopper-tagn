@@ -21,6 +21,7 @@ apiRouter.use("/users", require("./users"));
 apiRouter.use("/products", require("./products"));
 apiRouter.use("/cartitems", require("./cartItems"));
 apiRouter.use("/orders", require("./orders"));
+apiRouter.use("/tags", require("./tags"));
 
 apiRouter.get("*", (req, res, next) => {
   res.statusCode = 404;
