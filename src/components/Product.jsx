@@ -9,7 +9,7 @@ export default function Product() {
   const { id } = useParams();
   const [product, setProduct] = useState([]);
   const [sizesToDisplay, setSizesToDisplay] = useState([]);
-  const [selectedSizeId, setSelectedSizeId] = useState(1);
+  const [selectedSizeId, setSelectedSizeId] = useState(0);
   const [singleSizeInventory, setSingleSizeInventory] = useState();
 
   let navigate = useNavigate();
@@ -18,9 +18,11 @@ export default function Product() {
     const getOneProduct = async () => {
       const product = await getProduct(id);
       setProduct(product);
+      localStorage.setItem("sizeid", product.productsizes[0].sizes.id);
+      setSingleSizeInventory(product.productsizes[0].inventory);
+      setSelectedSizeId(localStorage.sizeid);
     };
     getOneProduct();
-    localStorage.setItem("sizeid", 1);
   }, []);
 
   useEffect(() => {
