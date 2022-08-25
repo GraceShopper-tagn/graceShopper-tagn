@@ -12,13 +12,15 @@ export default function FilteredProducts() {
     localStorage.getItem("filtered-products")
   );
 
-  if (filteredProducts.length === 0) {
-    alert(
-      "There aren't any products that match your search, please try again."
-    );
+  useEffect(() => {
+    if (filteredProducts.length === 0) {
+      alert(
+        "There aren't any products that match your search, please try again."
+      );
 
-    navigate("/products");
-  }
+      navigate("/products");
+    }
+  });
 
   useEffect(() => {
     const getFilteredProductsToDisplay = filteredProducts.map(

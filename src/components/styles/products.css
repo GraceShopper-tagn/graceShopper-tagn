@@ -1,0 +1,60 @@
+/* .row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+} */
+
+/* #h2 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+} */
+
+.products-container {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100vw;
+}
+
+.products-card {
+  display: flex;
+  flex-flow: row wrap;
+  flex-basis: 0;
+  text-align: center;
+  width: 30vw;
+  height: 55vh;
+  padding-bottom: 100px;
+}
+
+.products-card-text {
+  display: flex;
+  flex-flow: column wrap;
+  text-align: center;
+  padding: 10px 15px 3px 15px;
+}
+
+.products-title {
+  display: flex;
+  justify-content: center;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.filters-card {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.filters-card > form {
+  flex-basis: 20%;
+  text-align: center;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}

@@ -1,0 +1,31 @@
+.product-container {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100vw;
+  padding: 50px;
+  margin-left: 5px;
+  justify-content: space-around;
+}
+
+.product-card {
+  display: flex;
+  flex-flow: row wrap;
+  flex-basis: 0;
+  text-align: center;
+  width: 60vw;
+  height: 55vh;
+  padding: 25px;
+  justify-content: space-between;
+}
+
+.product-card-text {
+  display: flex;
+  flex-flow: column wrap;
+  padding: 10px 15px 3px 15px;
+}
+
+.product-card-titles {
+  align-items: center;
+  margin-top: 70px;
+  line-height: 200%;
+}

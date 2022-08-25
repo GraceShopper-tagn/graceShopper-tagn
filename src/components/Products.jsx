@@ -3,6 +3,8 @@ import { getAllProducts } from "../api/products";
 import { getAllTags } from "../api/tags";
 import { getProductsByTags } from "../api/products";
 import { useNavigate } from "react-router-dom";
+import { Container } from "react-bootstrap";
+import "../components/styles/products.css";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
@@ -40,7 +42,6 @@ export default function Products() {
           return <option value={tag.id}>{tag.name}</option>;
         });
       setBrandsToDisplay(brands);
-      // window.location.reload(false);
     };
 
     getBrands();
@@ -102,22 +103,25 @@ export default function Products() {
   useEffect(() => {
     const getProductsToDisplay = products.map((product, i) => {
       return (
+        // Use cards to display products as a grid
         <div
+          class="products-card"
           key={`Key ${i}`}
           onClick={() => navigate(`/products/${product.id}`)}
         >
-          <h2>{product.name}</h2>
-          <h2>{product.price}</h2>
-          <h3>{product.producttags[0].tags.name}</h3>
-          <h3>{product.producttags[1].tags.name}</h3>
-          <h3>{product.producttags[2].tags.name}</h3>
-          <h3>{product.producttags[3].tags.name}</h3>
-          <h3>{product.description}</h3>
-          <img
-            src={product.productphotos[0].photos.url}
-            width="250"
-            height="250"
-          />
+          <div class="products-card-text">
+            <img
+              src={product.productphotos[0].photos.url}
+              width="250"
+              height="250"
+            />
+            <h3>{product.name}</h3>
+            <h4>${product.price.toFixed(2)}</h4>
+            <h5>{product.producttags[0].tags.name}</h5>
+            <h5>{product.producttags[1].tags.name}</h5>
+            <h5>{product.producttags[2].tags.name}</h5>
+            <h5>{product.producttags[3].tags.name}</h5>
+          </div>
         </div>
       );
     });
@@ -128,16 +132,13 @@ export default function Products() {
     <div>
       <h1>Products</h1>
 
-      {productsToDisplay}
-
-      <div className="productFilter">
+      <div class="filters-card">
         <form>
-          <h3>Select Brand</h3>
+          <h3> Brand</h3>
 
           <select
             onChange={async (e) => {
               e.preventDefault();
-              // window.location.reload(false);
               setBrandId(e.target.value);
             }}
             className="brandsDisplay"
@@ -147,7 +148,7 @@ export default function Products() {
         </form>
 
         <form>
-          <h3>Select Color</h3>
+          <h3>Color</h3>
 
           <select
             onChange={async (e) => {
@@ -161,7 +162,7 @@ export default function Products() {
         </form>
 
         <form>
-          <h3>Select Activity</h3>
+          <h3>Activity</h3>
 
           <select
             onChange={async (e) => {
@@ -175,7 +176,7 @@ export default function Products() {
         </form>
 
         <form>
-          <h3>Select Gender</h3>
+          <h3>Gender</h3>
 
           <select
             onChange={async (e) => {
@@ -190,7 +191,7 @@ export default function Products() {
 
         <form>
           <button
-            onClick={async () => {
+            onClick={async (e) => {
               e.preventDefault();
               let filtered = await getProductsByTags(
                 +brandId,
@@ -210,6 +211,8 @@ export default function Products() {
           </button>
         </form>
       </div>
+
+      <div class="products-container">{productsToDisplay}</div>
     </div>
   );
 }

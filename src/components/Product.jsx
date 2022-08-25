@@ -3,6 +3,7 @@ import { getProduct } from "../api/products";
 import { useParams } from "react-router-dom";
 import { getProductSize } from "../api/products";
 import { useNavigate } from "react-router-dom";
+import "../components/styles/product.css";
 import { addToCart } from "../api/cartItems";
 
 export default function Product() {
@@ -54,19 +55,23 @@ export default function Product() {
   }, []);
 
   return (
-    <div>
-      <h2>{product.name}</h2>
-      <h3>{product.price}</h3>
-      <h3>{product.producttags ? product.producttags[0].tags.name : null}</h3>
-      <h3>{product.producttags ? product.producttags[1].tags.name : null}</h3>
-      <h3>{product.producttags ? product.producttags[2].tags.name : null}</h3>
-      <h3>{product.producttags ? product.producttags[3].tags.name : null}</h3>
-      <h3>{product.description}</h3>
+    <div class="product-card">
       <img
         src={product.productphotos ? product.productphotos[0].photos.url : null}
         width="250"
         height="250"
       />
+      <div class="product-card-titles">
+        <h2>{product.name}</h2>
+        <h4>${product.price}</h4>
+        <h5>{product.producttags ? product.producttags[0].tags.name : null}</h5>
+      </div>
+      <div>
+        <h6>{product.producttags ? product.producttags[1].tags.name : null}</h6>
+        <h6>{product.producttags ? product.producttags[2].tags.name : null}</h6>
+        <h6>{product.producttags ? product.producttags[3].tags.name : null}</h6>
+        <h6>{product.description}</h6>
+      </div>
       <form>
         <h3>Select Size</h3>
         <select

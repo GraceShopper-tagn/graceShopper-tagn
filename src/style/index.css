@@ -1,17 +1,17 @@
-/* import fonts here */
+/* import fonts here
 
 * {
   box-sizing: border-box;
 }
 
 :root {
-  /* define variables here */
+  define variables here
   --green: green;
   --red: red;
   --blue: blue;
 }
 
-html {
+/* html {
   touch-action: manipulation;
 }
 
@@ -20,4 +20,4 @@ body {
   padding: 0;
   height: 100vh;
   width: 100vw;
-}
+} */

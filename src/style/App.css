@@ -1,4 +1,4 @@
-.app-container {
+/* .app-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,7 +23,7 @@ nav > * {
   flex-basis: 25%;
 }
 
-/* header {
+header {
   margin: 0;
   width: 100%;
   flex-basis: 100%;
@@ -32,8 +32,7 @@ nav > * {
 .app-container {
   display: flex;
   flex-direction: column;
-} */
-
+}
 .cartItem {
   border: 1px black solid;
 }
@@ -44,4 +43,4 @@ nav > * {
 .productFilter {
   box-sizing: border-box;
   float: left;
-}
+} */

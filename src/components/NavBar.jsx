@@ -1,15 +1,32 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FullNav, LinkNav, SearchBar } from "./styles/navbar";
+import "bootstrap/dist/css/bootstrap.css";
+import styles from "./styles/navbar.css";
 import useAuth from "../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 export default function NavBar() {
   const { user } = useAuth();
+  const navigate = useNavigate();
   return (
-    <div>
-      <header className="header-format">
-        <h1>Shoes</h1> <h3>(Shop at Your Own Risk)</h3>
-      </header>
-      <nav className="navbar">
+    <nav>
+      <div class={styles.searchNav}>
+        <FullNav>
+          <div>
+            <img
+              onClick={() => navigate("/products")}
+              src="logo.png"
+              alt="group logo"
+              class="rounded"
+              style={{ cursor: "pointer", height: "100px", width: "175px" }}
+            />
+          </div>
+          <h1>Find Your Soles</h1>
+        </FullNav>
+      </div>
+
+      <LinkNav>
         <Link className="links" to="/products">
           Store
         </Link>
@@ -44,7 +61,7 @@ export default function NavBar() {
             Administrator
           </Link>
         )}
-      </nav>
-    </div>
+      </LinkNav>
+    </nav>
   );
 }

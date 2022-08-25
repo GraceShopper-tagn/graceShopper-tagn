@@ -4,20 +4,30 @@ import EditUser from "./EditUser";
 import { useState, useEffect } from "react";
 import { fetchFulfilledOrders } from "../api/orders";
 import { useNavigate } from "react-router-dom";
+import { fetchMe } from "../api/users";
 
 export default function UserProfile() {
-  const { user } = useAuth();
+  const { user, setUser } = useAuth();
   const [orders, setOrders] = useState([]);
   const [ordersToDisplay, setOrdersToDisplay] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
+    window.onload = function () {
+      if (!window.location.hash) {
+        window.location = window.location + "#loaded";
+        window.location.reload();
+      }
+    };
     const getOrders = async () => {
+      const user = await fetchMe();
+      setUser(user);
       if (user) {
         const orders = await fetchFulfilledOrders();
         setOrders(orders);
       }
     };
+    window.onload();
     getOrders();
   }, []);
 
