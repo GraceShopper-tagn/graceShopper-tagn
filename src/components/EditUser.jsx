@@ -34,10 +34,14 @@ export default function EditUser() {
           );
 
           if (result.updatedUser) {
-            const updatedUser = result.updatedUser;
+            const updatedUser = await result.updatedUser;
             await setUser(updatedUser);
-            //alert("Account edited. Please log back in.");
-            //navigate("/login");
+            alert("Account edited. Please log back in.");
+            // const result2 = await logoutUser();
+            localStorage.clear();
+            setUser({});
+            // window.location.reload(false);
+            navigate("/login");
           } else alert("You must be logged in to edit your profile.");
         }}
       >
