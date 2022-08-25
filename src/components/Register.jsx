@@ -93,7 +93,7 @@ export default function Register() {
           required={true}
           onChange={(e) => setFirstname(e.target.value)}
         >
-          <Form.Label>Firstname</Form.Label>
+          <Form.Label>First Name</Form.Label>
           <Form.Control type="text" placeholder="First Name" />
         </Form.Group>
 
@@ -101,12 +101,12 @@ export default function Register() {
           required={true}
           onChange={(e) => setLastname(e.target.value)}
         >
-          <Form.Label>Lastname</Form.Label>
+          <Form.Label>Last Name</Form.Label>
           <Form.Control type="text" placeholder="Last Name" />
         </Form.Group>
 
         <Form.Group required={false} onChange={(e) => setEmail(e.target.value)}>
-          <Form.Label>Email Adress</Form.Label>
+          <Form.Label>Email Address</Form.Label>
           <Form.Control type="email" placeholder="Example@email.com" />
         </Form.Group>
 
