@@ -39,7 +39,7 @@ export default function Login() {
         </Form.Group>
 
         <Form.Group required={false} onChange={(e) => setEmail(e.target.value)}>
-          <Form.Label>Email Adress</Form.Label>
+          <Form.Label>Email Address</Form.Label>
           <Form.Control type="email" placeholder="Example@email.com" />
         </Form.Group>
 
