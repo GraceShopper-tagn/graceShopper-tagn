@@ -11,7 +11,7 @@ export default function NavBar() {
   const navigate = useNavigate();
   return (
     <nav>
-      <div className={styles.searchNav}>
+      <div class={styles.searchNav}>
         <FullNav>
           <div>
             <img
@@ -22,10 +22,7 @@ export default function NavBar() {
               style={{ cursor: "pointer", height: "100px", width: "175px" }}
             />
           </div>
-          <SearchBar>
-            <input type="search" placeholder="Find your soles" />
-            <button> SEARCH </button>
-          </SearchBar>
+          <h1>Find Your Soles</h1>
         </FullNav>
       </div>
 

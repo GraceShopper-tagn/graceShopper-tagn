@@ -1,14 +1,14 @@
-.row {
+/* .row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
-}
+} */
 
-#h2 {
+/* #h2 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
-}
+} */
 
 .products-container {
   display: flex;
@@ -38,4 +38,23 @@
   justify-content: center;
   padding-top: 25px;
   padding-bottom: 25px;
+}
+
+.filters-card {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.filters-card > form {
+  flex-basis: 20%;
+  text-align: center;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }

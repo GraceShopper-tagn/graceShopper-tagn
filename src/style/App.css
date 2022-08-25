@@ -33,7 +33,7 @@ header {
   display: flex;
   flex-direction: column;
 }
- .cartItem {
+.cartItem {
   border: 1px black solid;
 }
 
@@ -43,4 +43,4 @@ header {
 .productFilter {
   box-sizing: border-box;
   float: left;
-}
+} */

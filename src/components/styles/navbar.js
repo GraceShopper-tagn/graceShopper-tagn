@@ -6,16 +6,8 @@ export const FullNav = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding-right: 400px;
 `;
-// export const NavP = styled.p`
-//   color: black;
-//   font-size: 18px;
-//   margin-left: 10%;
-//   margin-top 0;
-//   width: 100%;
-//   justify-content: flex-end;
-
-// `;
 
 export const LinkNav = styled.div`
   background-color: #f2e49b;

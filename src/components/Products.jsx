@@ -132,11 +132,9 @@ export default function Products() {
     <div>
       <h1>Products</h1>
 
-      {productsToDisplay}
-
-      <div className="productFilter">
+      <div class="filters-card">
         <form>
-          <h3>Select Brand</h3>
+          <h3> Brand</h3>
 
           <select
             onChange={async (e) => {
@@ -150,7 +148,7 @@ export default function Products() {
         </form>
 
         <form>
-          <h3>Select Color</h3>
+          <h3>Color</h3>
 
           <select
             onChange={async (e) => {
@@ -164,7 +162,7 @@ export default function Products() {
         </form>
 
         <form>
-          <h3>Select Activity</h3>
+          <h3>Activity</h3>
 
           <select
             onChange={async (e) => {
@@ -178,7 +176,7 @@ export default function Products() {
         </form>
 
         <form>
-          <h3>Select Gender</h3>
+          <h3>Gender</h3>
 
           <select
             onChange={async (e) => {
@@ -213,6 +211,8 @@ export default function Products() {
           </button>
         </form>
       </div>
+
+      <div class="products-container">{productsToDisplay}</div>
     </div>
   );
 }
