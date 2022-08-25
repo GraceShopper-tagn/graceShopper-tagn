@@ -4,6 +4,7 @@ import { registerUser } from "../api/auth";
 import { claimOrder, editOrder } from "../api/orders";
 import useCart from "../hooks/useCart";
 import useAuth from "../hooks/useAuth";
+import { Button, Form } from "react-bootstrap";
 
 export default function Register() {
   const { setCart } = useCart();
@@ -21,7 +22,7 @@ export default function Register() {
 
   return (
     <div>
-      <form
+      <Form
         onSubmit={async (e) => {
           e.preventDefault();
           if (password === confirmPassword && password.length >= 8) {
@@ -64,66 +65,77 @@ export default function Register() {
           }
         }}
       >
-        <input
-          placeholder="Username"
-          value={username}
+        <Form.Group
           required={true}
           onChange={(e) => setUserName(e.target.value)}
-        />
-        <input
-          placeholder="Password"
-          value={password}
+        >
+          <Form.Label>Username</Form.Label>
+          <Form.Control type="text" placeholder="Username" />
+        </Form.Group>
+
+        <Form.Group
           required={true}
           onChange={(e) => setPassword(e.target.value)}
-        />
-        <input
-          placeholder="Confirm Password"
-          value={confirmPassword}
+        >
+          <Form.Label>Password</Form.Label>
+          <Form.Control type="password" placeholder="Password" />
+        </Form.Group>
+
+        <Form.Group
           required={true}
           onChange={(e) => setConfirmPassword(e.target.value)}
-        />
+        >
+          <Form.Label>Confirm Password</Form.Label>
+          <Form.Control type="password" placeholder=" Confirm Password" />
+        </Form.Group>
 
-        <input
-          placeholder="First Name"
-          value={firstname}
+        <Form.Group
           required={true}
           onChange={(e) => setFirstname(e.target.value)}
-        />
+        >
+          <Form.Label>Firstname</Form.Label>
+          <Form.Control type="text" placeholder="First Name" />
+        </Form.Group>
 
-        <input
-          placeholder="Last Name"
-          value={lastname}
+        <Form.Group
           required={true}
           onChange={(e) => setLastname(e.target.value)}
-        />
+        >
+          <Form.Label>Lastname</Form.Label>
+          <Form.Control type="text" placeholder="Last Name" />
+        </Form.Group>
 
-        <input
-          placeholder="Email"
-          value={email}
-          required={true}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        <Form.Group required={false} onChange={(e) => setEmail(e.target.value)}>
+          <Form.Label>Email Adress</Form.Label>
+          <Form.Control type="email" placeholder="Example@email.com" />
+        </Form.Group>
 
-        <input
-          placeholder="Shipping Address"
-          value={shippingAddress}
+        <Form.Group
+          required={false}
           onChange={(e) => setShippingAddress(e.target.value)}
-        />
+        >
+          <Form.Label>Shipping Address</Form.Label>
+          <Form.Control type="text" placeholder="Shipping Address" />
+        </Form.Group>
 
-        <input
-          placeholder="Billing Address"
-          value={billingAddress}
+        <Form.Group
+          required={false}
           onChange={(e) => setBillingAddress(e.target.value)}
-        />
+        >
+          <Form.Label>Billing Address</Form.Label>
+          <Form.Control type="text" placeholder="Billing Address" />
+        </Form.Group>
 
-        <input
-          placeholder="Payment Information"
-          value={paymentInfo}
+        <Form.Group
+          required={false}
           onChange={(e) => setPaymentInfo(e.target.value)}
-        />
+        >
+          <Form.Label>Payment Information</Form.Label>
+          <Form.Control type="text" placeholder="Payment Information" />
+        </Form.Group>
 
-        <button type="submit">Submit</button>
-      </form>
+        <Button type="submit">Submit</Button>
+      </Form>
     </div>
   );
 }

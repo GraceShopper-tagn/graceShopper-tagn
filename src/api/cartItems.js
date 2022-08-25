@@ -54,3 +54,12 @@ export const removeFromCart = async (id) => {
   const result = await response.json();
   return result;
 };
+
+export const getCartitemById = async (id) => {
+  const response = await fetch(`api/cartitems/${id}`, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
+  const result = await response.json();
+  return result;
+};

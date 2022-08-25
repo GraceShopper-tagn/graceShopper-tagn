@@ -135,7 +135,27 @@ orderRouter.get("/:id", async (req, res, next) => {
       include: {
         discounts: true,
         users: true,
-        cartitems: true,
+        cartitems: {
+          include: {
+            productsizes: {
+              include: {
+                products: {
+                  include: {
+                    producttags: {
+                      include: { tags: true },
+                    },
+                    productphotos: {
+                      include: {
+                        photos: true,
+                      },
+                    },
+                  },
+                },
+                sizes: true,
+              },
+            },
+          },
+        },
       },
     });
     res.send(order);

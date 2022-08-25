@@ -58,10 +58,6 @@ productRouter.get("/:id/:sizeId", async (req, res, next) => {
       where: {
         productid: +id,
       },
-      select: {
-        inventory: true,
-        sizeid: true,
-      },
     });
     for (productSize of getInventory) {
       if (productSize.sizeid === +sizeId) {
@@ -73,5 +69,49 @@ productRouter.get("/:id/:sizeId", async (req, res, next) => {
     next(error);
   }
 });
+
+productRouter.patch("/sizes/:id", async (req, res, next) => {
+  const { id } = req.params;
+  const { numPurchased } = req.body;
+  try {
+    const updatedSize = await prisma.productsizes.update({
+      where: {
+        id: +id,
+      },
+      data: {
+        inventory: { decrement: numPurchased },
+      },
+    });
+
+    res.send(updatedSize);
+  } catch (error) {
+    next(error);
+  }
+});
+productRouter.get(
+  "/:brand/:color/:activity/:gender",
+  async (req, res, next) => {
+    const { brand, color, activity, gender } = req.params;
+
+    try {
+      const getInventoryByTag = await prisma.products.findMany({
+        where: {
+          producttags: {
+            every: {
+              tagid: {
+                in: [+brand, +color, +activity, +gender],
+              },
+            },
+          },
+        },
+        include: { productphotos: { select: { photos: true } } },
+      });
+
+      res.send(getInventoryByTag);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
 
 module.exports = productRouter;

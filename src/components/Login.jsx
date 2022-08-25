@@ -2,6 +2,8 @@ import React from "react";
 import { loginUser } from "../api/auth";
 import { useState } from "react";
 import useAuth from "../hooks/useAuth";
+import { Button, Form } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Login() {
   const { setUser } = useAuth();
@@ -11,7 +13,8 @@ export default function Login() {
   return (
     <div>
       <h4 id="loginTitle">Login Here:</h4>
-      <form
+
+      <Form
         id="loginInfo"
         onSubmit={async (e) => {
           e.preventDefault();
@@ -27,31 +30,30 @@ export default function Login() {
           }
         }}
       >
-        <input
-          className="userinput"
-          placeholder="Username"
-          value={username}
+        <Form.Group
           required={false}
           onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
-          className="userinput"
-          placeholder="Email"
-          value={email}
-          required={false}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          className="userinput"
-          placeholder="Password"
-          value={password}
+        >
+          <Form.Label>Username</Form.Label>
+          <Form.Control type="username" placeholder="Username" />
+        </Form.Group>
+
+        <Form.Group required={false} onChange={(e) => setEmail(e.target.value)}>
+          <Form.Label>Email Adress</Form.Label>
+          <Form.Control type="email" placeholder="Example@email.com" />
+        </Form.Group>
+
+        <Form.Group
           required={true}
           onChange={(e) => setPassword(e.target.value)}
-        />
-        <button id="loginButton" type="submit">
+        >
+          <Form.Label>Password</Form.Label>
+          <Form.Control type="password" placeholder="Password" />
+        </Form.Group>
+        <Button id="loginButton" type="submit">
           LOGIN
-        </button>
-      </form>
+        </Button>
+      </Form>
     </div>
   );
 }

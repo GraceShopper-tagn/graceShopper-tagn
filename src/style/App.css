@@ -35,4 +35,12 @@ header {
 }
  .cartItem {
   border: 1px black solid;
-} */
+}
+
+.orderCard {
+  border: 1px black solid;
+}
+.productFilter {
+  box-sizing: border-box;
+  float: left;
+}

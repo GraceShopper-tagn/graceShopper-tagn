@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { getProduct } from "../api/products";
 import { useParams } from "react-router-dom";
-import { getInventoryBySize } from "../api/products";
+import { getProductSize } from "../api/products";
 import { useNavigate } from "react-router-dom";
 import "../components/styles/product.css";
+import { addToCart } from "../api/cartItems";
 
 export default function Product() {
   const { id } = useParams();
   const [product, setProduct] = useState([]);
   const [sizesToDisplay, setSizesToDisplay] = useState([]);
-  const [selectedSizeId, setSelectedSizeId] = useState(1);
+  const [selectedSizeId, setSelectedSizeId] = useState(0);
   const [singleSizeInventory, setSingleSizeInventory] = useState();
 
   let navigate = useNavigate();
@@ -18,16 +19,22 @@ export default function Product() {
     const getOneProduct = async () => {
       const product = await getProduct(id);
       setProduct(product);
+      localStorage.setItem("sizeid", product.productsizes[0].sizes.id);
+      setSingleSizeInventory(product.productsizes[0].inventory);
+      setSelectedSizeId(localStorage.sizeid);
     };
+    localStorage.removeItem("sizeid");
     getOneProduct();
   }, []);
 
   useEffect(() => {
     const getSizes = async () => {
-      const sizesToDisplay = product.productsizes.map((size) => {
-        return <option value={size.sizes.id}>{size.sizes.size}</option>;
-      });
-      setSizesToDisplay(sizesToDisplay);
+      try {
+        const sizesToDisplay = product.productsizes.map((size) => {
+          return <option value={size.sizes.id}>{size.sizes.size}</option>;
+        });
+        setSizesToDisplay(sizesToDisplay);
+      } catch {}
     };
 
     getSizes();
@@ -35,7 +42,7 @@ export default function Product() {
 
   useEffect(() => {
     const getSizeInventory = async () => {
-      const sizeInventory = await getInventoryBySize(id, selectedSizeId);
+      const sizeInventory = await getProductSize(id, selectedSizeId);
       let inventory = sizeInventory.inventory;
       localStorage.setItem("size-inventory", JSON.stringify(inventory));
       setSingleSizeInventory(inventory);
@@ -66,6 +73,7 @@ export default function Product() {
         <h6>{product.description}</h6>
       </div>
       <form>
+        <h3>Select Size</h3>
         <select
           onChange={async (e) => {
             localStorage.setItem("sizeid", JSON.stringify(e.target.value));
