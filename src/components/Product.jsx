@@ -56,40 +56,38 @@ export default function Product() {
       />
       <div class="product-card-titles">
         <h2>{product.name}</h2>
-        <h4>${product.price.toFixed(2)}</h4>
+        <h4>${product.price}</h4>
         <h5>{product.producttags ? product.producttags[0].tags.name : null}</h5>
       </div>
-      <div class="product-tags">
+      <div>
         <h6>{product.producttags ? product.producttags[1].tags.name : null}</h6>
         <h6>{product.producttags ? product.producttags[2].tags.name : null}</h6>
         <h6>{product.producttags ? product.producttags[3].tags.name : null}</h6>
         <h6>{product.description}</h6>
       </div>
-      <div class="product-quantity">
-        <form>
-          <select
-            onChange={async (e) => {
-              localStorage.setItem("sizeid", JSON.stringify(e.target.value));
-              setSelectedSizeId(e.target.value);
-            }}
-            id="shoe-size"
-          >
-            {sizesToDisplay}
-          </select>
-          <h4>
-            There are {singleSizeInventory} of this model left in this size.
-          </h4>
-        </form>
-        <form>
-          <button
-            onClick={() => {
-              navigate(`/addtocart`);
-            }}
-          >
-            Add To Cart
-          </button>
-        </form>
-      </div>
+      <form>
+        <select
+          onChange={async (e) => {
+            localStorage.setItem("sizeid", JSON.stringify(e.target.value));
+            setSelectedSizeId(e.target.value);
+          }}
+          id="shoe-size"
+        >
+          {sizesToDisplay}
+        </select>
+        <h4>
+          There are {singleSizeInventory} of this model left in this size.
+        </h4>
+      </form>
+      <form>
+        <button
+          onClick={() => {
+            navigate(`/addtocart`);
+          }}
+        >
+          Add To Cart
+        </button>
+      </form>
     </div>
   );
 }
